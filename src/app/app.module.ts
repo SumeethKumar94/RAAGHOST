@@ -10,10 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { DoctorsappointmentsComponent } from './doctorsappointments/doctorsappointments.component';
 import { AppointmentComponent } from './doctorsappointments/appointment/appointment.component';
 import { AppointmentListComponent } from './doctorsappointments/appointment-list/appointment-list.component';
+import { AppointmentService } from './shared/appointment.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
+
     DoctorsappointmentsComponent,
     AppointmentComponent,
     AppointmentListComponent
@@ -27,7 +30,7 @@ import { AppointmentListComponent } from './doctorsappointments/appointment-list
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

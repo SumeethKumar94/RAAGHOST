@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CMSUI"
+    }
+  },
+  "defaultProject": "CMSUI",
+  "cli": {
+    "analytics": "5bfa4980-e56a-4f49-bb8f-2c6c1e2ec3ef"
+  }
 }
