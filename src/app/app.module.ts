@@ -13,6 +13,11 @@ import { AppointmentListComponent } from './doctorsappointments/appointment-list
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
+import{MedicineService} from './shared/medicine.service';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component'
+import { EmployeeService } from './shared/employee.service';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { MedicineListComponent } from './medicines/medicine-list/medicine-list.c
     MedicineListComponent,
     DoctorsappointmentsComponent,
     AppointmentComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    EmployeesComponent,
+    EmployeeListComponent,
+    AdminhomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,8 @@ import { MedicineListComponent } from './medicines/medicine-list/medicine-list.c
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [MedicineService,
+    EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,36 @@
+
+<div class="jumbtron">
+    <a href="#emp" class="btn btn-outline-danger">View Employee Details</a>
+    &nbsp;
+    <button class="btn btn-sm btn-outline-danger">View Admin Details</button>
+    &nbsp;
+    <a href="#medi" class="btn btn-outline-danger">View Medicine Details</a>
+    &nbsp;
+    <button class="btn btn-sm btn-outline-danger">Add Employee</button>
+    &nbsp;
+    <button class="btn btn-sm btn-outline-danger">Add Medicine</button>
+
+
+    <!-- <button class="btn btn-success pull-right" ><a [routerLink]="[ '.', 'employees' ]"> Add Customer</a></button> -->
+   
+
+<br><br><br><br>
+
+
+
+    <div>
+        <div class="row">
+            
+                <div class="col-md-12" id="medi">
+                    <h3>Medicine Details</h3>
+                    <app-medicine-list></app-medicine-list>
+                </div><br><br><br>
+        <div class="col-md-12" id="emp">
+            <br><br><br><br>
+            <h3>Employee Details</h3>
+            <app-employee-list></app-employee-list>
+        </div>
+       
+    </div>
+    </div>
+</div>
