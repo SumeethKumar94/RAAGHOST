@@ -1,1 +1,44 @@
-<p>medicine-list works!</p>
+<!-- <div class="container">-->
+    <div class="header">
+        <div clas="form-control">
+            <!--search functionality -->
+            <input class="form-control" type="text" placeholder="search text here" [(ngModel)]="filter">
+            {{filter}}
+            
+        </div>
+        <a [routerLink]="" class="btn btn-outline-secondary" style="float:right; margin-top: 10px; margin-bottom: 10px;">Add
+            Medicine</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Medicine Name</th>
+                <th>Stock Quantity</th>
+                <th>Unit Price</th>
+                <th>Expiry Date</th>
+                <th>Action</th> <!--  for edit and delete -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr Service *ngFor="let med of medicineService.medicines| filter: filter | paginate:{itemsPerPage: 1,currentPage: page}">
+                <td>{{med.MedicineId}}</td>
+                <td>{{med.MedicineName}}</td>
+                <td>{{med.StockQuantity}}</td>
+                <td>{{med.UnitPrice}}</td>
+                <td>{{med.ExpiryDate | date:"dd-MMM-yyy"}}</td>
+                <td>
+                     <!-- button  -->
+                    <button class="btn btn-sm btn-info"(click)="editMedicine()">Edit</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteMedicine(med.MedicineId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--</div> -->
+    <div class="footer">
+        <!-- pagination -->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+

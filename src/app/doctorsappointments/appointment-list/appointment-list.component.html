@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+
+        <div class="form-control">
+            <!--Search-->
+            <input class="form-control" type="text" placeholder="Search text here..." [(ngModel)]="filter">
+            {{filter}}
+            <br>
+            <button class="btn btn-info" style="float: right;">Appointment Search</button>
+
+        </div>
+        <a [routerLink]="" class="btn btn-outline-secondary" style="float: right;margin-top: 10px;"></a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DateofAppointment</th>
+                <th>Select</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let app of appointmentService.appointment |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+                <td>{{app.AppoinmentId}}</td>
+                <td>{{app.FirstName}}</td>
+                <td>{{app.LastName}}</td>
+                <td>{{app.TokenDate | date:'dd-MMM-yyyy'}}</td>
+                <td>
+
+                    <button class="btn btn-sm btn-info">Select</button>
+                    &nbsp;
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    <br /> <br /> <br />
+    <h3>Prescribe Medicine</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Prescription Id</th>
+                <th>Medicine Id</th>
+                <th>Medicine Name</th>
+                <th>Quantity</th>
+                <th>UnitPrice</th>
+                <th>ToTal Stock</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let pre of appointmentService.prescription |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+                <td>{{pre.Pmid}}</td>
+                <td>{{pre.MedicineId}}</td>
+                <td>{{pre.Medicine.MedicineName}}</td>
+                <td>{{pre.Quantity}}</td>
+                <td>{{pre.Medicine.UnitPrice}}</td>
+                <td>{{pre.Medicine.StockQuantity}}</td>
+                <td>
+                    <!--button-->
+                    <button class="btn btn-sm btn-info"(click)="updatePrescription(pre.Pmid)">Edit</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger"(click)="deletePrescription(pre.Pmid)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    <div class="footer">
+
+
+    </div>
+</div>

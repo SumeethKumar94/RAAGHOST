@@ -1,0 +1,29 @@
+<div class="header">
+    <div class="form-control">
+        <!-- search functionality -->
+        <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
+    </div></div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Test Name</th>
+            <th>Patient Value</th>
+            <th>Normal Value</th>
+            <th>Unit</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
+            <td>{{test.Testname}}</td>
+            <td><input type="number" value="{{test.Testvalue}}"></td>
+            <td><input type="text" value="{{test.Normalrange}}"></td>
+            <td>{{test.Unit}}</td>
+            <td><button class="btn btn-primary">Save</button></td>
+        </tr>
+    </tbody>
+</table>
+<div class="footer">
+    <!-- pagination footer -->
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+</div>

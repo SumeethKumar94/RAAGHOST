@@ -20,6 +20,23 @@ import {AppointmentListComponent} from 'src/app/appointments/appointment-list/ap
 import { AppointmentschedulingComponent } from './appointments/appointmentscheduling/appointmentscheduling.component';
 import { ConsultationBillComponent } from './consultation-bill/consultation-bill.component';
 import { FinalbillComponent } from './consultation-bill/finalbill/finalbill.component'
+import{MedicineService} from './shared/medicine.service';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component'
+import { EmployeeService } from './shared/employee.service';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { PharmprescriptionsComponent } from './pharmprescriptions/pharmprescriptions.component';
+import { PharmpresComponent } from './pharmprescriptions/pharmpres/pharmpres.component';
+import { PharmpresListComponent } from './pharmprescriptions/pharmpres/pharmpres-list/pharmpres-list.component';
+import { LabtechlabtestsComponent } from './labtechlabtests/labtechlabtests.component';
+import { LabtechlabtestComponent } from './labtechlabtests/labtechlabtest/labtechlabtest.component';
+import { LabtechlabtestListComponent } from './labtechlabtests/labtechlabtest/labtechlabtest-list/labtechlabtest-list.component';
+import { PrescriptionmedicinesComponent } from './prescriptionmedicines/prescriptionmedicines.component';
+import { PrescriptionmedicineComponent } from './prescriptionmedicines/prescriptionmedicine/prescriptionmedicine.component';
+import { PrescriptionmedicineListComponent } from './prescriptionmedicines/prescriptionmedicine/prescriptionmedicine-list/prescriptionmedicine-list.component';
+import { LabtechtestsComponent } from './labtechtests/labtechtests.component';
+import { LabtechtestComponent } from './labtechtests/labtechtest/labtechtest.component';
+import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest-list/labtechtest-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +52,23 @@ import { FinalbillComponent } from './consultation-bill/finalbill/finalbill.comp
     AppointmentListComponent,
     AppointmentschedulingComponent,
     ConsultationBillComponent,
-    FinalbillComponent
+    FinalbillComponent,
+    AppointmentListComponent,
+    EmployeesComponent,
+    EmployeeListComponent,
+    AdminhomeComponent,
+    PharmprescriptionsComponent,
+    PharmpresComponent,
+    PharmpresListComponent,
+    LabtechlabtestsComponent,
+    LabtechlabtestComponent,
+    LabtechlabtestListComponent,
+    PrescriptionmedicinesComponent,
+    PrescriptionmedicineComponent,
+    PrescriptionmedicineListComponent,
+    LabtechtestsComponent,
+    LabtechtestComponent,
+    LabtechtestListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +79,8 @@ import { FinalbillComponent } from './consultation-bill/finalbill/finalbill.comp
     HttpClientModule
     
   ],
-  providers: [PatientService],
+  providers: [MedicineService,
+    EmployeeService,PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
