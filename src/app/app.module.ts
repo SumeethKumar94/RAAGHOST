@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DoctorsappointmentsComponent } from './doctorsappointments/doctorsappointments.component';
 import { AppointmentComponent } from './doctorsappointments/appointment/appointment.component';
 import { AppointmentListComponent } from './doctorsappointments/appointment-list/appointment-list.component';
+import { AppointmentService } from './shared/appointment.service';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
@@ -29,9 +30,8 @@ import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest
 @NgModule({
   declarations: [
     AppComponent,
-    MedicinesComponent,
-    MedicineComponent,
-    MedicineListComponent,
+    
+
     DoctorsappointmentsComponent,
     AppointmentComponent,
     AppointmentListComponent,
@@ -57,7 +57,7 @@ import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
