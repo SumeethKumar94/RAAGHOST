@@ -1,12 +1,16 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-  <span> HOME</span>
-  <div class="spacer"></div>
-  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="#" title="UserLogo"
-    src="https://www.pinclipart.com/picdir/big/138-1385107_png-file-user-vector-icon-png-clipart.png"></a>
+  <img
+    width="40"
+    alt="HOME"
+    src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png"
+  />
+  <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
 </div>
-
+<app-patients></app-patients>
+<router-outlet></router-outlet>
 <div class="content" role="main">
 
   <!-- Highlight Card -->
@@ -14,16 +18,12 @@
     <span><b>CLINIC MANAGEMENT SYSTEM</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
 
+  <div class="container">
+    <app-doctorsappointments></app-doctorsappointments>
+  </div>
+  <!-- Footer -->
+  <footer>
 
-  
-</div>
-<div class ="container">
-<app-doctorsappointments></app-doctorsappointments>
-<!-- Footer -->
-<footer>
-
-</footer>
+  </footer>
 
 </div>
-
-<router-outlet></router-outlet>

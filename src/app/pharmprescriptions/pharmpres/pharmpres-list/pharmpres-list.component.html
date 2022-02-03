@@ -1,0 +1,29 @@
+<div class="header">
+    <div class="form-control">
+        <!-- search functionality -->
+        <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
+    </div></div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Appointment ID</th>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prescription of pharmacistprescriptionservice.prescriptions | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
+            <td>{{prescription.AppointmentId}}</td>
+            <td>{{prescription.PatientFname}}&nbsp;{{prescription.PatientLname}}</td>
+            <td>{{prescription.DocttorFname}}&nbsp;{{prescription.DocttorLname}}</td>
+            <td>{{prescription.TokenDate | date:'dd-MM-yyyy'}}</td>
+            <td><button class="btn btn-primary" id="{{prescription.PrescriptionId}}">View</button></td>
+        </tr>
+    </tbody>
+</table>
+<div class="footer">
+    <!-- pagination footer -->
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+</div>
