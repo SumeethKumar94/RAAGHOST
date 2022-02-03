@@ -1,0 +1,60 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <br>
+    <span>RECEPTIONIST HOME</span>
+    <div class="spacer"></div>
+</div>
+<div class="conainer">
+    <div class="header" style="margin-top:10px;">
+        <br>
+        <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 60px;">Appointments List</h2>
+        <div class="form-control" style="margin-left: 50px; max-width: 500px;margin-top: 30px;">
+            <!--search functionality-->
+            <input type="text" class="form-control" placeholder="Search text here" [(ngModel)]="filter">
+
+        </div>
+        <a [routerLink]="" class="btn btn-outline-dark"
+            style="margin-top: 20px;margin-bottom: 10px;margin-left: 100px;float: right;">
+            Schedule New Appointment
+        </a>
+
+    </div>
+    <table class="table table-bordered table-striped" style="margin-top: 50px;margin-left: 50px;margin-right: 50px;">
+        <thead>
+            <tr>
+                <th>AppointmentId</th>
+                <th>PatientId</th>
+                <th>EmployeeId</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let recappointment of recappointmentService.recappointments | filter : filter | paginate: {itemsPerPage : 5, currentPage : page}">
+                <td>{{recappointment.AppointmentId}}</td>
+                <td>{{recappointment.PatientId}}</td>
+                <td>{{recappointment.EmployeeId}}</td>
+                <td>
+                    <!--button-->
+                    <button class="btn btn-sm btn-info"
+                        (click)="UpdateAppoinment(recappointment.AppointmentId)">Edit</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger"
+                        (click)="DeleteAppoinment(recappointment.AppointmentId)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div>
+</div>
+
+<footer class="footer bg-dark" style="align-items: center; margin-top: 300px;">
+    <div class="footer footer-fixed align-items:center">
+        <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+        </span>
+    </div>
+</footer>

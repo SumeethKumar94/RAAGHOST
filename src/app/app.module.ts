@@ -7,12 +7,19 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DoctorsappointmentsComponent } from './doctorsappointments/doctorsappointments.component';
-import { AppointmentComponent } from './doctorsappointments/appointment/appointment.component';
-import { AppointmentListComponent } from './doctorsappointments/appointment-list/appointment-list.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
+import { PatientsComponent } from './patients/patients.component';
+import { PatientListComponent } from './patients/patient-list/patient-list.component';
+import {PatientService} from './shared/patient.service';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { ReceptionisthomeComponent } from './receptionisthome/receptionisthome.component';
+import { PatientregistrationComponent } from './patients/patientregistration/patientregistration.component';
+import {AppointmentListComponent} from 'src/app/appointments/appointment-list/appointment-list.component';
+import { AppointmentschedulingComponent } from './appointments/appointmentscheduling/appointmentscheduling.component';
+import { ConsultationBillComponent } from './consultation-bill/consultation-bill.component';
+import { FinalbillComponent } from './consultation-bill/finalbill/finalbill.component'
 
 @NgModule({
   declarations: [
@@ -20,9 +27,15 @@ import { MedicineListComponent } from './medicines/medicine-list/medicine-list.c
     MedicinesComponent,
     MedicineComponent,
     MedicineListComponent,
-    DoctorsappointmentsComponent,
-    AppointmentComponent,
-    AppointmentListComponent
+    PatientsComponent,
+    PatientListComponent,
+    AppointmentsComponent,
+    ReceptionisthomeComponent,
+    PatientregistrationComponent,
+    AppointmentListComponent,
+    AppointmentschedulingComponent,
+    ConsultationBillComponent,
+    FinalbillComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +46,7 @@ import { MedicineListComponent } from './medicines/medicine-list/medicine-list.c
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

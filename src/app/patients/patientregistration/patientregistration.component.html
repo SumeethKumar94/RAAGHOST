@@ -1,0 +1,105 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img
+      width="40"
+      alt="HOME"
+      src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png"
+    />
+    <br>
+    <span>RECEPTIONIST HOME</span>
+      <div class="spacer"></div>
+</div>
+
+<div class="container" style="align-items: center;">
+<h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Patient Registration</h2>
+<div class="form-control" style="margin-top: 30px; margin-bottom: 30px;" >
+<form >
+    <div class="form-row ">
+
+      <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+        <label for="FirstName" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> First Name</b></label>
+        <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
+      </div>
+
+      <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+        <label for="Last Name" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Last Name</b></label>
+        <input type="text" class="form-control" id="Last Name" placeholder="Last Name" required>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 15px;margin-left: 290px;">
+        <label for="gridCheck" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Gender</b></label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+        <label class="form-check-label" for="gridCheck">
+          F
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required> 
+        <label class="form-check-label" for="gridCheck">
+          M
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+        <label for="birthday"style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>DOB</b></label>
+        <input type="date" id="birthday" name="birthday" class="form-control">
+      </div>
+    
+    <div class="form-group col-md-1" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+        <label for="bloodgroup" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Blood Group</b></label>
+        <select id="bloodgroup" class="form-control">
+          <option selected>- SELECT -</option>
+          <option>A+</option>
+          <option>B+</option>
+          <option>O+</option>
+          <option>AB+</option>
+          <option>A-</option>
+          <option>B-</option>
+          <option>O-</option>
+          <option>AB-</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+    <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+      <label for="inputAddress" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Address</b></label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required> 
+    </div>
+
+    <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+      <label for="Phonenumber" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Phone Number</b></label>
+      <input type="text" class="form-control is-invalid" id="Phonenumber" placeholder="Enter a 10-digit number" required>
+      <div class="invalid-feedback">
+        Please enter a valid number.
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6"style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+        <label for="Email" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Email Address</b></label>
+        <input type="email" class="form-control is-invalid" id="Email" required>
+        <div class="invalid-feedback">
+            Please enter a valid email.
+          </div>
+      </div>
+
+      <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+        <label for="inputZip" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Pincode</b></label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark" style="margin-bottom: 20px;margin-top: 15px;margin-left: 290px;">Register</button>
+  </form>
+</div>
+</div>
+
+  <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+    <div class="footer footer-fixed align-items:center">
+      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+  </span>
+    </div>
+  </footer>
