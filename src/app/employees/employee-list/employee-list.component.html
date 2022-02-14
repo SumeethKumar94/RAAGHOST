@@ -1,5 +1,14 @@
-<!-- <div class="container">-->
-    <div class="header">
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+  </div>
+
+<div class="container-fluid">
+    <br><br>
+    <div class="header mt-3">
         <div clas="form-control">
             <!--search functionality -->
             <input class="form-control" type="text" placeholder="search text here" [(ngModel)]="filter">
@@ -20,7 +29,7 @@
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Date Of Joining</th>
-                <th>Role</th>
+                <th>Role Id</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -36,7 +45,7 @@
                 <td>{{emp.Gender}}</td>
                 <td>{{emp.Address}}</td>
                 <td>{{emp.Doj | date:"dd-MMM-yyy"}}</td>
-                <td>{{emp.RoleName}}</td>
+                <td>{{emp.RoleId}}</td>
                 <td>{{emp.EmployeeStatus}}</td>
                 
                 <td>
@@ -48,8 +57,14 @@
             </tr>
         </tbody>
     </table>
-    <!--</div> -->
+    </div>
     <div class="footer">
         <!-- pagination -->
         <pagination-controls (pageChange)="page=($event)"></pagination-controls>
     </div>
+    <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+        <div class="footer footer-fixed align-items:center">
+          <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+      </span>
+        </div>
+      </footer>
