@@ -11,6 +11,7 @@ import { PatientListComponent } from './patients/patient-list/patient-list.compo
 
 const routes: Routes = [
 
+  { path: '', component: ReceptionisthomeComponent },
   { path: 'ReceptionistHome', component: ReceptionisthomeComponent },
   { path: 'appointmentlist', component: AppointmentListComponent },
   { path: 'appointments', component: AppointmentsComponent },
