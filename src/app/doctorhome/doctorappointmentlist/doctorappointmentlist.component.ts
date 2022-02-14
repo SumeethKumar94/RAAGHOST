@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { DoctorService } from 'src/app/shared/doctor.service';
+
 
 @Component({
-  selector: 'app-appointment-list',
-  templateUrl: './appointment-list.component.html',
-  styleUrls: ['./appointment-list.component.scss']
+  selector: 'app-doctorappointmentlist',
+  templateUrl: './doctorappointmentlist.component.html',
+  styleUrls: ['./doctorappointmentlist.component.scss']
 })
-export class AppointmentListComponent implements OnInit {
+export class DoctorappointmentlistComponent implements OnInit {
+
   page:number =1;
   filter:string;
-  constructor(public appointmentService:AppointmentService) { }
+  constructor(public appointmentService:DoctorService) { }
 
    updatePrescription(Pmid: number) {
     console.log(Pmid);

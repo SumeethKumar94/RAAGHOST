@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { DoctorService} from './shared/doctor.service';
 import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -37,6 +38,8 @@ import { PrescriptionmedicineListComponent } from './prescriptionmedicines/presc
 import { LabtechtestsComponent } from './labtechtests/labtechtests.component';
 import { LabtechtestComponent } from './labtechtests/labtechtest/labtechtest.component';
 import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest-list/labtechtest-list.component';
+import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
+import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,9 @@ import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest
     PrescriptionmedicineListComponent,
     LabtechtestsComponent,
     LabtechtestComponent,
-    LabtechtestListComponent
+    LabtechtestListComponent,
+    DoctorhomeComponent,
+    DoctorappointmentlistComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,7 @@ import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest
     
   ],
   providers: [MedicineService,
-    EmployeeService,PatientService],
+    EmployeeService,PatientService,DoctorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
