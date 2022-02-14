@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
@@ -42,6 +42,8 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import {AuthInterceptor } from './shared/auth.interceptor';
+//import { AuthGuard } from './shared/auth.guard';
 
 
 @NgModule({

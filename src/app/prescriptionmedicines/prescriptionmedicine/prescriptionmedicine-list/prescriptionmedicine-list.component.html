@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let medicine of prescriptionmedicinesservice.medicines | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
+        <tr *ngFor="let medicine of prescriptionmedicinesservice.medicines | filter: filter | paginate:{ itemsPerPage:5, currentPage: page}">
             <td>{{medicine.Medicinename}}</td>
             <td>{{medicine.Dosage}}</td>
             <td>{{medicine.Quantity}}</td>

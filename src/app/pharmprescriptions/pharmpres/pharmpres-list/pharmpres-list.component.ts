@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PharmacistPrescriptionService } from 'src/app/shared/pharmacist-prescription.service'
 
 @Component({
@@ -12,11 +13,17 @@ export class PharmpresListComponent implements OnInit {
   page: number = 1;
   filter: string;
 
-  constructor(public pharmacistprescriptionservice:PharmacistPrescriptionService) { }
+  constructor(public pharmacistprescriptionservice:PharmacistPrescriptionService,private router:Router) { }
 
   ngOnInit(): void {
     console.log("welcome");
     this.pharmacistprescriptionservice.bindListPharmacistPrescription();
+  }
+
+  // show medicines in a prescriiption
+  showMedicines(presId:number){
+    console.log(presId);
+    this.router.navigate(['pres-medicines',presId])
   }
 
 }
