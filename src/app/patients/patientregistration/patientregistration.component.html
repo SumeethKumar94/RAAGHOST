@@ -24,7 +24,7 @@
               Name</b></label>
           <input type="text" class="form-control" name="FirstName" #FirstName="ngModel"
             [(ngModel)]="patientService.formData.FirstName" class="form-control" placeholder="Enter FirstName" required
-            minlength="2" maxlength="25" [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
+            minlength="2" maxlength="30" [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
 
           <!--FirstName validation-->
           <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
@@ -62,7 +62,7 @@
             <option value="0" disabled>- SELECT -</option>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
-            <option value="Transgender">Transgender</option>
+            <option value="Transgender">Trans</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -90,8 +90,8 @@
         <!--Date of Birth-->
         <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
           <label for="Dob"
-            style="float: left;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Date of
-            Birth</label>
+            style="float: left;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Date of
+              Birth</b></label>
           <input type="date" name="Dob" id="Dob" #Dob="ngModel" [(ngModel)]="patientService.formData.Dob"
             class="form-control" required />
         </div>
@@ -100,8 +100,7 @@
         <div class="form-group col-md-6"
           style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
           <label for=""
-            style="float: left;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Phone
-            Number
+            style="float: left;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Phone Number</b>
             :</label>
           <input type="text" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="patientService.formData.PhoneNumber"
             class="form-control" placeholder="Enter your number" required minlength="10" maxlength="10"
@@ -118,7 +117,7 @@
         <!--EmailAddress-->
         <div class="form-group col-md-6" 
         style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
-          <label for="EmailAddress" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Email Address</label>
+          <label for="EmailAddress" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Email Address</b></label>
           <input type="text" name="EmailAddress" #EmailAddress="ngModel"
             [(ngModel)]="patientService.formData.EmailAddress" class="form-control" placeholder="Enter Email Address"
             required minlength="5" maxlength="30"
