@@ -19,7 +19,7 @@
             <td>{{testpres.PatientFname}}&nbsp;{{testpres.PatientLname}}</td>
             <td>{{testpres.DocttorFname}}&nbsp;{{testpres.DocttorLname}}</td>
             <td>{{testpres.TokenDate | date:'dd-MM-yyyy'}}</td>
-            <td><button class="btn btn-primary" id="{{testpres.PrescriptionId}}">View</button></td>
+            <td><button class="btn btn-primary" id="{{testpres.TestprescriptionId}}" (click)="showTests(testpres.TestprescriptionId)">View</button></td>
         </tr>
     </tbody>
 </table>

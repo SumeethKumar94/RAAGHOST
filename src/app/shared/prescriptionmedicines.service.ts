@@ -13,8 +13,8 @@ export class PrescriptionmedicinesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  bindListPrescriptionmedicines(){
-    this.httpClient.get(environment.apiUrl + "/api/Pharmacist/prescription-medcines?presId=2")
+  bindListPrescriptionmedicines(Id:number){
+    this.httpClient.get(environment.apiUrl + "/api/Pharmacist/prescription-medcines?presId="+Id)
     .toPromise().then(
       response => {
         console.log(response);
