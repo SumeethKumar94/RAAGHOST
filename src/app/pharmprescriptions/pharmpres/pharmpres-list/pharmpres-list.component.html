@@ -19,7 +19,7 @@
             <td>{{prescription.PatientFname}}&nbsp;{{prescription.PatientLname}}</td>
             <td>{{prescription.DocttorFname}}&nbsp;{{prescription.DocttorLname}}</td>
             <td>{{prescription.TokenDate | date:'dd-MM-yyyy'}}</td>
-            <td><button class="btn btn-primary" id="{{prescription.PrescriptionId}}">View</button></td>
+            <td><button class="btn btn-primary" id="{{prescription.PrescriptionId}}" (click)="showMedicines(prescription.PrescriptionId)">View</button></td>
         </tr>
     </tbody>
 </table>

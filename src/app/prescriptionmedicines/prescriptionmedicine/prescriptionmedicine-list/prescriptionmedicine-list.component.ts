@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PrescriptionmedicinesService } from 'src/app/shared/prescriptionmedicines.service'
 
 @Component({
@@ -10,10 +11,13 @@ export class PrescriptionmedicineListComponent implements OnInit {
   // declare variable
   page:number = 1;
   filter:string;
-  constructor(public prescriptionmedicinesservice : PrescriptionmedicinesService) { }
+  presId:number;
+  constructor(public prescriptionmedicinesservice : PrescriptionmedicinesService,
+  private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.prescriptionmedicinesservice.bindListPrescriptionmedicines();
+    this.presId = this.route.snapshot.params['presId']
+    this.prescriptionmedicinesservice.bindListPrescriptionmedicines(this.presId);
   }
 
 }
