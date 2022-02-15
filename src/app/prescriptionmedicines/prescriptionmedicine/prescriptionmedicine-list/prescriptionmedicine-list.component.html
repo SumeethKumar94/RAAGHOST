@@ -1,17 +1,16 @@
-
+<div class="container">
 <div class="header">
     <div class="form-control">
         <!-- search functionality -->
         <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
     </div></div>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="tbl_Medicine_List">
     <thead>
         <tr>
             <th>Medicine Name</th>
             <th>Dosage</th>
             <th>Quantity</th>
             <th>Price per unit</th>
-            <th>Add to bill</th>
         </tr>
     </thead>
     <tbody>
@@ -20,11 +19,13 @@
             <td>{{medicine.Dosage}}</td>
             <td>{{medicine.Quantity}}</td>
             <td>{{medicine.PriceperUnit}}</td>
-            <td>check</td>
+            <input type="hidden" value="{{medicine.AppointmentId}}" class="input_AppointmentId">
         </tr>
     </tbody>
 </table>
+<div style="text-align: right;"><button class="btn btn-primary" (click)="generateMedicineBill()">Generate Bill</button></div>
 <div class="footer">
     <!-- pagination footer -->
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+</div>
 </div>
