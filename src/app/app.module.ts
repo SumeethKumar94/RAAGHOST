@@ -42,8 +42,9 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import {AuthInterceptor } from './shared/auth.interceptor';
-//import { AuthGuard } from './shared/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth.guard';
+import {AuthInterceptor } from './shared/auth.interceptor';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LabtechtestComponent,
     LabtechtestListComponent,
     DoctorhomeComponent,
-    DoctorappointmentlistComponent
+    DoctorappointmentlistComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +96,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     
   ],
   providers: [MedicineService,
-    EmployeeService,PatientService,DoctorService],
+    EmployeeService,PatientService,DoctorService,
+    AuthGuard,
+    {
+      provide :HTTP_INTERCEPTORS,
+      useClass : AuthInterceptor,
+      multi : true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

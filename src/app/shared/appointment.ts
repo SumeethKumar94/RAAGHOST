@@ -14,5 +14,6 @@ export class Appointment {
     UnitPrice :number = 0;
     Quantity :number = 0;
     MedicineId :number = 0;
+    EmployeeId : number =0;
     
 }

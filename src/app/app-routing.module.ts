@@ -17,22 +17,30 @@ import { PrescriptionmedicineComponent } from './prescriptionmedicines/prescript
 import { PrescriptionmedicineListComponent } from './prescriptionmedicines/prescriptionmedicine/prescriptionmedicine-list/prescriptionmedicine-list.component';
 import { LabtechlabtestListComponent } from './labtechlabtests/labtechlabtest/labtechlabtest-list/labtechlabtest-list.component';
 import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest-list/labtechtest-list.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
 
-  { path: '', component: ReceptionisthomeComponent },
-  { path: 'ReceptionistHome', component: ReceptionisthomeComponent },
-  { path: 'appointmentlist', component: AppointmentListComponent },
-  { path: 'appointments', component: AppointmentsComponent },
-  { path: 'appointmentscheduling', component: AppointmentschedulingComponent },
-  { path: 'consultation-bill', component: ConsultationBillComponent },
-  { path: 'patients', component: PatientsComponent },
-  { path: 'patientregistrartion', component: PatientregistrationComponent },
-  { path: 'patient-list', component: PatientListComponent },
-  { path: 'adminhome', component: AdminhomeComponent},
-  { path: 'employee-list', component: EmployeeListComponent },
-  { path: 'employeeregister', component: EmployeesComponent },
-  { path: 'medicine-list', component: MedicineListComponent },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+
+  { path: 'ReceptionistHome', component: ReceptionisthomeComponent, canActivate:[AuthGuard],data:{role:'2'} },
+  { path: 'appointmentlist', component: AppointmentListComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'appointments', component: AppointmentsComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'appointmentscheduling', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'consultation-bill', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
+  { path: 'patients', component: PatientsComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'patientregistrartion', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'patientregistrartion/:PatientId', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'} },
+  { path: 'patient-list', component: PatientListComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'patient-list/:PatientId', component: PatientListComponent , canActivate:[AuthGuard],data:{role:'2'}},
+
+
+  { path: 'adminhome', component: AdminhomeComponent, canActivate:[AuthGuard],data:{role:'1'} },
+  { path: 'employee-list', component: EmployeeListComponent , canActivate:[AuthGuard],data:{role:'1'} },
+  { path: 'employeeregister', component: EmployeesComponent, canActivate:[AuthGuard],data:{role:'1'}  },
+  { path: 'medicine-list', component: MedicineListComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   
   { path: 'pharm-prescriptions', component: PharmpresListComponent },
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent },

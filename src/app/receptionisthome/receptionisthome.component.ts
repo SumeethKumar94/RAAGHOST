@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-receptionisthome',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceptionisthomeComponent implements OnInit {
 
-  constructor() { }
+  loggedUser : string;
+  constructor(private authService : AuthService,private router : Router) { }
 
   ngOnInit(): void {
+  this.loggedUser = localStorage.getItem("USERNAME");
+  }
+
+  //logout
+  logOut()
+  {
+    this.authService.logOut();
+    this.router.navigateByUrl('login');
   }
 
 }

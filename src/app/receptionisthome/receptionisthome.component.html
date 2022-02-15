@@ -7,7 +7,12 @@
       src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png"
     />
     <br>
-    <span>RECEPTIONIST HOME</span>
+    <span [routerLink]="['/ReceptionistHome']">RECEPTIONIST HOME</span>
+
+    <br>
+    <span style="margin-left: 50px;" [routerLink]="['/login']">LOGOUT</span>
+    <br>
+    <span class="bi bi-search" style="color: aliceblue;float: left;margin-left: 1300px;">WELCOME: {{loggedUser}}</span>
       <div class="spacer"></div>
     </div>
   <div class="content" role="main">
