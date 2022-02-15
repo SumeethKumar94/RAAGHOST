@@ -12,5 +12,6 @@ export class Employee {
     RoleName: string = "";
     EmployeeStatus: string = "";
     RoleId: number=0;
-
+    DoctorId : number =0;
+    AppoinmentId : number=0
 }

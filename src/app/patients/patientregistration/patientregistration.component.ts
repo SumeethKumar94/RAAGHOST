@@ -1,6 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PatientService } from 'src/app/shared/patient.service';
 
@@ -19,9 +20,39 @@ export class PatientregistrationComponent implements OnInit {
 
   constructor(public patientService: PatientService,
     private toastrService: ToastrService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+    //get empId from ActivateRoute
+    this.PatientId = this.route.snapshot.params['PatientId'];
+
+    //get employee by id
+    if (this.PatientId != 0 || this.PatientId != null) {
+      //get employee
+      this.patientService.getPatientById(this.PatientId).subscribe
+        (
+          result => {
+            console.log(result);
+
+            //format the date yyyy-mm-dd
+            var datePipe = new DatePipe("en-UK");
+            let formatedDate: any = datePipe.transform(result.Dob, 'yyyy-MM-dd');
+            result.Dob = formatedDate;
+
+            //assign this result to empService formData
+            this.patientService.formData = Object.assign({}, result);
+          },
+          error => {
+
+          }
+        );
+    }
+
+
+
+  }
 
   //submit form
   onSubmit(form: NgForm) {
@@ -55,7 +86,7 @@ export class PatientregistrationComponent implements OnInit {
           console.log(result);
           //call reset form
           this.resetForm(form);
-          this.toastrService.success('New patient registered successfully');
+          this.toastrService.success('New patient registered successfully', 'CMSApp v2o22');
         },
         (error) => {
           console.log(error);
@@ -82,7 +113,7 @@ export class PatientregistrationComponent implements OnInit {
   //logout
   logOut() {
     // this.authService.logOut();
-    this.router.navigateByUrl('signin');
+    this.router.navigateByUrl('login');
   }
 }
 
