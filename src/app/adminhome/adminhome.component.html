@@ -1,36 +1,31 @@
 
-<div class="jumbtron">
-    <a href="#emp" class="btn btn-outline-danger">View Employee Details</a>
-    &nbsp;
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+  </div>
+  <br><br><br><br><br>
+
+<div class="jumbtron"  >
+    &nbsp; &nbsp;
+    <a routerLink="/employee-list" type="button" class="btn btn-outline-danger">View Employee Details</a>
+    &nbsp; &nbsp;
     <button class="btn btn-sm btn-outline-danger">View Admin Details</button>
-    &nbsp;
-    <a href="#medi" class="btn btn-outline-danger">View Medicine Details</a>
-    &nbsp;
-    <button class="btn btn-sm btn-outline-danger">Add Employee</button>
-    &nbsp;
+    &nbsp; &nbsp;
+    <a routerLink="/employee-list" class="btn btn-outline-danger">View Medicine Details</a>
+    &nbsp; &nbsp;
+    <button  routerLink="/employeeregister" class="btn btn-sm btn-outline-danger">Add Employee</button>
+    &nbsp; &nbsp;
     <button class="btn btn-sm btn-outline-danger">Add Medicine</button>
 
 
-    <!-- <button class="btn btn-success pull-right" ><a [routerLink]="[ '.', 'employees' ]"> Add Customer</a></button> -->
-   
-
-<br><br><br><br>
-
-
-
-    <div>
-        <div class="row">
-            
-                <div class="col-md-12" id="medi">
-                    <h3>Medicine Details</h3>
-                    <app-medicine-list></app-medicine-list>
-                </div><br><br><br>
-        <div class="col-md-12" id="emp">
-            <br><br><br><br>
-            <h3>Employee Details</h3>
-            <app-employee-list></app-employee-list>
-        </div>
-       
-    </div>
-    </div>
+    
 </div>
+<footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+    <div class="footer footer-fixed align-items:center">
+      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+  </span>
+    </div>
+  </footer>

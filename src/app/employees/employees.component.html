@@ -1,10 +1,196 @@
-<div class="jumbtron">
-    <div class="row">
-        <!-- <div class="col-md-5">
-            <app-employee></app-employee>
-        </div> -->
-        <div class="col-md-12">
-            <app-employee-list></app-employee-list>
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+  </div><br><br><br>
+
+<!--Template driven form-->
+
+<form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+    
+    <!--Employee ID---Hidden-->
+    <input type="hidden" name="EmployeeId" [(ngModel)]="empService.formData.EmployeeId">
+
+    <!--First Name-->
+    <div class="form-group">
+        <label for="">First Name :</label>
+        <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="empService.formData.FirstName"
+            class="form-control" placeholder="Enter First Name" required minlength="3" maxlength="25"  autocomplete="off"
+            [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
+
+        <!-- name validation-->
+        <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
+            <div *ngIf="FirstName.errors">
+                First Name is required!
+            </div>
         </div>
     </div>
-</div>
+
+    <!--Last Name-->
+    <div class="form-group">
+        <label for="">Last Name :</label>
+        <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="empService.formData.LastName"
+            class="form-control" placeholder="Enter Last Name" required minlength="3" maxlength="25"  autocomplete="off"
+            [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}"/>
+
+        <!-- name validation-->
+        <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
+            <div *ngIf="LastName.errors">
+                Last Name is required!
+            </div>
+        </div>
+    </div>
+
+    <!--Date of Birth-->
+    <div class="form-group">
+        <label for="">Date of Birth :</label>
+        <input type="date" name="Dob" #Dob="ngModel"
+            [(ngModel)]="empService.formData.Dob" class="form-control" required
+            [ngClass]="{'is-invalid': Dob.touched && Dob.invalid}" />
+
+        <!-- validation-->
+        <div class="validation-error" *ngIf="Dob.touched && Dob.invalid">
+            <div *ngIf="Dob.errors.required">
+                Date of birth is required!
+            </div>
+        </div>
+    </div>
+
+      <!--Phone-->
+    <div class="form-group">
+        <label >Contact  number:</label>
+        <input type="text" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="empService.formData.PhoneNumber"
+            class="form-control" placeholder="Enter Contact number" required minlength="10" maxlength="10"
+            [ngClass]="{'is-invalid': PhoneNumber.touched && PhoneNumber.invalid}" />
+
+        <!--validation-->
+        <div class="validation-error" *ngIf="PhoneNumber.touched && PhoneNumber.invalid">
+            <div *ngIf="PhoneNumber.errors.required">
+                Contact number is required!
+            </div>
+        </div>
+    </div>
+
+    <!--Email-->
+    <div class="form-group">
+        <label for="">Email :</label>
+        <input type="text" name="EmailAddress" #EmailAddress="ngModel" [(ngModel)]="empService.formData.EmailAddress"
+            class="form-control" placeholder="Enter Email Address" required minlength="6" maxlength="25"  autocomplete="off"
+            [ngClass]="{'is-invalid':EmailAddress.touched && EmailAddress.invalid}" />
+
+        <!-- name validation-->
+        <div class="validation-error" *ngIf="EmailAddress.touched && EmailAddress.invalid">
+            <div *ngIf="EmailAddress.errors">
+                Email is required!
+            </div>
+        </div>
+    </div>
+
+    <!--Gender-->
+    <div class="form-group">
+        <label for="">Gender(M/F/O):</label>
+        <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
+            class="form-control" placeholder="Enter Gender" required minlength="1" maxlength="1"
+            [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" />
+
+        <!--Employee name validation-->
+        <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
+            <div *ngIf="Gender.errors.required">
+                Gender is required!
+            </div>
+        </div>
+    </div>
+
+    <!--Date of Joining-->
+    <div class="form-group">
+        <label for="">DateofJoining :</label>
+        <input type="date" name="Doj" #Doj="ngModel"
+            [(ngModel)]="empService.formData.Doj" class="form-control" required
+            [ngClass]="{'is-invalid': Doj.touched && Doj.invalid}" />
+
+        <!--validation-->
+        <div class="validation-error" *ngIf="Doj.touched && Doj.invalid">
+            <div *ngIf="Doj.errors.required">
+                DateofJoining is required!
+            </div>
+        </div>
+    </div>
+
+    <!--Password-->
+    <div class="form-group">
+        <label for="">Password :</label>
+        <input type="password" name="Password" #Password="ngModel" [(ngModel)]="empService.formData.Password"
+            class="form-control" placeholder="Enter Password" required minlength="3" maxlength="25"  autocomplete="off"
+            [ngClass]="{'is-invalid':Password.touched && Password.invalid}" />
+
+        <!-- name validation-->
+        <div class="validation-error" *ngIf="Password.touched && Password.invalid">
+            <div *ngIf="Password.errors">
+                Password is required!
+            </div>
+        </div>
+    </div>
+
+    <!--EmployeeStatus-->
+    <div class="form-group">
+        <label for="">Employee Status :</label>
+        <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" [(ngModel)]="empService.formData.EmployeeStatus"
+            class="form-control" placeholder="Enter status" required minlength="3" maxlength="25"  autocomplete="off"
+            [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" />
+
+        <!-- name validation-->
+        <div class="validation-error" *ngIf="EmployeeStatus.touched && EmployeeStatus.invalid">
+            <div *ngIf="EmployeeStatus.errors">
+                status is required!
+            </div>
+        </div>
+    </div>
+
+    
+   
+
+        <!-- dropdown-->
+        <div class="form-group">
+            <label for="">Role :</label>
+            <select name="RoleId" id="RoleId" class="form-control" #RoleId="ngModel" required
+                [(ngModel)]="empService.formData.RoleId">
+                <option value="0" disabled>-- Select the RoleId --</option>
+                <option *ngFor="let rol of empService.roles" value="{{rol.RoleId}}">{{rol.RoleName}}
+                </option>
+            </select>
+    
+            <!--Employee name validation-->
+            <div class="validation-error" *ngIf="RoleId.touched && RoleId.invalid">
+                <div *ngIf="RoleId.errors.required">
+                    Role is required!
+                </div>
+            </div>
+        </div>
+
+         <!-- IsActive
+    <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">In Service</label>
+            <input type="checkbox" name="IsActive" id="IsActive" #IsActive="ngModel"
+                [(ngModel)]="empService.formData.IsActive" class="form-check-input">
+        </div>
+    </div> -->
+    
+    <!--Submit-->
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-primary form-control"
+            [disabled]="!(form.valid && form.dirty)">Submit</button>
+    </div>
+
+</form>
+
+  <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+    <div class="footer footer-fixed align-items:center">
+      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+  </span>
+    </div>
+  </footer>
+
