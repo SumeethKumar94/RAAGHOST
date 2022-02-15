@@ -25,7 +25,7 @@ export class EmployeeService {
   //2nd method 
 
   bindListEmployees() {
-    this.httpClient.get(environment.apiUrl + '/api/employees')
+    this.httpClient.get(environment.apiUrl + '/api/employees/getemployeedetails')
       .toPromise().then(
         response => {
           console.log("from Service ");
@@ -35,6 +35,10 @@ export class EmployeeService {
       );
   }
   //get employee by id
+  getEmployeeById(id:number) : Observable<any>
+  {
+    return this.httpClient.get(environment.apiUrl +"/api/employee/" + id);
+  }
 
   //delete employee
   deleteEmployee(id: number) {
@@ -45,6 +49,12 @@ export class EmployeeService {
   insertEmployee(employees: Employee): Observable<any> {
     return this.httpClient.post(environment.apiUrl + "/api/employees", employees);
   }
+
+//update employee
+updateEmployee(employee:Employee) : Observable<any>
+{
+  return this.httpClient.put(environment.apiUrl + "/api/employees",employee);
+}
 
   //.........role.........
   bindListRoles() {

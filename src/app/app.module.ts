@@ -78,7 +78,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LabtechtestComponent,
     LabtechtestListComponent,
     DoctorhomeComponent,
-    DoctorappointmentlistComponent
+    DoctorappointmentlistComponent,
   ],
   imports: [
     BrowserModule,

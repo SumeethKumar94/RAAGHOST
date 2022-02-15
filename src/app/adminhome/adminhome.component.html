@@ -1,31 +1,45 @@
-
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>HOME</span>
-    <div class="spacer"></div>
-    <!--search box add here-->
-  </div>
-  <br><br><br><br><br>
-
-<div class="jumbtron"  >
-    &nbsp; &nbsp;
-    <a routerLink="/employee-list" type="button" class="btn btn-outline-danger">View Employee Details</a>
-    &nbsp; &nbsp;
-    <button class="btn btn-sm btn-outline-danger">View Admin Details</button>
-    &nbsp; &nbsp;
-    <a routerLink="/employee-list" class="btn btn-outline-danger">View Medicine Details</a>
-    &nbsp; &nbsp;
-    <button  routerLink="/employeeregister" class="btn btn-sm btn-outline-danger">Add Employee</button>
-    &nbsp; &nbsp;
-    <button class="btn btn-sm btn-outline-danger">Add Medicine</button>
-
-
-    
+  <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+  <br>
+  <span>ADMINISTRATOR HOME</span>
+ 
+  <span style="text-align:right; margin-left:950px;" routerlink="/employee-lit">LOGOUT</span>
+  
+  <!-- <a href="" style="text-align: right; color: aliceblue;">LogOut</a> -->
+  <div class="spacer"></div>
 </div>
-<footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
-    <div class="footer footer-fixed align-items:center">
-      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
-  </span>
-    </div>
-  </footer>
+
+<div class="content" role="main">
+
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small" style="margin-top: 60px;">
+    <span><b>MAIN MENU</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+
+
+  <div class="card-container">
+    <a class="card" target="_blank" rel="noopener" href="#" routerLink="/employee-list"><b>
+        <h5>View Staff Details</h5>
+      </b></a>
+    <a class="card" target="_blank" rel="noopener" href="#" routerLink="/employeeregister"><b>
+        <h5>Add Staff</h5>
+      </b></a>
+    <a class="card" target="_blank" rel="noopener" href="#" routerLink="/medicine-list"><b>
+        <h5>View Medicine Details</h5>
+      </b></a>
+    <a class="card" target="_blank" rel="noopener" href="#" routerLink="/medicineadd"><b>
+        <h5>Add Medicine</h5>
+      </b></a>
+  </div>
+
+  <input type="hidden" #selection>
+
+</div>
+
+<footer class="footer bg-dark" style="align-items: center; margin-top: 200px;">
+  <div class="footer footer-fixed align-items:center">
+    <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+    </span>
+  </div>
+</footer>

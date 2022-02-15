@@ -17,6 +17,7 @@ import { PrescriptionmedicineComponent } from './prescriptionmedicines/prescript
 import { PrescriptionmedicineListComponent } from './prescriptionmedicines/prescriptionmedicine/prescriptionmedicine-list/prescriptionmedicine-list.component';
 import { LabtechlabtestListComponent } from './labtechlabtests/labtechlabtest/labtechlabtest-list/labtechlabtest-list.component';
 import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest-list/labtechtest-list.component';
+import { MedicineComponent } from './medicines/medicine/medicine.component';
 
 const routes: Routes = [
 
@@ -29,10 +30,14 @@ const routes: Routes = [
   { path: 'patients', component: PatientsComponent },
   { path: 'patientregistrartion', component: PatientregistrationComponent },
   { path: 'patient-list', component: PatientListComponent },
+
   { path: 'adminhome', component: AdminhomeComponent},
   { path: 'employee-list', component: EmployeeListComponent },
   { path: 'employeeregister', component: EmployeesComponent },
   { path: 'medicine-list', component: MedicineListComponent },
+  { path: 'medicineadd', component: MedicineComponent },
+  { path: 'medicineadd/:MedicineId', component: MedicineComponent },
+
   
   { path: 'pharm-prescriptions', component: PharmpresListComponent },
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent },
