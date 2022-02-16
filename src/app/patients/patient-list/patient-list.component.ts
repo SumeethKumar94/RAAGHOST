@@ -24,7 +24,20 @@ export class PatientListComponent implements OnInit
     this.patientService.bindListPatients();
   }
 
+  //get all patients
+  GetAllPatients()
+  {
+    this.patientService.GetAllPatients().subscribe(
+      response => {
+        console.log('Retreiving from list');
+        console.log(response);
 
+      },
+      error=>{
+        console.log('Error Occured');
+      }
+    );
+  }
 
   //to update a patient detail
   updatePatient(PatientId : number)
