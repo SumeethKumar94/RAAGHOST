@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 import { PatientService } from 'src/app/shared/patient.service';
 
 @Component({
@@ -11,7 +13,8 @@ export class PatientListComponent implements OnInit
 
   page : number =1;
   filter : string;
-  constructor(public patientService : PatientService) { }
+  constructor(public patientService : PatientService, private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void 
   {
@@ -21,25 +24,13 @@ export class PatientListComponent implements OnInit
     this.patientService.bindListPatients();
   }
 
-  //get all patients
-  GetAllPatients()
-  {
-    this.patientService.GetAllPatients().subscribe(
-      response => {
-        console.log('Retreiving from list');
-        console.log(response);
 
-      },
-      error=>{
-        console.log('Error Occured');
-      }
-    );
-  }
 
   //to update a patient detail
-  updatePatient(patientId : number)
+  updatePatient(PatientId : number)
   {
-    console.log(patientId);
+    console.log(PatientId);
+    this.router.navigate(['patientregistrartion',PatientId])
   }
 
 

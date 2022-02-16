@@ -3,13 +3,15 @@ export class Employee {
     FirstName: string = "";
     LastName: string = "";
     Dob: Date = new Date;
-    PhoneNumber: number = 0;
+    PhoneNumber: string="";
     EmailAddress: string = "";
     Gender: string = "";
     Address: string = "";
     Password: string = "";
-    Doj: Date = new Date;
+    Doj: Date = null;
     RoleName: string = "";
     EmployeeStatus: string = "";
-
+    RoleId: number=0;
+    DoctorId : number =0;
+    AppoinmentId : number=0
 }

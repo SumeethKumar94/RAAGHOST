@@ -6,7 +6,7 @@
       src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png"
     />
     <br>
-    <span>RECEPTIONIST HOME</span>
+    <span  [routerLink]="['/ReceptionistHome']">RECEPTIONIST HOME</span>
       <div class="spacer"></div>
 </div>
 <div class="conainer">
@@ -18,7 +18,7 @@
             <input type="text" class="form-control" placeholder="Search text here" [(ngModel)]="filter">
 
         </div>
-        <a [routerLink]="" class="btn btn-outline-dark" style="margin-top: 20px;margin-bottom: 10px;margin-left: 100px;float: right;">
+        <a [routerLink]="" class="btn btn-outline-dark" style="margin-top: 20px;margin-bottom: 10px;margin-left: 200px;float: right;" routerLink="/patientregistrartion">
         Register New Patient
         </a>   
 
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let patient of patientService.patients | filter : filter | paginate: {itemsPerPage : 2, currentPage : page}">
+                <tr *ngFor="let patient of patientService.patients | filter : filter | paginate: {itemsPerPage : 5, currentPage : page}">
                     <td>{{patient.PatientId}}</td>
                     <td>{{patient.FirstName}}</td>
                     <td>{{patient.LastName}}</td>

@@ -1,118 +1,142 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-    <img
-      width="40"
-      alt="HOME"
-      src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png"
-    />
-    <br>
-    <span>RECEPTIONIST HOME</span>
-      <div class="spacer"></div>
+  <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+  <br>
+  <span [routerLink]="['/ReceptionistHome']">RECEPTIONIST HOME</span>
+  <div class="spacer"></div>
 </div>
 
 <div class="container" style="align-items: center;">
-<h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Appointment Scheduling</h2>
-<div class="form-control" style="margin-top: 30px; margin-bottom: 30px;" >
-<form >
-    <div class="form-row ">
+  <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Appointment Scheduling</h2>
+  <div class="form-control" style="margin-top: 30px; margin-bottom: 30px;">
+    
+    <form>
+      <div class="form-row ">
 
-        <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
-            <label for="birthday"style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Today's Date</b></label>
-            <input type="date" id="birthday" name="birthday" class="form-control">
+
+        <!--Date-->
+        <div class="form-group col-md-6"
+          style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+          <label for="birthday"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Today's
+              Date</b></label>
+          <input type="date" id="birthday" name="birthday" class="form-control">
+        </div>
+
+
+        <!--Department dropdown-->
+        <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+          <label for="bloodgroup"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Department</b></label>
+          <select id="DepId" class="form-control" name="DepId" id="DepId" #DepId="ngModel" required
+            [(ngModel)]="patientService.formData1.DepId">
+            <option value="0" disabled>-- Choose the Department --</option>
+            <option *ngFor="let tr of patientService.departments" value="{{tr.DepId}}">
+              {{tr.DepName}}
+            </option>
+          </select>
+
+          <!--DepId  validation-->
+          <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
+            <div *ngIf="DepId.errors.required">
+              Department is required!
+            </div>
           </div>
+        </div>
 
 
-              
-    <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
-        <label for="bloodgroup" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Department</b></label>
-        <select id="bloodgroup" class="form-control">
-          <option selected>-- Choose Department --</option>
-          <option>Cardiology</option>
-          <option>Orthology</option>
-          <option>Dermatology</option>
-          <option>General Medicine</option>
-          <option>Gyneacology</option>
-          <option>Peadiatrician</option>
-          <option>Neurology</option>
-        </select>
+        <!--Doctor dropdown-->
+        <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
+          <label for="bloodgroup"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Doctor</b></label>
+          <select id="DoctorId" class="form-control" name="DepId" id="DepId" #DoctorId="ngModel" required
+            [(ngModel)]="patientService.formData2.DoctorId">
+            <option value="0" disabled>-- Choose the Doctor --</option>
+            <option *ngFor="let tr of patientService.employees" value="{{tr.DoctorId}}">
+              {{tr.FirstName}}
+            </option>
+          </select>
+
+          <!--Doctor  validation-->
+          <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
+            <div *ngIf="DepId.errors.required">
+              Department is required!
+            </div>
+          </div>
+        </div>
+
+        <!--Consultation fee-->
+        <div class="form-group col-md-6"
+          style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+          <label for="FirstName"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Consultation
+              Fee</b></label>
+          <input type="text" class="form-control" id="FirstName" placeholder="Enter the fee" required>
+        </div>
+        <hr>
+
+        
+        <!--Appointment Id-->
+        <input type="hidden" name="AppointmentId" [(ngModel)]="patientService.formData2.AppoinmentId" />
+
+        <!--search functionality-->
+
+        <div class="form-group col-md-6"
+          style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+
+
+          <input type="search" class="form-control" id="PatientId" placeholder="Search by id / Phone number / name..."
+            aria-describedby="button-addon5" [(ngModel)]="filter" #PatientId name="PatientId"
+            [ngModelOptions]="{standalone: true}">
+          <div class="input-group-append">
+
+            <button id="button-addon5" type="submit" class="btn btn-secondary" style="margin-top: 10px;"
+              (click)="getDetails()"> <i class="fa fa-search"></i>Search</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <!--Details of searched Patient-->
+        <p
+          style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;font-weight: bold;font-size: large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+          Patient Details</p>
+        <table class="table table-bordered table-striped" style="margin-top: 20px;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>LastName</th>
+              <th>Gender</th>
+              <th>BloodGroup</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of patientService.patient">
+              <td>{{patient.PatientId}}</td>
+              <td>{{patient.FirstName}}</td>
+              <td>{{patient.LastName}}</td>
+              <td>{{patient.Gender}}</td>
+              <td>{{patient.BloodGroup}}</td>
+              <td>{{patient.Address}}</td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
 
-                    
-    <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
-        <label for="bloodgroup" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Doctor</b></label>
-        <select id="bloodgroup" class="form-control">
-          <option selected>-- Choose the Doctor --</option>
-          <option>Riyas</option>
-          <option>Sharmila</option>
-          <option>Vasudev</option>
-          <option>Jacob</option>
-          <option>Rahul</option>
-          <option>Sumayya</option>
-          <option>Anas</option>
-          <option>Ribin</option>
-          <option>Mary Thomas</option>
-        </select>
-      </div>
-
-      <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
-        <label for="FirstName" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Consultation Fee</b></label>
-        <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
-      </div>
-<hr>
-
-
-          <form action="">  
-            <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">  
-              <input type="search" placeholder="Search by id..." aria-describedby="button-addon5" class="form-control">  
-              <div class="input-group-append">  
-                <button id="button-addon5" type="submit" class="btn btn-secondary"> <i class="fa fa-search"> </i> </button>  
-              </div>  
-            </div>  
- 
-            <h6 style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;" >OR</h6>
-                <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">  
-                  <input type="search" placeholder="Search by Phone number..." aria-describedby="button-addon5" class="form-control">  
-                  <div class="input-group-append">  
-                    <button id="button-addon5" type="submit" class="btn btn-secondary"> <i class="fa fa-search"> </i> </button>  
-                  </div>  
-                </div> 
-            </form>
-
-  <hr>
-
-  <p style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;font-weight: bold;font-size: large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Patient Details</p>
-
-<div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
-    <label for="FirstName" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> First Name</b></label>
-    <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
+      <button type="submit" class="btn btn-dark"
+        style="margin-bottom: 20px;margin-top: 15px;margin-left: 290px;">Schedule</button>
+    </form>
   </div>
-
-      <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
-        <label for="Last Name" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Last Name</b></label>
-        <input type="text" class="form-control" id="Last Name" placeholder="Last Name" required>
-      </div>
-    </div>
-
-    <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
-      <label for="inputAddress" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Address</b></label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required> 
-    </div>
-
-    <div class="form-group col-md-6" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
-      <label for="Phonenumber" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Phone Number</b></label>
-      <input type="text" class="form-control" id="Phonenumber" placeholder="Enter a 10-digit number" required>
-
-    </div>
-
-    <button type="submit" class="btn btn-dark" style="margin-bottom: 20px;margin-top: 15px;margin-left: 290px;">Schedule</button>
-  </form>
-</div>
 </div>
 
-  <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
-    <div class="footer footer-fixed align-items:center">
-      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
-  </span>
-    </div>
-  </footer>
+<footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+  <div class="footer footer-fixed align-items:center">
+    <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+    </span>
+  </div>
+</footer>

@@ -1,11 +1,23 @@
-<!-- <div class="container">-->
-    <div class="header">
-        <div clas="form-control">
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+    <div class="form-group ">
+        <input type="text" name="search" class="form-control me-2" placeholder="Search here" aria-label="Search"
+            aria-describedby="button-addon2" id="search" [(ngModel)]="filter">
+    </div>
+  </div>
+<div class="container-fluid">
+    <br>
+    <div class="header mt-5">
+        <!-- <div clas="form-control"> -->
             <!--search functionality -->
-            <input class="form-control" type="text" placeholder="search text here" [(ngModel)]="filter">
+            <!-- <input class="form-control" type="text" placeholder="search text here" [(ngModel)]="filter">
             {{filter}}
             
-        </div>
+        </div> -->
         <a [routerLink]="" class="btn btn-outline-secondary" style="float:right; margin-top: 10px; margin-bottom: 10px;">Add
             Medicine</a>
     </div>
@@ -29,16 +41,23 @@
                 <td>{{med.ExpiryDate | date:"dd-MMM-yyy"}}</td>
                 <td>
                      <!-- button  -->
-                    <button class="btn btn-sm btn-info"(click)="editMedicine()">Edit</button>
+                    <button class="btn btn-sm btn-info"(click)="updateMedicine(med.MedicineId)">Edit</button>
                     &nbsp;
                     <button class="btn btn-sm btn-outline-danger" (click)="deleteMedicine(med.MedicineId)">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <!--</div> -->
+    </div>
     <div class="footer">
         <!-- pagination -->
         <pagination-controls (pageChange)="page=($event)"></pagination-controls>
     </div>
+
+    <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+        <div class="footer footer-fixed align-items:center">
+          <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+      </span>
+        </div>
+      </footer>
 

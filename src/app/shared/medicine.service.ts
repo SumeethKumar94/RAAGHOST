@@ -32,13 +32,26 @@ export class MedicineService {
     );
   }
 
-  //delete employee
+  //delete medicine
   deleteMedicine(id:number){
     return this.httpClient.delete(environment.apiUrl+"/api/medicines/"+id);
   }
   
-  //edit employee
-  editMedicine(){
-    return this.httpClient.get(environment.apiUrl+"/api/medicines");
+  //edit medicine
+  updateMedicine(medicines:Medicine) : Observable<any>
+{
+  return this.httpClient.put(environment.apiUrl + "/api/medicines",medicines);
+}
+
+  //insert medicine
+  insertMedicine(medicines: Medicine): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + "/api/medicines",medicines);
   }
+
+  //get medicine by id
+  getMediById(id:number) : Observable<any>
+  {
+    return this.httpClient.get(environment.apiUrl +"/api/medicines/"+id);
+  }
+  
 }

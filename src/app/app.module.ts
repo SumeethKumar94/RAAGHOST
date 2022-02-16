@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
@@ -43,6 +43,9 @@ import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentli
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth.guard';
+import {AuthInterceptor } from './shared/auth.interceptor';
 
 
 @NgModule({
@@ -80,6 +83,7 @@ import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component'
     DoctorappointmentlistComponent,
     DoctorlabtestComponent,
   
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +99,13 @@ import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component'
     
   ],
   providers: [MedicineService,
-    EmployeeService,PatientService,DoctorService],
+    EmployeeService,PatientService,DoctorService,
+    AuthGuard,
+    {
+      provide :HTTP_INTERCEPTORS,
+      useClass : AuthInterceptor,
+      multi : true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
