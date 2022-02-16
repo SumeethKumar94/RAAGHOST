@@ -25,7 +25,7 @@
     <a class="card" target="_blank" rel="noopener" href="doctortest"><b>
         <h6>Lab Tests</h6>
       </b></a>
-    <a class="card" target="_blank" rel="noopener" href="#"><b>
+    <a class="card" target="_blank" rel="noopener" href="doctorprescribe"><b>
         <h6>Doctor Notes</h6>
       </b></a>
   </div>
@@ -152,7 +152,7 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let pre of appointmentService.prescription |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+          *ngFor="let pre of appointmentService.medicine |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
           <td>{{pre.Pmid}}</td>
           <td>{{pre.MedicineId}}</td>
           <td>{{pre.Medicine.MedicineName}}</td>

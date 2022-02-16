@@ -11,7 +11,7 @@ export class DoctorService {
   appointment:Doctorappointment[];
   prescription:Doctorappointment[];
   
-  
+  medicine:Doctorappointment[];
   test: Doctorappointment[];
   unit: Doctorappointment[];
 
@@ -139,7 +139,7 @@ export class DoctorService {
 
         console.log(response);
 
-        this.prescription = response as Doctorappointment[];
+        this.medicine = response as Doctorappointment[];
        
         
       }
