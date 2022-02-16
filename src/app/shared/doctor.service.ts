@@ -21,7 +21,7 @@ export class DoctorService {
   constructor(private httpClient:HttpClient) { }
   bindListAppointments(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getallappoinment')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getallappoinment')
   
     .toPromise().then(
 
@@ -43,7 +43,7 @@ export class DoctorService {
 
   bindListMedicine(){
 
-    this.httpClient.get(environment.apiUrl + 'api/medicines')
+    this.httpClient.get(environment.apiUrl + '/api/medicines')
   
     .toPromise().then(
 
@@ -64,7 +64,7 @@ export class DoctorService {
   
   bindListTest(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/gettestname')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/gettestname')
   
     .toPromise().then(
 
@@ -85,7 +85,7 @@ export class DoctorService {
   
   bindListUnit(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getunit')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getunit')
   
     .toPromise().then(
 
@@ -108,7 +108,7 @@ export class DoctorService {
   
   bindListDosage(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getdosage')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getdosage')
   
     .toPromise().then(
 
@@ -129,7 +129,7 @@ export class DoctorService {
   
   PrescriptionAppointments(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getallmedicine')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getallmedicine')
 
     .toPromise().then(
 
