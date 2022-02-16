@@ -42,6 +42,7 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
 
 
 @NgModule({
@@ -76,7 +77,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LabtechtestComponent,
     LabtechtestListComponent,
     DoctorhomeComponent,
-    DoctorappointmentlistComponent
+    DoctorappointmentlistComponent,
+    DoctorlabtestComponent,
+  
   ],
   imports: [
     BrowserModule,

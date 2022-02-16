@@ -1,16 +1,176 @@
-<div class ="doctorclass">
+<div class="toolbar" role="banner">
+  <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+  <span>HOME</span>
+  <div class="spacer"></div>
+  <!--search box add here-->
+</div>
+<!-- <app-patients></app-patients> -->
+<router-outlet></router-outlet>
+<div class="content" role="main">
 
-    <div class="card-container">
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small">
+    <span><b>Medicine Prescription</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
 
-        <a class="card" target="_blank" rel="noopener" href="#"><b>
-            <h6> Appointments</h6>
-          </b></a>
-        <a class="card" target="_blank" rel="noopener" href="#"><b>
-            <h6>Prescriptions</h6>
-          </b></a>
-        <a class="card" target="_blank" rel="noopener" href="#"><b>
-            <h6>LabTests</h6>
-          </b></a>
-      </div>
-    <app-doctorappointmentlist></app-doctorappointmentlist>
+</div>
+
+<div class="doctorclass">
+
+  <div class="card-container">
+
+    <a class="card" target="_blank" rel="noopener" href="doctorhome"><b>
+        <h6>Appointments</h6>
+      </b></a>
+    <a class="card" target="_blank" rel="noopener" href="doctortest"><b>
+        <h6>Lab Tests</h6>
+      </b></a>
+    <a class="card" target="_blank" rel="noopener" href="#"><b>
+        <h6>Doctor Notes</h6>
+      </b></a>
+  </div>
+
+
+
+  <div class="container bordered">
+    <h3>Prescribe Medicine</h3>
+
+
+
+    <form name="preform"    #form="ngForm" autocomplete="off" style="width: 30em;">
+      <table class="table table-bordered table-striped" style="width: 70em;">
+        <thead>
+          <tr>
+            <th>MedicineName:</th>
+            <th>Dosage:</th>
+            <th>Quantity:</th>
+
+          </tr>
+
+        </thead>
+
+        <input type="hidden" name="Pmid" [(ngModel)]="appointmentService.formData.Pmid">
+        <tbody>
+          <tr>
+            <td>
+              <div class="form-group">
+
+
+                <select name="MedicineId" id="MedicineId" class="form-control" #MedicineId="ngModel" required
+                  [(ngModel)]="appointmentService.formData.MedicineId">
+                  <option value=0 disabled>Select Medicine</option>
+                  <option *ngFor="let dept of appointmentService.prescription" value="{{dept.MedicineId}}">
+                    {{dept.MedicineName}}
+                  </option>
+                </select>
+
+                <!-- <div class="validation-error" *ngIf="MedicineName.touched && MedicineName.invalid">
+                  <div *ngIf="MedicineName.errors.required">
+                    MedicineName is required
+                  </div>
+                </div> -->
+
+
+
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+
+
+                <select name="DosageId" id="DosageId" class="form-control" #DosageId="ngModel" required
+                  [(ngModel)]="appointmentService.formData.DosageId">
+                  <option value=0 disabled>Select Dosage</option>
+                  <option *ngFor="let dept of appointmentService.dosage" value="{{dept.DosageId}}">
+                    {{dept.Dosage1}}
+                  </option>
+                </select>
+                <!-- 
+                <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">
+                  <div *ngIf="Quantity.errors.required">
+                    Quantity is required
+                  </div>
+                </div> -->
+
+
+
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+
+                <input type="number" name="Quantity" #Quantity="ngModel"
+                  [(ngModel)]="appointmentService.formData.Quantity" class="form-control" placeholder="Enter Quantity"
+                  required [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" />
+
+                <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">
+                  <div *ngIf="Quantity.errors.required">
+                    Quantity is required
+                  </div>
+                </div>
+
+
+
+              </div>
+            </td>
+
+
+
+            <br>
+
+            <td>
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary form-control"
+                  [disabled]="!(form.valid &&form.dirty)">Submit</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="view" sans-serif style="margin-left: 10em; margin-top: 10em;">
+    <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Medicine Prescription View</h2>
+
+    <table class="table table-bordered table-striped" style="width: 70em;">
+
+      <thead>
+        <tr>
+          <th>Prescription Id</th>
+          <th>Medicine Id</th>
+          <th>Medicine Name</th>
+          <th>Quantity</th>
+          <th>UnitPrice</th>
+          <th>ToTal Stock</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let pre of appointmentService.prescription |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+          <td>{{pre.Pmid}}</td>
+          <td>{{pre.MedicineId}}</td>
+          <td>{{pre.Medicine.MedicineName}}</td>
+          <td>{{pre.Quantity}}</td>
+          <td>{{pre.Medicine.UnitPrice}}</td>
+          <td>{{pre.Medicine.StockQuantity}}</td>
+          <td>
+            <!--button-->
+            <button class="btn btn-sm btn-info" (click)="updatePrescription(pre.Pmid)">Edit</button>
+            &nbsp;
+            <button class="btn btn-sm btn-outline-danger" (click)="deletePrescription(pre.Pmid)">X</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+  </div>
+
+
 </div>
