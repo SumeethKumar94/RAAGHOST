@@ -15,15 +15,15 @@ export class EmployeesComponent implements OnInit {
   empId:number;
 
   constructor(public empService: EmployeeService,private route:ActivatedRoute,
-    private toastrService: ToastrService, private router:Router) { }
+    private toastrService:ToastrService, private router:Router) { }
 
   ngOnInit(): void {
     
     //get all roles
      this.empService.bindListRoles();
 
-      //get empId from ActivateRoute
-    this.empId=this.route.snapshot.params['empId'];
+    //   //get empId from ActivateRoute
+    // this.empId=this.route.snapshot.params['empId'];
 
     // //get Employe by Id
     // if (this.empId!=0||this.empId!= null){
@@ -34,8 +34,8 @@ export class EmployeesComponent implements OnInit {
 
     //        //format the date : yyyy:mm:dd
     //        var datePipe=new DatePipe("en-UK");
-    //        let formatedDate=datePipe.transform(result.DateOfJoining,'yyyy-MM-dd')
-    //        result.DateOfJoining=formatedDate;
+    //        let formatedDate=datePipe.transform(result.Doj,'yyyy-MM-dd')
+    //        result.Doj=formatedDate;
     //        //assignthis reslut to empService formData
     //        this.empService.formData=Object.assign({},result); 
            

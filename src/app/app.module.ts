@@ -42,6 +42,7 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
@@ -80,6 +81,8 @@ import {AuthInterceptor } from './shared/auth.interceptor';
     LabtechtestListComponent,
     DoctorhomeComponent,
     DoctorappointmentlistComponent,
+    DoctorlabtestComponent,
+  
     LoginComponent
   ],
   imports: [

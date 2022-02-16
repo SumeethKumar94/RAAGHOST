@@ -1,1 +1,105 @@
-<p>medicine works!</p>
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>ADMIN HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+</div>
+
+<div class="container">
+    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Add Medicine</h2>
+    <!--  -->
+    <form name="mediform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+        <!-- ID---Hidden-->
+        <input type="hidden" name="MedicineId" [(ngModel)]="mediService.formData.MedicineId">
+
+
+        <!-- Name-->
+        <div class="form-group mb-2 p-1">
+            <label>Medicine Name :</label>
+            <input type="text" name="MedicineName" #MedicineName="ngModel"
+                [(ngModel)]="mediService.formData.MedicineName" class="form-control" placeholder="Enter Medicine Name"
+                required minlength="3" maxlength="25" autocomplete="off"
+                [ngClass]="{'is-invalid':MedicineName.touched && MedicineName.invalid}" />
+
+            <!-- name validation-->
+            <div class="validation-error" *ngIf="MedicineName.touched && MedicineName.invalid">
+                <div *ngIf="MedicineName.errors">
+                  Name is required!
+                </div>
+            </div>
+        </div>
+
+         <!-- StockQuantity-->
+         <div class="form-group mb-2 p-1">
+            <label>Stock  :</label>
+            <input type="number" name="StockQuantity" #StockQuantity="ngModel"
+                [(ngModel)]="mediService.formData.StockQuantity" class="form-control" placeholder="Enter stock"
+                required minlength="1" maxlength="4" autocomplete="off"
+                [ngClass]="{'is-invalid':StockQuantity.touched && StockQuantity.invalid}" />
+
+            <!--  validation-->
+            <div class="validation-error" *ngIf="StockQuantity.touched && StockQuantity.invalid">
+                <div *ngIf="StockQuantity.errors">
+                  Stock is required!
+                </div>
+            </div>
+        </div>
+
+        <!-- price-->
+        <div class="form-group mb-2 p-1">
+            <label>Unit Price  :</label>
+            <input type="number" name="UnitPrice" #UnitPrice="ngModel"
+                [(ngModel)]="mediService.formData.UnitPrice" class="form-control" placeholder="Enter price"
+                required minlength="1" maxlength="4" autocomplete="off"
+                [ngClass]="{'is-invalid':UnitPrice.touched && UnitPrice.invalid}" />
+
+            <!--  validation-->
+            <div class="validation-error" *ngIf="UnitPrice.touched && UnitPrice.invalid">
+                <div *ngIf="UnitPrice.errors">
+                  price is required!
+                </div>
+            </div>
+        </div>
+
+        <!-- ExpiryDate-->
+        <div class="form-group mb-2 p-1">
+            <label>Expiry Date :</label>
+            <input type="date" name="ExpiryDate" #ExpiryDate="ngModel"
+                [(ngModel)]="mediService.formData.ExpiryDate" class="form-control"
+                 autocomplete="off"
+                [ngClass]="{'is-invalid':ExpiryDate.touched}" />
+
+            <!--  validation-->
+            <div class="validation-error" *ngIf="ExpiryDate.touched">
+                <div *ngIf="ExpiryDate.error">
+                 date is required!
+                </div>
+            </div>
+        </div>
+
+        <!-- Name-->
+        <div class="form-group mb-2 p-1">
+            <label>Admin Id :</label>
+            <input type="number" name="AdminId" #AdminId="ngModel"
+                [(ngModel)]="mediService.formData.AdminId" class="form-control" placeholder="Enter id"
+                required minlength="1" maxlength="3" autocomplete="off"
+                [ngClass]="{'is-invalid':AdminId.touched && AdminId.invalid}" />
+
+            <!-- name validation-->
+            <div class="validation-error" *ngIf="AdminId.touched && AdminId.invalid">
+                <div *ngIf="AdminId.errors">
+                  id is required!
+                </div>
+            </div>
+        </div>
+
+        <!--Submit-->
+    <br>
+    <div class="form-group mb-2 p-1">
+        <button type="submit" class="btn btn-lg btn-primary form-control"
+            [disabled]="!(form.valid && form.dirty)">Submit</button>
+    </div>
+    </form>
+
+</div>

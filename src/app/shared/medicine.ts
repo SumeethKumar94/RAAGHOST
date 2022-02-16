@@ -2,9 +2,9 @@ export class Medicine {
 
     MedicineId: number = 0;
     MedicineName: string = '';
-    StockQuantity: number = 0;
-    UnitPrice: number = 0;
+    StockQuantity: number = null;
+    UnitPrice: number=null;
     ExpiryDate: Date = new Date;
-    AdminId: number = 0;
+    AdminId: number = null;
 
 }

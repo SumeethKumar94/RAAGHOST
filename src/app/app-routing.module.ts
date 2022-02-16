@@ -8,6 +8,9 @@ import { ConsultationBillComponent } from './consultation-bill/consultation-bill
 import { PatientsComponent } from './patients/patients.component';
 import { PatientregistrationComponent } from './patients/patientregistration/patientregistration.component';
 import { PatientListComponent } from './patients/patient-list/patient-list.component';
+import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
+import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
+import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
@@ -17,14 +20,26 @@ import { PrescriptionmedicineComponent } from './prescriptionmedicines/prescript
 import { PrescriptionmedicineListComponent } from './prescriptionmedicines/prescriptionmedicine/prescriptionmedicine-list/prescriptionmedicine-list.component';
 import { LabtechlabtestListComponent } from './labtechlabtests/labtechlabtest/labtechlabtest-list/labtechlabtest-list.component';
 import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest-list/labtechtest-list.component';
+
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
+import { MedicineComponent } from './medicines/medicine/medicine.component';
 
 const routes: Routes = [
-
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
 
+  { path: 'ReceptionistHome', component: ReceptionisthomeComponent },
+  { path: 'appointmentlist', component: AppointmentListComponent },
+  { path: 'appointments', component: AppointmentsComponent },
+  { path: 'appointmentscheduling', component: AppointmentschedulingComponent },
+  { path: 'consultation-bill', component: ConsultationBillComponent },
+  { path: 'patients', component: PatientsComponent },
+  { path: 'patientregistrartion', component: PatientregistrationComponent },
+  { path: 'patient-list', component: PatientListComponent },
+  { path: 'doctorhome', component: DoctorappointmentlistComponent },
+  { path: 'doctorprescribe', component: DoctorhomeComponent },
+  { path: 'doctortest', component: DoctorlabtestComponent },
   { path: 'ReceptionistHome', component: ReceptionisthomeComponent, canActivate:[AuthGuard],data:{role:'2'} },
   { path: 'appointmentlist', component: AppointmentListComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointments', component: AppointmentsComponent , canActivate:[AuthGuard],data:{role:'2'}},
@@ -41,11 +56,16 @@ const routes: Routes = [
   { path: 'employee-list', component: EmployeeListComponent , canActivate:[AuthGuard],data:{role:'1'} },
   { path: 'employeeregister', component: EmployeesComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   { path: 'medicine-list', component: MedicineListComponent, canActivate:[AuthGuard],data:{role:'1'}  },
+  { path: 'medicineadd', component: MedicineComponent },
+  { path: 'medicineadd/:MedicineId', component: MedicineComponent },
   
   { path: 'pharm-prescriptions', component: PharmpresListComponent },
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent },
   { path: 'lab-labtests', component: LabtechlabtestListComponent },
   { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent },
+
+
+
 
 ];
 

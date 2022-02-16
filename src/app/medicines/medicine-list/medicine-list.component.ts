@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MedicineService } from 'src/app/shared/medicine.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class MedicineListComponent implements OnInit {
   page: number = 1;
   filter: string;
 
-  constructor(public medicineService: MedicineService) { }
+  constructor(public medicineService: MedicineService,private router:Router) { }
 
   ngOnInit(): void {
     console.log("Welcome...");
@@ -34,8 +35,10 @@ export class MedicineListComponent implements OnInit {
   }
 
   //edit Medicine
-  editMedicine(){
-    confirm('Do you wantEdit  this record?')
+  updateMedicine(MedicineId:number){
+    console.log(MedicineId);
+    this.router.navigate(['medicineadd',MedicineId])
+
   }
 
   //delete medicine

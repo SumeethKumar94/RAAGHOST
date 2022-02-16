@@ -8,8 +8,8 @@ export class Employee {
     Gender: string = "";
     Address: string = "";
     Password: string = "";
-    Doj: Date = new Date;
-    //RoleName: string = "";
+    Doj: Date = null;
+    RoleName: string = "";
     EmployeeStatus: string = "";
     RoleId: number=0;
     DoctorId : number =0;
