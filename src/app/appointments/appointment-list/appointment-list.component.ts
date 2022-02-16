@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 import { RecappointmentService } from 'src/app/shared/recappointment.service';
 
 @Component({
@@ -10,7 +12,8 @@ export class AppointmentListComponent implements OnInit {
 
   page : number =1;
   filter : string;
-  constructor(public recappointmentService : RecappointmentService) { }
+  constructor(public recappointmentService : RecappointmentService,private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void 
   {
@@ -36,18 +39,19 @@ export class AppointmentListComponent implements OnInit {
   }
 
   //to update a appointment detail
-  UpdateAppoinment(AppointmentId : number)
+  UpdateAppoinment(AppoinmentId : number)
   {
-    console.log(AppointmentId);
+    console.log(AppoinmentId);
+    this.router.navigate(['appointmentscheduling',AppoinmentId])
   }
 
 
   //to delete a appointment record
-  DeleteAppoinment(AppointmentId: number)
+  DeleteAppointment(AppoinmentId: number)
   {
     if(confirm('Are you sure to DELETE the record ?'))
     {
-        this.recappointmentService.DeleteAppoinment(AppointmentId).subscribe(
+        this.recappointmentService.DeleteAppoinment(AppoinmentId).subscribe(
           response =>
           {
             this.recappointmentService.bindListAppointments();

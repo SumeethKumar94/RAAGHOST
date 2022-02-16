@@ -32,9 +32,19 @@ export class RecappointmentService
     );
   }
 
+  //create new Appointment
+  insertAppointment(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/api/appointments');
+  }
+
+    //delete patients
+    DeleteAppointment(AppoinmentId: number) {
+      return this.httpClient.delete(environment.apiUrl + "/api/appointments" + AppoinmentId);
+    }
+  
   //delete patients
-  DeleteAppoinment(AppointmentId : number)
+  DeleteAppoinment(AppoinmentId : number)
   {
-    return this.httpClient.delete(environment.apiUrl + "/api/appointments/" +AppointmentId);
+    return this.httpClient.delete(environment.apiUrl + "/api/appointments/" +AppoinmentId);
   }
 }
