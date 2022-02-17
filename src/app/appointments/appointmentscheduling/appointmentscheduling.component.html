@@ -76,6 +76,27 @@
           document.getElementById('EmployeeId').value = '2';
         </script>
 
+
+
+        <!--PatientId-->
+        <div class="form-group col-md-6"
+          style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+          <label for="ConsultationFee"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> PatientId</b></label>
+          <input type="number" class="form-control" name="PatientId" #PatientId="ngModel"
+            [(ngModel)]="recappointmentService.formData.PatientId" class="form-control"
+            placeholder="Enter PatientId" required minlength="1" maxlength="30"
+            [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
+
+          <!--PatientId validation-->
+          <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
+            <div *ngIf="PatientId.errors">
+              PatientId is required!
+            </div>
+          </div>
+        </div>
+        <hr>
+
         <!--Token No-->
         <input type="hidden" name="TokenNo" [(ngModel)]="recappointmentService.formData.TokenNo" />
 

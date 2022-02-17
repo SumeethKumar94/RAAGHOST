@@ -55,11 +55,40 @@ export class AppointmentschedulingComponent implements OnInit {
   //submit form
   onSubmit(form: NgForm) {
     console.log(form.value);
-    let CBillId = this.recappointmentService.formData.CBillId;
     let AppoinmentId = this.recappointmentService.formData.AppoinmentId;
-    let TokenNo = this.recappointmentService.formData.TokenNo;
+    //call insert or update method
+    if (AppoinmentId == 0 || AppoinmentId == null) {
+      //call insert
+      this.insertAppointmentRecord(form);
+    }
+    else {
 
-
+    }
   }
+
+
+    //clear all contents after submit  --initialization
+    resetForm(form?: NgForm) {
+      if (form != null) {
+        form.resetForm();
+      }
+    }
+
+    //insert method
+    insertAppointmentRecord(form?: NgForm) {
+      console.log("Inserting a record..");
+      this.recappointmentService.insertAppointment().subscribe
+        (
+          (result) => {
+            console.log(result);
+            //call reset form
+            this.resetForm(form);
+            this.toastrService.success('New Appointment Scheduled successfully', 'CMSApp v2o22');
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
 }
 

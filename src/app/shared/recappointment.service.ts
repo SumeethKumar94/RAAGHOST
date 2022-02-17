@@ -66,7 +66,7 @@ export class RecappointmentService
 
   //create new Appointment
   insertAppointment(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/appointments');
+    return this.httpClient.get(environment.apiUrl + '/api/appointments/scheduleappoinment');
   }
 
     //delete patients
