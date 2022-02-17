@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Patient } from 'src/app/shared/patient';
 import { PatientService } from 'src/app/shared/patient.service';
+import { RecappointmentService } from 'src/app/shared/recappointment.service';
 
 @Component({
   selector: 'app-appointmentscheduling',
@@ -14,18 +15,17 @@ export class AppointmentschedulingComponent implements OnInit {
   PatientId: number;
   loggedUser: string;
   filter: string;
-  
 
-  constructor(public patientService: PatientService,
+  constructor(public recappointmentService: RecappointmentService,public patientService: PatientService,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
 
-    this.patientService.bindListDepartments();
+    this.recappointmentService.bindListDepartments();
 
-    this.patientService.bindListDoctors();
+    this.recappointmentService.bindListDoctors();
 
   }
 
@@ -55,8 +55,9 @@ export class AppointmentschedulingComponent implements OnInit {
   //submit form
   onSubmit(form: NgForm) {
     console.log(form.value);
-    let PatientId = this.patientService.formData.PatientId;
-    let AppoinmentId = this.patientService.formData3.AppoinmentId;
+    let CBillId = this.recappointmentService.formData.CBillId;
+    let AppoinmentId = this.recappointmentService.formData.AppoinmentId;
+    let TokenNo = this.recappointmentService.formData.TokenNo;
 
 
   }
