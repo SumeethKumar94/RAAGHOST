@@ -38,7 +38,7 @@
 
 
 
-    <form name="preform"    #form="ngForm" autocomplete="off" style="width: 30em;">
+    <form name="preform"    #form="ngForm" autocomplete="off" style="width: 30em;"(ngSubmit)="onSubmit(form)">
       <table class="table table-bordered table-striped" style="width: 70em;">
         <thead>
           <tr>
@@ -50,7 +50,7 @@
 
         </thead>
 
-        <input type="hidden" name="Pmid" [(ngModel)]="appointmentService.formData.Pmid">
+        <input type="hidden" name="Pmid" [(ngModel)]="appointmentService.data.Pmid">
         <tbody>
           <tr>
             <td>
@@ -58,7 +58,7 @@
 
 
                 <select name="MedicineId" id="MedicineId" class="form-control" #MedicineId="ngModel" required
-                  [(ngModel)]="appointmentService.formData.MedicineId">
+                  [(ngModel)]="appointmentService.data.MedicineId">
                   <option value=0 disabled>Select Medicine</option>
                   <option *ngFor="let dept of appointmentService.prescription" value="{{dept.MedicineId}}">
                     {{dept.MedicineName}}
@@ -80,7 +80,7 @@
 
 
                 <select name="DosageId" id="DosageId" class="form-control" #DosageId="ngModel" required
-                  [(ngModel)]="appointmentService.formData.DosageId">
+                  [(ngModel)]="appointmentService.data.DosageId">
                   <option value=0 disabled>Select Dosage</option>
                   <option *ngFor="let dept of appointmentService.dosage" value="{{dept.DosageId}}">
                     {{dept.Dosage1}}
@@ -101,7 +101,7 @@
               <div class="form-group">
 
                 <input type="number" name="Quantity" #Quantity="ngModel"
-                  [(ngModel)]="appointmentService.formData.Quantity" class="form-control" placeholder="Enter Quantity"
+                  [(ngModel)]="appointmentService.data.Quantity" class="form-control" placeholder="Enter Quantity"
                   required [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" />
 
                 <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">

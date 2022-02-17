@@ -15,8 +15,6 @@ export class PatientService {
 
   patients: Patient[];
   patient : Patient[];
-  departments: Department[];
-  employees: Employee[];
   appointments : Appointment[];
   formData: Patient = new Patient();
   formData1: Department = new Department();
@@ -47,29 +45,6 @@ export class PatientService {
       );
   }
 
-  bindListDepartments() {
-    this.httpClient.get(environment.apiUrl + '/api/deparments')
-      .toPromise().then(
-        response => {
-          console.log("from service");
-          console.log(response);
-          this.departments = response as Department[];
-        }
-      );
-  }
-
-  bindListDoctors() {
-    this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails')
-      .toPromise().then(
-        response => {
-          console.log("from service");
-          console.log(response);
-          this.employees = response as Employee[];
-        }
-      );
-  }
-
-
   /*-----------------------------------------------------------------------------*/
 //create new Appointment
   insertAppointment(): Observable<any> {
@@ -94,15 +69,6 @@ export class PatientService {
   }
 
   /*----------------------------------------------------------------------------*/
-
-  //get all departments
-  GetAllDepartments(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/deparments');
-  }
-
-  GetAllDoctors(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails');
-  }
 
 
   //get patients

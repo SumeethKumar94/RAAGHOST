@@ -3,4 +3,6 @@ export class User {
     Password: string ='';
     RoleId: number = 0;
     token: string = '';
+    EmployeeId: number = 0;
+    DoctorId: number = 0;
 }

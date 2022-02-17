@@ -46,6 +46,7 @@ import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component'
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
+import { EmployeeComponent } from './employees/employee/employee.component';
 import { RecappointmentService } from './shared/recappointment.service';
 import { PrescriptionmedicinesService } from './shared/prescriptionmedicines.service';
 import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.service';
@@ -87,11 +88,11 @@ import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bi
     LabtechtestListComponent,
     DoctorhomeComponent,
     DoctorappointmentlistComponent,
-    DoctorlabtestComponent,
-  
     LoginComponent,
-  
+    EmployeeComponent,
+    DoctorlabtestComponent,
     ViewMedicineBillComponent
+  
   ],
   imports: [
     BrowserModule,

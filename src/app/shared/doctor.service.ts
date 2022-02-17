@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Doctorappointment } from './doctorappointment';
 import { Medicine } from './medicine';
-
+import {Medicineprescribe} from './medicineprescribe';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,8 @@ export class DoctorService {
   unit: Doctorappointment[];
 
   dosage:Doctorappointment[];
+  medpre:Medicineprescribe[];
+  data:Medicineprescribe = new Medicineprescribe();
   formData:Doctorappointment= new Doctorappointment();
 
   constructor(private httpClient:HttpClient) { }
@@ -51,7 +54,7 @@ export class DoctorService {
 
         console.log("from service");
 
-        console.log(response);
+        //console.log(response);
 
         this.prescription = response as Doctorappointment[];
        
@@ -102,6 +105,9 @@ export class DoctorService {
 
     );
     
+  }
+  insertPrescribeMedicine(medpre:Medicineprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addmed",medpre);
   }
   
 

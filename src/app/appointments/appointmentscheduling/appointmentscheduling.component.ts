@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Patient } from 'src/app/shared/patient';
 import { PatientService } from 'src/app/shared/patient.service';
+import { RecappointmentService } from 'src/app/shared/recappointment.service';
 
 @Component({
   selector: 'app-appointmentscheduling',
@@ -14,18 +15,17 @@ export class AppointmentschedulingComponent implements OnInit {
   PatientId: number;
   loggedUser: string;
   filter: string;
-  
 
-  constructor(public patientService: PatientService,
+  constructor(public recappointmentService: RecappointmentService,public patientService: PatientService,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     private router: Router) { }
 
   ngOnInit(): void {
 
-    this.patientService.bindListDepartments();
+    this.recappointmentService.bindListDepartments();
 
-    this.patientService.bindListDoctors();
+    this.recappointmentService.bindListDoctors();
 
   }
 
@@ -55,10 +55,40 @@ export class AppointmentschedulingComponent implements OnInit {
   //submit form
   onSubmit(form: NgForm) {
     console.log(form.value);
-    let PatientId = this.patientService.formData.PatientId;
-    let AppoinmentId = this.patientService.formData3.AppoinmentId;
+    let AppoinmentId = this.recappointmentService.formData.AppoinmentId;
+    //call insert or update method
+    if (AppoinmentId == 0 || AppoinmentId == null) {
+      //call insert
+      this.insertAppointmentRecord(form);
+    }
+    else {
 
-
+    }
   }
+
+
+    //clear all contents after submit  --initialization
+    resetForm(form?: NgForm) {
+      if (form != null) {
+        form.resetForm();
+      }
+    }
+
+    //insert method
+    insertAppointmentRecord(form?: NgForm) {
+      console.log("Inserting a record..");
+      this.recappointmentService.insertAppointment().subscribe
+        (
+          (result) => {
+            console.log(result);
+            //call reset form
+            this.resetForm(form);
+            this.toastrService.success('New Appointment Scheduled successfully', 'CMSApp v2o22');
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
 }
 
