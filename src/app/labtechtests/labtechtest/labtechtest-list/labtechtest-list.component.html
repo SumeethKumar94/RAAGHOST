@@ -19,7 +19,7 @@
         <!-- search functionality -->
         <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
     </div></div>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="tbl_Test_Results">
     <thead>
         <tr>
             <th>Test Name</th>
@@ -30,11 +30,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
-            <td>{{test.Testname}}</td>
-            <td><input type="number" value="{{test.Testvalue}}"></td>
+        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}" id="{{test.PrescribedTestId}}">
+            <td>{{test.Testname}}<input type="hidden" value="{{test.TestId}}"></td>
+            <td><input type="number" value="{{test.Testvalue}}" min="0"></td>
             <td><input type="text" value="{{test.Normalrange}}"></td>
-            <td>{{test.Unit}}</td>
+            <td>{{test.Unit}}<input type="hidden" value="{{test.UnitId}}"></td>
+            <td><button class="btn btn-primary" (click)="updateLabTestValues(test.PrescribedTestId)">Update</button></td>
             <input type="hidden" value="{{test.AppointmentId}}">
         </tr>
     </tbody>

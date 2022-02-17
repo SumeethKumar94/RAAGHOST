@@ -1,7 +1,12 @@
 export class Labtechtesttets {
-    TetsId:number;
+    PtId :number;
+    AppointmentId:number;
+    PrescribedTestId:number;
+    TestId:number;
+    UnitId:number;
     Testname: string;
-    Testvalue: number = 0;
+    Testvalue: number;
+    Result: number = 0;
     Normalrange: string;
     Unit: string;
 }
