@@ -45,18 +45,21 @@ export class LoginComponent implements OnInit {
   loginCredentials() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
+
       console.log("Submitted invalid Credentials ");
       this.error = "";
       return;
     }
     if (this.loginForm.valid) {
       console.log("submitted valid credentials")
+      
       this.error = "";
       //calling method from authservice 
       this.authService.loginVerify(this.loginForm.value).subscribe
         (
           data => {
             console.log(data);
+            
             this.loginUser = data;
             //UserName,RoleId and Token
             sessionStorage.setItem('jwtToken',this.loginUser.token)
@@ -84,9 +87,10 @@ export class LoginComponent implements OnInit {
               console.log("Doctor");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("DoctorId",this.loginUser.U)
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/doctor');
+              this.router.navigateByUrl('/doctorhome');
             }
             else if (this.loginUser.RoleId === 4) {
               console.log("Pharmacist");
@@ -94,7 +98,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/pharmacist');
+              this.router.navigateByUrl('/pharm-prescriptions');
             }
             else if (this.loginUser.RoleId === 5) {
               console.log("Lab Technician");
@@ -102,7 +106,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/labtechnician');
+              this.router.navigateByUrl('/lab-labtests');
             }
             else {
               this.error = "Sorry ! NOT authenticate/authorize to access this module"

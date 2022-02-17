@@ -13,7 +13,9 @@ export class AuthService {
   //get usename and password -
   public loginVerify(user: User) {
     //calling webservices and passing data
+   
     console.log(user);
+
     return this.httpClient.get(environment.apiUrl + "/api/users/login/" + user.UserName + "&" + user.Password)
 
   }

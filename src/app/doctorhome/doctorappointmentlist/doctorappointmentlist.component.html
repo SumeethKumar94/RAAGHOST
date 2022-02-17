@@ -1,3 +1,22 @@
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+</div>
+<!-- <app-patients></app-patients> -->
+<router-outlet></router-outlet>
+<div class="content" role="main">
+
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span><b>CLINIC MANAGEMENT
+                SYSTEM</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+</div>
+
+
 <div class="container">
     <div class="row">
 
@@ -31,7 +50,7 @@
                 <td>{{app.TokenDate | date:'dd-MMM-yyyy'}}</td>
                 <td>
 
-                    <button class="btn btn-sm btn-info">Select</button>
+                    <button class="btn btn-sm btn-info" routerLink="/doctorprescribe" (click)="getid(app.AppoinmentId)">Select</button>
                     &nbsp;
                 </td>
             </tr>
@@ -39,40 +58,5 @@
     </table>
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>
     <br /> <br /> <br />
-    <h3>Prescribe Medicine</h3>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Prescription Id</th>
-                <th>Medicine Id</th>
-                <th>Medicine Name</th>
-                <th>Quantity</th>
-                <th>UnitPrice</th>
-                <th>ToTal Stock</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr
-                *ngFor="let pre of appointmentService.prescription |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
-                <td>{{pre.Pmid}}</td>
-                <td>{{pre.MedicineId}}</td>
-                <td>{{pre.Medicine.MedicineName}}</td>
-                <td>{{pre.Quantity}}</td>
-                <td>{{pre.Medicine.UnitPrice}}</td>
-                <td>{{pre.Medicine.StockQuantity}}</td>
-                <td>
-                    <!--button-->
-                    <button class="btn btn-sm btn-info"(click)="updatePrescription(pre.Pmid)">Edit</button>
-                    &nbsp;
-                    <button class="btn btn-sm btn-outline-danger"(click)="deletePrescription(pre.Pmid)">X</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
-    <div class="footer">
-
-
-    </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { DoctorService } from 'src/app/shared/doctor.service';
 
 
@@ -11,31 +12,19 @@ export class DoctorappointmentlistComponent implements OnInit {
 
   page:number =1;
   filter:string;
-  constructor(public appointmentService:DoctorService) { }
+ 
+  constructor(public appointmentService:DoctorService,public app:AppComponent) { }
 
-   updatePrescription(Pmid: number) {
-    console.log(Pmid);
-
-   }
-  deletePrescription(Pmid: number) {
-    if (confirm('Are u want to delete this record')) {
-      this.appointmentService.deletePrescription(Pmid).subscribe(
-        response => {
-          this.appointmentService.PrescriptionAppointments();
-
-        }, error => {
-          console.log(error);
-        });
-
-
-    }
-  }
+   
 
   ngOnInit(): void {
     console.log("Welcome to LifeCycle Hook");
    
     this.appointmentService.bindListAppointments();
-    this.appointmentService.PrescriptionAppointments();
+    
   }
-
+ getid(id:number){
+   this.app.AppoinmentId=id;
+   console.log(id);
+ }
 }

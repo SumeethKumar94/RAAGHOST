@@ -1,8 +1,26 @@
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+</div>
+<!-- <app-patients></app-patients> -->
+<router-outlet></router-outlet>
+<div class="content" role="main">
+
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span><b>Tests prescribed</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+</div>
+<div class="container">
 <div class="header">
     <div class="form-control">
         <!-- search functionality -->
         <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
-    </div></div>
+    </div>
+</div>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -14,16 +32,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let testpres of labtechtestservice.labtechtests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
+        <tr
+            *ngFor="let testpres of labtechtestservice.labtechtests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
             <td>{{testpres.AppointmentId}}</td>
             <td>{{testpres.PatientFname}}&nbsp;{{testpres.PatientLname}}</td>
             <td>{{testpres.DocttorFname}}&nbsp;{{testpres.DocttorLname}}</td>
             <td>{{testpres.TokenDate | date:'dd-MM-yyyy'}}</td>
-            <td><button class="btn btn-primary" id="{{testpres.TestprescriptionId}}" (click)="showTests(testpres.TestprescriptionId)">View</button></td>
+            <td><button class="btn btn-primary" id="{{testpres.TestprescriptionId}}"
+                    (click)="showTests(testpres.TestprescriptionId)">View</button></td>
         </tr>
     </tbody>
 </table>
 <div class="footer">
     <!-- pagination footer -->
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+</div>
 </div>

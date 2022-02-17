@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Doctorappointment } from './doctorappointment';
-
+import { Medicine } from './medicine';
+import {Medicineprescribe} from './medicineprescribe';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,14 +12,20 @@ export class DoctorService {
   appointment:Doctorappointment[];
   prescription:Doctorappointment[];
   
+  medicine:Doctorappointment[];
+  test: Doctorappointment[];
+  unit: Doctorappointment[];
 
+  dosage:Doctorappointment[];
+  medpre:Medicineprescribe[];
+  data:Medicineprescribe = new Medicineprescribe();
   formData:Doctorappointment= new Doctorappointment();
 
   constructor(private httpClient:HttpClient) { }
   bindListAppointments(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getallappoinment')
-
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getallappoinment')
+  
     .toPromise().then(
 
       response=>{
@@ -34,10 +42,100 @@ export class DoctorService {
     );
     
   }
+
+
+  bindListMedicine(){
+
+    this.httpClient.get(environment.apiUrl + '/api/medicines')
+  
+    .toPromise().then(
+
+      response=>{
+
+        console.log("from service");
+
+        //console.log(response);
+
+        this.prescription = response as Doctorappointment[];
+       
+        
+      }
+
+    );
+    
+  }
+  
+  bindListTest(){
+
+    this.httpClient.get(environment.apiUrl + '/api/doctors/gettestname')
+  
+    .toPromise().then(
+
+      response=>{
+
+        console.log("from service");
+
+        console.log(response);
+
+        this.test = response as Doctorappointment[];
+       
+        
+      }
+
+    );
+    
+  }
+  
+  bindListUnit(){
+
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getunit')
+  
+    .toPromise().then(
+
+      response=>{
+
+        console.log("from service");
+
+        console.log(response);
+
+        this.unit = response as Doctorappointment[];
+       
+        
+      }
+
+    );
+    
+  }
+  insertPrescribeMedicine(medpre:Medicineprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addmed",medpre);
+  }
+  
+
+  
+  bindListDosage(){
+
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getdosage')
+  
+    .toPromise().then(
+
+      response=>{
+
+        console.log("from service");
+
+        console.log(response);
+
+        this.dosage = response as Doctorappointment[];
+       
+        
+      }
+
+    );
+    
+  }
   
   PrescriptionAppointments(){
 
-    this.httpClient.get(environment.apiUrl + 'api/doctors/getallmedicine')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getallmedicine')
 
     .toPromise().then(
 
@@ -47,7 +145,7 @@ export class DoctorService {
 
         console.log(response);
 
-        this.prescription = response as Doctorappointment[];
+        this.medicine = response as Doctorappointment[];
        
         
       }

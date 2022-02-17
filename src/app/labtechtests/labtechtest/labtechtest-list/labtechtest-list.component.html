@@ -1,9 +1,25 @@
+<div class="toolbar" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+    <span>HOME</span>
+    <div class="spacer"></div>
+    <!--search box add here-->
+</div>
+<!-- <app-patients></app-patients> -->
+<router-outlet></router-outlet>
+<div class="content" role="main">
+
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span><b>Lab Tests</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+<div class="container">
 <div class="header">
     <div class="form-control">
         <!-- search functionality -->
         <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
     </div></div>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="tbl_Test_Results">
     <thead>
         <tr>
             <th>Test Name</th>
@@ -14,11 +30,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
-            <td>{{test.Testname}}</td>
-            <td><input type="number" value="{{test.Testvalue}}"></td>
+        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}" id="{{test.PrescribedTestId}}">
+            <td>{{test.Testname}}<input type="hidden" value="{{test.TestId}}"></td>
+            <td><input type="number" value="{{test.Testvalue}}" min="0"></td>
             <td><input type="text" value="{{test.Normalrange}}"></td>
-            <td>{{test.Unit}}</td>
+            <td>{{test.Unit}}<input type="hidden" value="{{test.UnitId}}"></td>
+            <td><button class="btn btn-primary" (click)="updateLabTestValues(test.PrescribedTestId)">Update</button></td>
             <input type="hidden" value="{{test.AppointmentId}}">
         </tr>
     </tbody>
@@ -26,4 +43,5 @@
 <div class="footer">
     <!-- pagination footer -->
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+</div>
 </div>

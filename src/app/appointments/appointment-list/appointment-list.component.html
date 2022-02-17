@@ -24,24 +24,19 @@
         <thead>
             <tr>
                 <th>AppointmentId</th>
-                <th>PatientId</th>
-                <th>EmployeeId</th>
-                <th>Action</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Appointment Date</th>
             </tr>
         </thead>
         <tbody>
             <tr
                 *ngFor="let recappointment of recappointmentService.recappointments | filter : filter | paginate: {itemsPerPage : 5, currentPage : page}">
-                <td>{{recappointment.AppointmentId}}</td>
-                <td>{{recappointment.PatientId}}</td>
-                <td>{{recappointment.EmployeeId}}</td>
+                <td>{{recappointment.AppoinmentId}}</td>
+                <td>{{recappointment.FirstName}}</td>
+                <td>{{recappointment.DoctorName}}</td>
+                <td>{{recappointment.TokenDate}}</td>
                 <td>
-                    <!--button-->
-                    <button class="btn btn-sm btn-info"
-                        (click)="UpdateAppoinment(recappointment.AppointmentId)">Edit</button>
-                    &nbsp;
-                    <button class="btn btn-sm btn-outline-danger"
-                        (click)="DeleteAppoinment(recappointment.AppointmentId)">X</button>
                 </td>
             </tr>
         </tbody>

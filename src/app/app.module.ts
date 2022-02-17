@@ -42,10 +42,16 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
 import { EmployeeComponent } from './employees/employee/employee.component';
+import { RecappointmentService } from './shared/recappointment.service';
+import { PrescriptionmedicinesService } from './shared/prescriptionmedicines.service';
+import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.service';
+import { LabtechtestService } from './shared/labtechtest.service';
+import { LabtechtesttetsService } from './shared/labtechtesttets.service';
 
 
 @NgModule({
@@ -82,7 +88,10 @@ import { EmployeeComponent } from './employees/employee/employee.component';
     DoctorhomeComponent,
     DoctorappointmentlistComponent,
     LoginComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    DoctorlabtestComponent,
+  
+  
   ],
   imports: [
     BrowserModule,
@@ -99,6 +108,10 @@ import { EmployeeComponent } from './employees/employee/employee.component';
   ],
   providers: [MedicineService,
     EmployeeService,PatientService,DoctorService,
+    AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
+    EmployeeService,PatientService,DoctorService,RecappointmentService,PrescriptionmedicinesService,
+    PharmacistPrescriptionService,LabtechtestService,
+    LabtechtesttetsService,
     AuthGuard,
     {
       provide :HTTP_INTERCEPTORS,

@@ -20,6 +20,13 @@ export class LabtechtesttetsService {
         this.labtesttests = response as Labtechtesttets[]
       }
 
-    )
+    );
   }
+  // Update test results
+  //update employee
+updateTestResults(labtesttests:Labtechtesttets) : Observable<any>
+{
+  return this.httpClient.put(environment.apiUrl + "/api/LabTest/labtestresults",labtesttests);
+}
+
 }
