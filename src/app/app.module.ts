@@ -51,6 +51,7 @@ import { PrescriptionmedicinesService } from './shared/prescriptionmedicines.ser
 import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.service';
 import { LabtechtestService } from './shared/labtechtest.service';
 import { LabtechtesttetsService } from './shared/labtechtesttets.service';
+import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
 
 
 @NgModule({
@@ -88,7 +89,9 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
     DoctorappointmentlistComponent,
     DoctorlabtestComponent,
   
-    LoginComponent
+    LoginComponent,
+  
+    ViewMedicineBillComponent
   ],
   imports: [
     BrowserModule,
@@ -105,8 +108,7 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
   ],
   providers: [MedicineService,
     EmployeeService,PatientService,DoctorService,
-    AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
-    EmployeeService,PatientService,DoctorService,RecappointmentService,PrescriptionmedicinesService,
+    RecappointmentService,PrescriptionmedicinesService,
     PharmacistPrescriptionService,LabtechtestService,
     LabtechtesttetsService,
     AuthGuard,

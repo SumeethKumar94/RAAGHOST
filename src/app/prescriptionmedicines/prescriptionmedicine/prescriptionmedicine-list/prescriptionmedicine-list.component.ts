@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PrescriptionmedicinesService } from 'src/app/shared/prescriptionmedicines.service'
 
@@ -15,11 +15,12 @@ export class PrescriptionmedicineListComponent implements OnInit {
   presId:number;
   postBillObj:{}={PrescriptionId:"",AppointmentId:"",MedicinePrice:"",UpdatedDate: new Date()}
   constructor(public prescriptionmedicinesservice : PrescriptionmedicinesService,private toasterservice: ToastrService,
-  private route:ActivatedRoute) { }
+  private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.presId = this.route.snapshot.params['presId']
     this.prescriptionmedicinesservice.bindListPrescriptionmedicines(this.presId);
+    this.prescriptionmedicinesservice.bindListMedicineBill(this.presId)
   }
   insertMedBill(obj:any) {
     this.prescriptionmedicinesservice.insertMedicineBill(obj).subscribe((result) => {
@@ -51,6 +52,10 @@ export class PrescriptionmedicineListComponent implements OnInit {
     this.postBillObj = {PrescriptionId:Number(this.presId),AppointmentId:appointmentId,MedicinePrice:totalprice,UpdatedDate: new Date()};
     this.insertMedBill(this.postBillObj);
     this.toasterservice.success('Medicine bill has been inserted', 'CMSApp v2022');
+    window.location.reload();
 
+  }
+  viewMedicineBill(billId:number){
+    this.router.navigate(['ViewMedicineBill',billId])
   }
 }
