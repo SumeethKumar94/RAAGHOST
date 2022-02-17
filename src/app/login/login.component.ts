@@ -45,18 +45,21 @@ export class LoginComponent implements OnInit {
   loginCredentials() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
+
       console.log("Submitted invalid Credentials ");
       this.error = "";
       return;
     }
     if (this.loginForm.valid) {
       console.log("submitted valid credentials")
+      
       this.error = "";
       //calling method from authservice 
       this.authService.loginVerify(this.loginForm.value).subscribe
         (
           data => {
             console.log(data);
+            
             this.loginUser = data;
             //UserName,RoleId and Token
             sessionStorage.setItem('jwtToken',this.loginUser.token)
@@ -84,6 +87,7 @@ export class LoginComponent implements OnInit {
               console.log("Doctor");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("DoctorId",this.loginUser.U)
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/doctorhome');

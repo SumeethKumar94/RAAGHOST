@@ -50,7 +50,7 @@
                 <td>{{app.TokenDate | date:'dd-MMM-yyyy'}}</td>
                 <td>
 
-                    <button class="btn btn-sm btn-info" routerLink="/doctorprescribe">Select</button>
+                    <button class="btn btn-sm btn-info" routerLink="/doctorprescribe" (click)="getid(app.AppoinmentId)">Select</button>
                     &nbsp;
                 </td>
             </tr>

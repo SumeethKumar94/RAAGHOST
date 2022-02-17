@@ -29,9 +29,12 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
 
-  { path: 'doctorhome', component: DoctorappointmentlistComponent, canActivate:[AuthGuard],data:{role:'3'}  },
-  { path: 'doctorprescribe', component: DoctorhomeComponent, canActivate:[AuthGuard],data:{role:'3'}  },
-  { path: 'doctortest', component: DoctorlabtestComponent , canActivate:[AuthGuard],data:{role:'3'} },
+  { path: 'doctorhome', component: DoctorappointmentlistComponent,data:{role:'3'} },
+ // , canActivate:[AuthGuard],data:{role:'3'}  },
+  { path: 'doctorprescribe', component: DoctorhomeComponent,data:{role:'3'}},
+  //, canActivate:[AuthGuard],data:{role:'3'}  },
+  { path: 'doctortest', component: DoctorlabtestComponent,data:{role:'3'}},
+  // , canActivate:[AuthGuard],data:{role:'3'} },
 
 
   { path: 'ReceptionistHome', component: ReceptionisthomeComponent, canActivate:[AuthGuard],data:{role:'2'} },

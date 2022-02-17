@@ -104,6 +104,8 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
     
   ],
   providers: [MedicineService,
+    EmployeeService,PatientService,DoctorService,
+    AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
     EmployeeService,PatientService,DoctorService,RecappointmentService,PrescriptionmedicinesService,
     PharmacistPrescriptionService,LabtechtestService,
     LabtechtesttetsService,

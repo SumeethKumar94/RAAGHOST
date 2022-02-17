@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { DoctorService } from 'src/app/shared/doctor.service';
 
 
@@ -12,7 +13,7 @@ export class DoctorappointmentlistComponent implements OnInit {
   page:number =1;
   filter:string;
  
-  constructor(public appointmentService:DoctorService) { }
+  constructor(public appointmentService:DoctorService,public app:AppComponent) { }
 
    
 
@@ -22,5 +23,8 @@ export class DoctorappointmentlistComponent implements OnInit {
     this.appointmentService.bindListAppointments();
     
   }
-
+ getid(id:number){
+   this.app.AppoinmentId=id;
+   console.log(id);
+ }
 }
