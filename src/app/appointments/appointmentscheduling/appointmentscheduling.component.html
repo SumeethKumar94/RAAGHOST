@@ -16,13 +16,32 @@
       style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
 
 
-      <input type="search" class="form-control" id="PatientId" placeholder="Search by id / Phone number / name..."
+      <input type="search" class="form-control" id="PatientId" placeholder="Search patient  by id "
         aria-describedby="button-addon5" [(ngModel)]="filter" #PatientId name="PatientId"
         [ngModelOptions]="{standalone: true}">
       <div class="input-group-append">
 
         <button id="button-addon5" type="submit" class="btn btn-secondary" style="margin-top: 10px;"
           (click)="getDetails()"> <i class="fa fa-search"></i>Search</button>
+      </div>
+    </div>
+    <br>
+    
+    <p
+      style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;font-weight: bold;font-size: large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      OR</p>
+
+    <div class="form-group col-md-6"
+      style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
+
+
+      <input type="search" class="form-control" id="PhoneNumber" placeholder="Search patient  by  Phone number "
+        aria-describedby="button-addon5" [(ngModel)]="filter" #PhoneNumber name="PhoneNumber"
+        [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append">
+
+        <button id="button-addon5" type="submit" class="btn btn-secondary" style="margin-top: 10px;"
+          (click)="getDetail()"> <i class="fa fa-search"></i>Search</button>
       </div>
     </div>
 
@@ -82,11 +101,11 @@
         <div class="form-group col-md-6"
           style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;">
           <label for="ConsultationFee"
-            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> PatientId</b></label>
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>
+              PatientId</b></label>
           <input type="number" class="form-control" name="PatientId" #PatientId="ngModel"
-            [(ngModel)]="recappointmentService.formData.PatientId" class="form-control"
-            placeholder="Enter PatientId" required minlength="1" maxlength="30"
-            [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
+            [(ngModel)]="recappointmentService.formData.PatientId" class="form-control" placeholder="Enter PatientId"
+            required minlength="1" maxlength="30" [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
 
           <!--PatientId validation-->
           <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
