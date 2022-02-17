@@ -11,9 +11,14 @@ import { Role } from "./role";
 export class EmployeeService {
 
 
-  employees: Employee[];  //to store allemployee details
+  employees: Employee[]; //to store allemployee details
   roles: Role[];
+
   formData: Employee = new Employee();
+
+  doctors: Employee[];
+  deparments: Employee[];
+
   constructor(private httpClient: HttpClient) { }
 
   //get all employees  --1
@@ -35,9 +40,8 @@ export class EmployeeService {
       );
   }
   //get employee by id
-  getEmployeeById(id:number) : Observable<any>
-  {
-    return this.httpClient.get(environment.apiUrl +"/api/employee/" + id);
+  getEmployeeById(id: number): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + "/api/employee/" + id);
   }
 
   //delete employee
@@ -50,11 +54,10 @@ export class EmployeeService {
     return this.httpClient.post(environment.apiUrl + "/api/employees", employees);
   }
 
-//update employee
-updateEmployee(employee:Employee) : Observable<any>
-{
-  return this.httpClient.put(environment.apiUrl + "/api/employees",employee);
-}
+  //update employee
+  updateEmployee(employee: Employee): Observable<any> {
+    return this.httpClient.put(environment.apiUrl + "/api/employees", employee);
+  }
 
   //.........role.........
   bindListRoles() {
@@ -67,4 +70,22 @@ updateEmployee(employee:Employee) : Observable<any>
         }
       );
   }
+
+  //..................
+  //insert doctor
+  insertDoctor(doctors: Employee): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + "/api/employees/getdoctor", doctors);
+  }
+
+  bindListdeparments() {
+    this.httpClient.get(environment.apiUrl + '/api/deparments')
+      .toPromise().then(
+        response => {
+          console.log("from Service ");
+          console.log(response);
+          this.deparments = response as Employee[]
+        }
+      );
+  }
+
 }

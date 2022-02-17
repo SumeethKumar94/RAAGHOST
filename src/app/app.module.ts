@@ -45,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
+import { EmployeeComponent } from './employees/employee/employee.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import {AuthInterceptor } from './shared/auth.interceptor';
     LabtechtestListComponent,
     DoctorhomeComponent,
     DoctorappointmentlistComponent,
-    LoginComponent
+    LoginComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

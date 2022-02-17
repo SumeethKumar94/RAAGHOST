@@ -12,15 +12,22 @@ import { EmployeeService } from '../shared/employee.service';
 })
 export class EmployeesComponent implements OnInit {
 
-  empId:number;
+  empId: number;
+  drId: number;
+  //depId:number;
+  //object
+  DrObj: {} = { DoctorId: "", EmployeeId: "", DepId: "" }
 
-  constructor(public empService: EmployeeService,private route:ActivatedRoute,
-    private toastrService:ToastrService, private router:Router) { }
+  constructor(public empService: EmployeeService, private route: ActivatedRoute,
+    private toastrService: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
-    
+
     //get all roles
-     this.empService.bindListRoles();
+    this.empService.bindListRoles();
+
+    //departments
+    this.empService.bindListdeparments();
 
     //   //get empId from ActivateRoute
     // this.empId=this.route.snapshot.params['empId'];
@@ -38,41 +45,50 @@ export class EmployeesComponent implements OnInit {
     //        result.Doj=formatedDate;
     //        //assignthis reslut to empService formData
     //        this.empService.formData=Object.assign({},result); 
-           
+
     //     },
     //     error=>{
     //       console.log(error);
-          
+
     //     }
     //   );
     // }
 
   }
-   //submit form
-   onSubmit(form: NgForm) {
+  //submit form
+  onSubmit(form: NgForm) {
     console.log(form.value);
     let addId = this.empService.formData.EmployeeId;
+    //let depid = this.empService.formData.DepId;
+    //deptid
+    this.DrObj={EmployeeId:Number(this.empId),DepId:this.empService.formData.DepId,DoctorId:this.empService.formData.DoctorId};
 
     //insert or update
     if (addId == 0 || addId == null) {
       this.insertEmployeeRecord(form);
+
+      //oject assign value
+     // this.DrObj={EmployeeId:Number(this.empId),DepId:this.empService.formData.DepId,DoctorId:this.empService.formData.DoctorId};
+      this.insertdoctorRecord(this.DrObj);
+
     }
     else {
       //update
       //this.updateEmployeeRecord(form);
-     }
     }
+  }
 
-    //insert
+  //insert
   insertEmployeeRecord(form?: NgForm) {
     console.log("inserting a record...");
     this.empService.insertEmployee(form.value).subscribe(
       (result) => {
         console.log(result);
+        this.empId = result;
         //call resetform for cln the contents
         this.resetForm(form);
-        this.toastrService.success('Employee record has been inserted','EmpApp v2022');
-        this.router.navigateByUrl('/adminhome');
+        this.toastrService.success('Employee record has been inserted', 'EmpApp v2022');
+        //this.router.navigateByUrl('/adminhome');
       },
       (error) => {
         console.log(error);
@@ -81,32 +97,59 @@ export class EmployeesComponent implements OnInit {
     )
 
   }
-
-//   //update
-//   updateEmployeeRecord(form?: NgForm) {
-//     console.log("updatinging a record...");
-//     this.empService.updateEmployee(form.value).subscribe(
-//       (result) => {
-//         console.log(result);
-// //call resetform for cln the contents
-//         this.resetForm(form)
-//         this.toastrService.success('Employee record has been updated','EmpApp v2022');
-//       },
-//       (error) => {
-//         console.log(error);
-
-//       }
-//     )
-
-//   }
-
-//clear all contents after submit  --initialization
-resetForm(form? : NgForm){
-  if (form != null) {
-    form.resetForm();
-    
+  //function
+  insertdoctorRecord(obj:any) {
+    this.empService.insertDoctor(obj).subscribe((result1) => {
+      console.log(result1);
+      this.toastrService.success('doctor record has been inserted', 'EmpApp v2022');
+    });
   }
-}
+
+
+  //insert
+  // insertdoctorRecord(form?: NgForm) {
+  //   console.log("inserting a record...");
+  //   this.empService.insertDoctor(form.value).subscribe(
+  //     (result) => {
+  //       console.log(result);
+  //       //call resetform for cln the contents
+  //       this.resetForm(form);
+  //       this.toastrService.success('Employee record has been inserted', 'CMPApp v2022');
+  //       //this.router.navigateByUrl('/adminhome');
+  //     },
+  //     (error) => {
+  //       console.log(error);
+
+  //     }
+  //   )
+
+  // }
+
+  //   //update
+  //   updateEmployeeRecord(form?: NgForm) {
+  //     console.log("updatinging a record...");
+  //     this.empService.updateEmployee(form.value).subscribe(
+  //       (result) => {
+  //         console.log(result);
+  // //call resetform for cln the contents
+  //         this.resetForm(form)
+  //         this.toastrService.success('Employee record has been updated','EmpApp v2022');
+  //       },
+  //       (error) => {
+  //         console.log(error);
+
+  //       }
+  //     )
+
+  //   }
+
+  //clear all contents after submit  --initialization
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+
+    }
+  }
 
 
 }
