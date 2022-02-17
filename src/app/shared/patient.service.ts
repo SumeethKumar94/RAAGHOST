@@ -76,6 +76,11 @@ export class PatientService {
     return this.httpClient.get(environment.apiUrl + '/api/appointments');
   }
 
+    //delete patients
+    DeleteAppointment(AppoinmentId: number) {
+      return this.httpClient.delete(environment.apiUrl + "/api/appointments" + AppoinmentId);
+    }
+  
 
   /*----------------------------------------------------------------------------*/
   //create new bill
@@ -107,7 +112,7 @@ export class PatientService {
 
   //get patients by id
   getPatientById(PatientId: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + "/api/patients/getpatient?patientid=" + PatientId);
+    return this.httpClient.get(environment.apiUrl + "/api/patients/" + PatientId);
   }
 
   //add patient

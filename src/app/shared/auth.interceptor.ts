@@ -17,6 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log("intercepting here....");
     //token variable
     let token = sessionStorage.getItem('jwtToken');
+    console.log("hi sasi");
 
     if (sessionStorage.getItem('USERNAME') && sessionStorage.getItem('jwtToken')) {
       request = request.clone
@@ -24,6 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
           //set header
           setHeaders:
           {
+            
             Authorization: `Bearer ${token}`
           }
         })

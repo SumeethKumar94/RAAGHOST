@@ -17,6 +17,7 @@
 
 <div class="doctorclass">
 
+  <!--
   <div class="card-container">
 
     <a class="card" target="_blank" rel="noopener" href="doctorhome"><b>
@@ -25,10 +26,10 @@
     <a class="card" target="_blank" rel="noopener" href="doctortest"><b>
         <h6>Lab Tests</h6>
       </b></a>
-    <a class="card" target="_blank" rel="noopener" href="#"><b>
+    <a class="card" target="_blank" rel="noopener" href="doctorprescribe"><b>
         <h6>Doctor Notes</h6>
       </b></a>
-  </div>
+  </div>-->
 
 
 
@@ -129,11 +130,12 @@
       </table>
     </form>
 
+    <app-doctorlabtest></app-doctorlabtest>
   </div>
 
   <br>
   <br>
-
+<!--
   <div class="view" sans-serif style="margin-left: 10em; margin-top: 10em;">
     <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Medicine Prescription View</h2>
 
@@ -152,7 +154,7 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let pre of appointmentService.prescription |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+          *ngFor="let pre of appointmentService.medicine |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
           <td>{{pre.Pmid}}</td>
           <td>{{pre.MedicineId}}</td>
           <td>{{pre.Medicine.MedicineName}}</td>
@@ -160,7 +162,7 @@
           <td>{{pre.Medicine.UnitPrice}}</td>
           <td>{{pre.Medicine.StockQuantity}}</td>
           <td>
-            <!--button-->
+            button
             <button class="btn btn-sm btn-info" (click)="updatePrescription(pre.Pmid)">Edit</button>
             &nbsp;
             <button class="btn btn-sm btn-outline-danger" (click)="deletePrescription(pre.Pmid)">X</button>
@@ -170,7 +172,7 @@
     </table>
 
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>
-  </div>
+  </div>-->
 
 
 </div>

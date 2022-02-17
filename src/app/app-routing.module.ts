@@ -29,21 +29,16 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
 
-  { path: 'ReceptionistHome', component: ReceptionisthomeComponent },
-  { path: 'appointmentlist', component: AppointmentListComponent },
-  { path: 'appointments', component: AppointmentsComponent },
-  { path: 'appointmentscheduling', component: AppointmentschedulingComponent },
-  { path: 'consultation-bill', component: ConsultationBillComponent },
-  { path: 'patients', component: PatientsComponent },
-  { path: 'patientregistrartion', component: PatientregistrationComponent },
-  { path: 'patient-list', component: PatientListComponent },
-  { path: 'doctorhome', component: DoctorappointmentlistComponent },
-  { path: 'doctorprescribe', component: DoctorhomeComponent },
-  { path: 'doctortest', component: DoctorlabtestComponent },
+  { path: 'doctorhome', component: DoctorappointmentlistComponent, canActivate:[AuthGuard],data:{role:'3'}  },
+  { path: 'doctorprescribe', component: DoctorhomeComponent, canActivate:[AuthGuard],data:{role:'3'}  },
+  { path: 'doctortest', component: DoctorlabtestComponent , canActivate:[AuthGuard],data:{role:'3'} },
+
+
   { path: 'ReceptionistHome', component: ReceptionisthomeComponent, canActivate:[AuthGuard],data:{role:'2'} },
   { path: 'appointmentlist', component: AppointmentListComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointments', component: AppointmentsComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointmentscheduling', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
+  { path: 'appointmentscheduling/:AppoinmentId', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'consultation-bill', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
   { path: 'patients', component: PatientsComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'patientregistrartion', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'}},
@@ -59,10 +54,10 @@ const routes: Routes = [
   { path: 'medicineadd', component: MedicineComponent },
   { path: 'medicineadd/:MedicineId', component: MedicineComponent },
   
-  { path: 'pharm-prescriptions', component: PharmpresListComponent },
-  { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent },
-  { path: 'lab-labtests', component: LabtechlabtestListComponent },
-  { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent },
+  { path: 'pharm-prescriptions', component: PharmpresListComponent , canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent , canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'lab-labtests', component: LabtechlabtestListComponent , canActivate:[AuthGuard],data:{role:'5'}},
+  { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent , canActivate:[AuthGuard],data:{role:'5'}},
 
 
 

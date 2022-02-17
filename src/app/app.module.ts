@@ -46,6 +46,11 @@ import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component'
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
+import { RecappointmentService } from './shared/recappointment.service';
+import { PrescriptionmedicinesService } from './shared/prescriptionmedicines.service';
+import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.service';
+import { LabtechtestService } from './shared/labtechtest.service';
+import { LabtechtesttetsService } from './shared/labtechtesttets.service';
 
 
 @NgModule({
@@ -101,6 +106,10 @@ import {AuthInterceptor } from './shared/auth.interceptor';
   providers: [MedicineService,
     EmployeeService,PatientService,DoctorService,
     AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
+    EmployeeService,PatientService,DoctorService,RecappointmentService,PrescriptionmedicinesService,
+    PharmacistPrescriptionService,LabtechtestService,
+    LabtechtesttetsService,
+    AuthGuard,
     {
       provide :HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,

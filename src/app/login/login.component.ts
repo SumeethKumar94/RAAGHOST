@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/doctor');
+              this.router.navigateByUrl('/doctorhome');
             }
             else if (this.loginUser.RoleId === 4) {
               console.log("Pharmacist");
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/pharmacist');
+              this.router.navigateByUrl('/pharm-prescriptions');
             }
             else if (this.loginUser.RoleId === 5) {
               console.log("Lab Technician");
@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
-              this.router.navigateByUrl('/labtechnician');
+              this.router.navigateByUrl('/lab-labtests');
             }
             else {
               this.error = "Sorry ! NOT authenticate/authorize to access this module"
