@@ -19,27 +19,35 @@
         <!-- search functionality -->
         <input class="form-control" type="text" placeholder="search text here..." [(ngModel)]="filter">
     </div></div>
-<table class="table table-bordered table-striped" id="tbl_Test_Results">
+<table class="table table-bordered table-striped" id="tbl_tests_List">
     <thead>
         <tr>
             <th>Test Name</th>
             <th>Patient Value</th>
             <th>Normal Value</th>
             <th>Unit</th>
+            <th>Price</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}" id="{{test.PrescribedTestId}}">
+        <tr *ngFor="let test of labtesttestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:5, currentPage: page}" id="{{test.PrescribedTestId}}">
             <td>{{test.Testname}}<input type="hidden" value="{{test.TestId}}"></td>
             <td><input type="number" value="{{test.Testvalue}}" min="0"></td>
             <td><input type="text" value="{{test.Normalrange}}"></td>
             <td>{{test.Unit}}<input type="hidden" value="{{test.UnitId}}"></td>
+            <td>{{test.Price}}</td>
             <td><button class="btn btn-primary" (click)="updateLabTestValues(test.PrescribedTestId)">Update</button></td>
-            <input type="hidden" value="{{test.AppointmentId}}">
+            <input type="hidden" class="input_AppointmentId" value="{{test.AppointmentId}}">
         </tr>
     </tbody>
 </table>
+<div style="text-align: right;">
+    <button *ngIf="labtesttestservice.labbillCheck.length > 0; else Generate" class="btn btn-primary" (click)="viewTestBill(labtesttestservice.labbillCheck[0].TbillId)">View Bill</button>
+    <ng-template #Generate>
+        <button class="btn btn-primary" (click)="generateTestBill()">Generate Bill</button>
+    </ng-template>
+</div>
 <div class="footer">
     <!-- pagination footer -->
     <pagination-controls (pageChange)="page=($event)"></pagination-controls>

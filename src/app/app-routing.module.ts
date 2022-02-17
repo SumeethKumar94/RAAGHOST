@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
+import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -58,11 +59,12 @@ const routes: Routes = [
   { path: 'medicineadd', component: MedicineComponent },
   { path: 'medicineadd/:MedicineId', component: MedicineComponent },
   
-  { path: 'pharm-prescriptions', component: PharmpresListComponent,canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'pharm-prescriptions', component: PharmpresListComponent ,canActivate:[AuthGuard],data:{role:'4'}},
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent,canActivate:[AuthGuard],data:{role:'4'}},
-  { path: 'ViewMedicineBill/:billId', component: ViewMedicineBillComponent,canActivate:[AuthGuard],data:{role:'5'}},
+  { path: 'ViewMedicineBill/:billId', component: ViewMedicineBillComponent,canActivate:[AuthGuard],data:{role:'4'}},
   { path: 'lab-labtests', component: LabtechlabtestListComponent ,canActivate:[AuthGuard],data:{role:'5'}},
   { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent,canActivate:[AuthGuard],data:{role:'5'}},
+  { path: 'ViewTestbill/:billId', component: ViewTestBillComponent,canActivate:[AuthGuard],data:{role:'5'}}
 
 ];
 

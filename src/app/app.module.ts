@@ -53,6 +53,7 @@ import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.
 import { LabtechtestService } from './shared/labtechtest.service';
 import { LabtechtesttetsService } from './shared/labtechtesttets.service';
 import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
+import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bi
     LoginComponent,
     EmployeeComponent,
     DoctorlabtestComponent,
-    ViewMedicineBillComponent
+    ViewMedicineBillComponent,
+    ViewTestBillComponent
   
   ],
   imports: [

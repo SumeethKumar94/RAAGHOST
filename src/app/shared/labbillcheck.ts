@@ -1,3 +1,7 @@
 export class Labbillcheck {
-    billId:number = 0;
+    TbillId:number = 0;
+    TprescriptionId:number=0;
+    AppointmentId:number=0;
+    TotalPrice:number=0;
+    UpdatedDate:Date;
 }
