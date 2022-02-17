@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
               console.log("Doctor");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
-              localStorage.setItem("DoctorId",this.loginUser.U)
+              localStorage.setItem("DoctorId",this.loginUser.EmployeeId)
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/doctorhome');
