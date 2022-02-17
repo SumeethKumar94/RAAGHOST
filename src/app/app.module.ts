@@ -100,7 +100,7 @@ import {AuthInterceptor } from './shared/auth.interceptor';
   ],
   providers: [MedicineService,
     EmployeeService,PatientService,DoctorService,
-    AuthGuard,
+    AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
     {
       provide :HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,
