@@ -59,8 +59,8 @@ export class RecappointmentService {
       );
   }
 
-  bindListConsultationBillByBillID(CBillId:number){
-    this.httpClient.get(environment.apiUrl + "/api/consultationbills/"+CBillId)
+  bindListConsultationBillByBillID(AppointmentId:number){
+    this.httpClient.get(environment.apiUrl + "/api/consultationbills/bill/"+ AppointmentId)
     .toPromise().then(
       response => {
         console.log("searching the bill");

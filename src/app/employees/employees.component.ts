@@ -85,6 +85,8 @@ export class EmployeesComponent implements OnInit {
       (result) => {
         console.log(result);
         this.empId = result;
+
+        
         //call resetform for cln the contents
         this.resetForm(form);
         this.toastrService.success('Employee record has been inserted', 'EmpApp v2022');

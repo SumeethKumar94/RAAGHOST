@@ -110,7 +110,7 @@ export class AppointmentschedulingComponent implements OnInit {
 
           if (confirm('Do you want to SCHEDULE Appointment and GENERATE the Bill ?')) {
             setTimeout(() => {
-              this.generateBill(this.recappointmentService.formData.CBillId);
+              this.generateBill();
             }, 2000);
           }
         },
@@ -152,8 +152,8 @@ export class AppointmentschedulingComponent implements OnInit {
       );
   }
 
-  generateBill(CBillId: any) {
-    this.router.navigate(['consultation-bill', CBillId]);
+  generateBill() {
+    this.router.navigate(['consultation-bill',this.AppId]);
   }
 }
 
