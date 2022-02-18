@@ -11,35 +11,30 @@ import { Recappointment } from './recappointment';
 @Injectable({
   providedIn: 'root'
 })
-export class RecappointmentService 
-{
+export class RecappointmentService {
   departments: Department[];
   employees: Employee[];
-  appointments : Appointment[];
+  appointments: Appointment[];
+  recappointments: Recappointment[];
   formData1: Department = new Department();
   formData2: Employee = new Employee();
-  formData3 : Appointment = new Appointment();
-  recappointments : Recappointment[];
-  formData : Recappointment = new Recappointment();
+  formData3: Appointment = new Appointment();
+
+  formData: Recappointment = new Recappointment();
 
   constructor(private httpClient: HttpClient) { }
 
-  //get patients
-  GetAllAppoinments(): Observable<any>
-  {
-    return this.httpClient.get(environment.apiUrl + '/api/appointments/getallappoinment');
-  }
 
-  bindListAppointments()
-  {
+
+  bindListAppointments() {
     this.httpClient.get(environment.apiUrl + '/api/appointments/getallappoinment')
-    .toPromise().then(
-      response=>{
-        console.log("from service");
-        console.log(response);
-        this.recappointments = response as Recappointment[];
-      }
-    );
+      .toPromise().then(
+        response => {
+          console.log("from service");
+          console.log(response);
+          this.recappointments = response as Recappointment[];
+        }
+      );
   }
 
   bindListDepartments() {
@@ -64,29 +59,55 @@ export class RecappointmentService
       );
   }
 
+  bindListConsultationBillByBillID(CBillId:number){
+    this.httpClient.get(environment.apiUrl + "/api/consultationbills/"+CBillId)
+    .toPromise().then(
+      response => {
+        console.log("searching the bill");
+        console.log(response);
+        this.recappointments = response as Recappointment[];
+      }
+    )
+  }
+
+    //create new bill
+    insertConsultationBillDetails(recappointments: Recappointment): Observable<any> {
+      return this.httpClient.post(environment.apiUrl + '/api/consultationbills', recappointments);
+    }
+  
+    //get bill by id
+    getConsultationBillById(CbillId: number): Observable<any> {
+      return this.httpClient.get(environment.apiUrl + "/api/consultationbills" + CbillId);
+    }
+
+
+  //create new token
+  insertToken(recappointments: Recappointment): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + '/api/token', recappointments);
+  }
+
+  //get appointments
+  GetAllAppoinments(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/api/appointments/getallappoinment');
+  }
+
   //create new Appointment
-  insertAppointment(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/appointments');
+  insertAppointment(recappointments: Recappointment): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + '/api/appointments/scheduleappoinment', recappointments);
   }
 
-    //delete patients
-    DeleteAppointment(AppoinmentId: number) {
-      return this.httpClient.delete(environment.apiUrl + "/api/appointments" + AppoinmentId);
-    }
-  
   //delete patients
-  DeleteAppoinment(AppoinmentId : number)
-  {
-    return this.httpClient.delete(environment.apiUrl + "/api/appointments/" +AppoinmentId);
+  DeleteAppoinment(AppoinmentId: number) {
+    return this.httpClient.delete(environment.apiUrl + "/api/appointments/" + AppoinmentId);
   }
 
 
-    //get all departments
-    GetAllDepartments(): Observable<any> {
-      return this.httpClient.get(environment.apiUrl + '/api/deparments');
-    }
-  
-    GetAllDoctors(): Observable<any> {
-      return this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails');
-    }
+  //get all departments
+  GetAllDepartments(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/api/deparments');
+  }
+
+  GetAllDoctors(): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails');
+  }
 }

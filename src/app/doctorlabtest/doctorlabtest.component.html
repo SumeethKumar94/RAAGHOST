@@ -23,7 +23,7 @@
     
     
     
-        <form name="preform" #form="ngForm" autocomplete="off" style="width: 30em;">
+        <form name="preform" #form="ngForm" autocomplete="off" style="width: 30em;"(ngSubmit)="onSubmit(form)">
           <table class="table table-bordered table-striped" style="width: 70em;">
             <thead>
               <tr>
@@ -34,7 +34,10 @@
     
             </thead>
     
-            <input type="hidden" name="Ptid" [(ngModel)]="appointmentService.formData.Ptid">
+            <input type="hidden" name="PTId" [(ngModel)]="appointmentService.testdata.PTId">
+            <input type="hidden" name="TPrescriptionId" [(ngModel)]="appointmentService.testdata.TPrescriptionId">
+            <input type="hidden" name="TDId" [(ngModel)]="appointmentService.testdata.TDId">
+
             <tbody>
               <tr>
                 <td>
@@ -42,7 +45,7 @@
     
     
                     <select name="TestId" id="TestId" class="form-control" #TestId="ngModel" required
-                      [(ngModel)]="appointmentService.formData.TestId">
+                      [(ngModel)]="appointmentService.testdata.TestId">
                       <option value=0 disabled>Select Test Name</option>
                       <option *ngFor="let dept of appointmentService.test" value="{{dept.TestId}}">
                         {{dept.TestName}}
@@ -59,7 +62,7 @@
     
     
                     <select name="UnitId" id="UnitId" class="form-control" #UnitId="ngModel" required
-                      [(ngModel)]="appointmentService.formData.UnitId">
+                      [(ngModel)]="appointmentService.testdata.UnitId">
                       <option value=0 disabled>SelectUnit</option>
                       <option *ngFor="let dept of appointmentService.unit" value="{{dept.UnitId}}">
                         {{dept.Unit}}
@@ -84,6 +87,14 @@
             </tbody>
           </table>
         </form>
+        <footer style="margin-left: 50em;">
+          <br>
+          <br>
+          <button type="button" class="btn btn-outline-warning" (click)="move()">Appointments</button>
+          &nbsp;
+          <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
+
+        </footer>
     
       </div>
 

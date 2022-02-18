@@ -9,4 +9,5 @@ export class Labtechtesttets {
     Result: number = 0;
     Normalrange: string;
     Unit: string;
+    Price:number;
 }

@@ -33,9 +33,21 @@ export class PatientService {
         }
       );
   }
+  // /api/patients/getpatientbycontact?contact=
 
   bindListPatient(PatientId :number) {
     this.httpClient.get(environment.apiUrl + '/api/patients/getpatient?patientid=' +PatientId)
+      .toPromise().then(
+        response => {
+          console.log("from service");
+          console.log(response);
+          this.patient = response as Patient[];
+        }
+      );
+  }
+
+  bindListPatientbyphone(contact :string) {
+    this.httpClient.get(environment.apiUrl + '/api/patients/getpatientbycontact?contact=' +contact)
       .toPromise().then(
         response => {
           console.log("from service");
@@ -58,15 +70,6 @@ export class PatientService {
   
 
   /*----------------------------------------------------------------------------*/
-  //create new bill
-  insertConsultationBillDetails(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/consultationbills');
-  }
-
-  //get bill by id
-  getConsultationBillById(CbillId: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + "/api/consultationbills" + CbillId);
-  }
 
   /*----------------------------------------------------------------------------*/
 
@@ -80,6 +83,11 @@ export class PatientService {
   getPatientById(PatientId: number): Observable<any> {
     return this.httpClient.get(environment.apiUrl + "/api/patients/" + PatientId);
   }
+
+    //get patients by id
+    getPatientByContact(PhoneNumber: number): Observable<any> {
+      return this.httpClient.get(environment.apiUrl + "/api/patients/getpatientbycontact/" + PhoneNumber);
+    }
 
   //add patient
   insertPatient(patients: Patient): Observable<any> {
