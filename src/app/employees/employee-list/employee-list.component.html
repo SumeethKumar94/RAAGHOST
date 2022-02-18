@@ -1,7 +1,7 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
     <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span routerlink="/adminhome" type="button">HOME</span>
+    <span type="button" routerlink="/adminhome" (click)="navi()" >HOME</span>
     <div class="spacer"></div>
 
     <!--search box add here-->
@@ -43,16 +43,16 @@
         </thead>
         <tbody>
             <tr Service
-                *ngFor="let emp of employeeService.employees | filter: filter| paginate:{itemsPerPage: 2,currentPage: page}">
+                *ngFor="let emp of employeeService.employees | filter: filter| paginate:{itemsPerPage: 6,currentPage: page}">
                 <td>{{emp.EmployeeId}}</td>
                 <td>{{emp.FirstName}}</td>
                 <td>{{emp.LastName}}</td>
-                <td>{{emp.Dob| date:"dd-MMM-yyy"}}</td>
+                <td>{{emp.Dob| date:"dd-MMM-yyyy"}}</td>
                 <td>{{emp.PhoneNumber}}</td>
                 <td>{{emp.EmailAddress}}</td>
                 <td>{{emp.Gender}}</td>
                 <td>{{emp.Address}}</td>
-                <td>{{emp.Doj | date:"dd-MMM-yyy"}}</td>
+                <td>{{emp.Doj | date:"dd-MMM-yyyy"}}</td>
                 <td>{{emp.RoleName}}</td>
                 <td>{{emp.EmployeeStatus}}</td>
 
@@ -60,8 +60,8 @@
                     <!-- button -->
                     <button class="btn btn-sm btn-info" (click)="updateEmployee(emp.EmployeeId)">Edit</button>
                     &nbsp;
-                    <button class="btn btn-sm btn-outline-danger"
-                        (click)="deleteEmployee(emp.EmployeeId)">Delete</button>
+                    <!-- <button class="btn btn-sm btn-outline-danger"
+                        (click)="deleteEmployee(emp.EmployeeId)">Delete</button> -->
                 </td>
             </tr>
         </tbody>

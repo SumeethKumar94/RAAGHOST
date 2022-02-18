@@ -55,6 +55,10 @@ export class MedicineListComponent implements OnInit {
     }
   }
 
+  navi(){
+    this.router.navigateByUrl('/adminhome');
+   }
+
 
 
 }

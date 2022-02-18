@@ -1,7 +1,7 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
     <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>HOME</span>
+    <span type="button" routerlink="/adminhome" (click)="navi()" >HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
     <div class="form-group ">
@@ -10,7 +10,8 @@
     </div>
   </div>
 <div class="container-fluid">
-    <br>
+    <!-- <br> -->
+    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Medicine List</h2>
     <div class="header mt-5">
         <!-- <div clas="form-control"> -->
             <!--search functionality -->
@@ -18,7 +19,7 @@
             {{filter}}
             
         </div> -->
-        <a [routerLink]="" class="btn btn-outline-secondary" style="float:right; margin-top: 10px; margin-bottom: 10px;">Add
+        <a routerLink="/medicineadd" class="btn btn-outline-secondary" style="float:right; margin-top: 10px; margin-bottom: 10px;">Add
             Medicine</a>
     </div>
     <table class="table table-bordered table-striped">
@@ -33,12 +34,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr Service *ngFor="let med of medicineService.medicines| filter: filter | paginate:{itemsPerPage: 1,currentPage: page}">
+            <tr Service *ngFor="let med of medicineService.medicines| filter: filter | paginate:{itemsPerPage: 3,currentPage: page}">
                 <td>{{med.MedicineId}}</td>
                 <td>{{med.MedicineName}}</td>
                 <td>{{med.StockQuantity}}</td>
                 <td>{{med.UnitPrice}}</td>
-                <td>{{med.ExpiryDate | date:"dd-MMM-yyy"}}</td>
+                <td>{{med.ExpiryDate | date:"dd-MMM-yyyy"}}</td>
                 <td>
                      <!-- button  -->
                     <button class="btn btn-sm btn-info"(click)="updateMedicine(med.MedicineId)">Edit</button>
@@ -54,7 +55,7 @@
         <pagination-controls (pageChange)="page=($event)"></pagination-controls>
     </div>
 
-    <footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
+    <footer class="footer bg-dark" style="align-items: center; margin-top: 100px;">
         <div class="footer footer-fixed align-items:center">
           <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
       </span>
