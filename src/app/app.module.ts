@@ -46,11 +46,14 @@ import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component'
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import {AuthInterceptor } from './shared/auth.interceptor';
+import { EmployeeComponent } from './employees/employee/employee.component';
 import { RecappointmentService } from './shared/recappointment.service';
 import { PrescriptionmedicinesService } from './shared/prescriptionmedicines.service';
 import { PharmacistPrescriptionService } from './shared/pharmacist-prescription.service';
 import { LabtechtestService } from './shared/labtechtest.service';
 import { LabtechtesttetsService } from './shared/labtechtesttets.service';
+import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
+import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 
 
 @NgModule({
@@ -86,9 +89,12 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
     LabtechtestListComponent,
     DoctorhomeComponent,
     DoctorappointmentlistComponent,
+    LoginComponent,
+    EmployeeComponent,
     DoctorlabtestComponent,
+    ViewMedicineBillComponent,
+    ViewTestBillComponent
   
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -105,8 +111,7 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
   ],
   providers: [MedicineService,
     EmployeeService,PatientService,DoctorService,
-    AuthGuard,PharmpresListComponent,PrescriptionmedicineListComponent,LabtechlabtestListComponent,LabtechtestListComponent,
-    EmployeeService,PatientService,DoctorService,RecappointmentService,PrescriptionmedicinesService,
+    RecappointmentService,PrescriptionmedicinesService,
     PharmacistPrescriptionService,LabtechtestService,
     LabtechtesttetsService,
     AuthGuard,

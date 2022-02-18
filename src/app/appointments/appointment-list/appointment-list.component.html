@@ -11,7 +11,7 @@
         <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 60px;">Appointments List</h2>
         <div class="form-control" style="margin-left: 50px; max-width: 500px;margin-top: 30px;">
             <!--search functionality-->
-            <input type="text" class="form-control" placeholder="Search text here" [(ngModel)]="filter">
+            <input type="text" class="form-control" placeholder="Search appointment here" [(ngModel)]="filter">
 
         </div>
         <a [routerLink]="" class="btn btn-outline-dark"
@@ -24,24 +24,21 @@
         <thead>
             <tr>
                 <th>AppointmentId</th>
-                <th>PatientId</th>
-                <th>EmployeeId</th>
-                <th>Action</th>
+                <th>Token No</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Appointment Date</th>
             </tr>
         </thead>
         <tbody>
             <tr
-                *ngFor="let recappointment of recappointmentService.recappointments | filter : filter | paginate: {itemsPerPage : 5, currentPage : page}">
-                <td>{{recappointment.AppointmentId}}</td>
-                <td>{{recappointment.PatientId}}</td>
-                <td>{{recappointment.EmployeeId}}</td>
+                *ngFor="let recappointment of recappointmentService.recappointments | filter : filter | paginate: {itemsPerPage : 6, currentPage : page}">
+                <td>{{recappointment.AppoinmentId}}</td>
+                <td>{{recappointment.TokenNo}}</td>
+                <td>{{recappointment.FirstName}}</td>
+                <td>{{recappointment.DoctorName}}</td>
+                <td>{{recappointment.TokenDate}}</td>
                 <td>
-                    <!--button-->
-                    <button class="btn btn-sm btn-info"
-                        (click)="UpdateAppoinment(recappointment.AppointmentId)">Edit</button>
-                    &nbsp;
-                    <button class="btn btn-sm btn-outline-danger"
-                        (click)="DeleteAppoinment(recappointment.AppoinmentId)">X</button>
                 </td>
             </tr>
         </tbody>

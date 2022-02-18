@@ -41,6 +41,7 @@ export class EmployeeListComponent implements OnInit {
  updateEmployee(empId:number){
    console.log(empId);
    //navigate to edit form with selected employee details
+   
 
  }
 

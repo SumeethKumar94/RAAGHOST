@@ -1,248 +1,122 @@
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: cadetblue;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
-  .card {
-    border-radius: 10px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 70px;
-    width: 600px;
-    margin: 0 8px 16px;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
-
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: black;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-
-  a,
-  a:visited,
-  a:hover {
-    color: cadetblue;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: cadetblue;
-  }
-
-
-  .footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-  }
-
-
-
-  //////////////////
-
-  /* -------------------------------------
-    GLOBAL
-    A very basic CSS reset
-------------------------------------- */
-
-img {
-    max-width: 100%;
+.container{
+  width: 750px;
+  margin:auto;
+  padding:50px;
+}
+.card svg.material-icons path {
+  fill: #888;
 }
 
-
-/* Let's make sure all tables have defaults */
-table td {
-    vertical-align: top;
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
 }
 
-
-/* -------------------------------------
-    LINKS & BUTTONS
-------------------------------------- */
-a {
-    color: #1ab394;
-    text-decoration: underline;
+.card {
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 50px;
+  width: 300px;
+  margin: 0 8px 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
 }
 
-.btn-primary {
-    text-decoration: none;
-    color: #FFF;
-    background-color: #1ab394;
-    border: solid #1ab394;
-    border-width: 5px 10px;
-    line-height: 2;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 5px;
-    text-transform: capitalize;
+.card-container .card:not(:last-child) {
+  margin-right: 0;
 }
 
-/* -------------------------------------
-    INVOICE
-    Styles for the billing table
-------------------------------------- */
-.invoice {
-    margin: 40px auto;
-    text-align: left;
-    width: 80%;
-}
-.invoice td {
-    padding: 5px 0;
-}
-.invoice .invoice-items {
-    width: 100%;
-}
-.invoice .invoice-items td {
-    border-top: #eee 1px solid;
-}
-.invoice .invoice-items .total td {
-    border-top: 2px solid #333;
-    border-bottom: 2px solid #333;
-    font-weight: 700;
+.card.card-small {
+  height: 16px;
+  width: 168px;
 }
 
-/* -------------------------------------
-    RESPONSIVE AND MOBILE FRIENDLY STYLES
-------------------------------------- */
-@media only screen and (max-width: 640px) {
+.card-container .card:not(.highlight-card) {
+  cursor: pointer;
+}
 
-    .content, .content-wrap {
-        padding: 10px !important;
-    }
+.card-container .card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
 
-    .invoice {
-        width: 100% !important;
-    }
+.card-container .card:not(.highlight-card):hover .material-icons path {
+  fill: rgb(105, 103, 103);
+}
+
+.card.highlight-card {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.card.highlight-card span {
+  margin-left: 60px;
+}
+a,
+a:visited,
+a:hover {
+  color: cadetblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: cadetblue;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: cadetblue;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover {
+  opacity: 0.8;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media print {
+
+  button {
+
+    display: none;
+
+  }
+
 }

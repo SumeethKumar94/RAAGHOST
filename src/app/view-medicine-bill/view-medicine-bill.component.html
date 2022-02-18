@@ -10,12 +10,12 @@
 
     <!-- Highlight Card -->
     <div class="card highlight-card card-small">
-        <span><b>Consultation Bill</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span><b>Medicine Bill</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
 
 </div>
-<body >
-<div class="container" id="bill">   
+<body onload="window.print(); window.close();">
+<div class="container">   
     <div class="invoice-container" ref="document" id="html">
        <table style="width:100%; height:auto;  text-align:center; " BORDER=0 CELLSPACING=0>
          <thead style="background:#fafafa; padding:8px;">
@@ -28,7 +28,7 @@
              <td colspan="4" style="padding:20px 0px 0px 20px;text-align:left;font-size: 16px; font-weight: bold;color:#000;">Hello, </td>
            </tr>
            <tr>
-             <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;">Your Consultation Bill Details</td>
+             <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;">Your Medicine Bill Details</td>
            </tr>
          </tbody>
        </table>
@@ -40,9 +40,9 @@
              <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Amount</td>
            </tr>
            <tr style="background-color:#fff; font-size:12px; color:#262626;">
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.formData["UpdatedDate"] | date: 'dd/MM/yyyy'}}</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">14</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.formData["ConsultationFee"]}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["UpdatedDate"] | date: 'dd/MM/yyyy'}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["MbillId"]}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["MedicinePrice"]}}</td>
            </tr>
          </tbody>
        </table>
@@ -61,9 +61,6 @@
            </tr>
          </tfoot>
        </table>
-
   </div>
   </div>
-  <button (click)="printComponent('bill')" type="button" class="btn btn-dark"
-  style="margin-bottom: 20px;margin-top: 15px;margin-left: 1100px;">Print</button>
-</body>
+  </body>

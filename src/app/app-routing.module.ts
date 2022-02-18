@@ -24,6 +24,8 @@ import { LabtechtestListComponent } from './labtechtests/labtechtest/labtechtest
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
+import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
+import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'appointmentscheduling', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointmentscheduling/:AppoinmentId', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'consultation-bill', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
+  { path: 'consultation-bill/:CBillId', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
   { path: 'patients', component: PatientsComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'patientregistrartion', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'patientregistrartion/:PatientId', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'} },
@@ -57,13 +60,12 @@ const routes: Routes = [
   { path: 'medicineadd', component: MedicineComponent },
   { path: 'medicineadd/:MedicineId', component: MedicineComponent },
   
-  { path: 'pharm-prescriptions', component: PharmpresListComponent , canActivate:[AuthGuard],data:{role:'4'}},
-  { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent , canActivate:[AuthGuard],data:{role:'4'}},
-  { path: 'lab-labtests', component: LabtechlabtestListComponent , canActivate:[AuthGuard],data:{role:'5'}},
-  { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent , canActivate:[AuthGuard],data:{role:'5'}},
-
-
-
+  { path: 'pharm-prescriptions', component: PharmpresListComponent ,canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent,canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'ViewMedicineBill/:billId', component: ViewMedicineBillComponent,canActivate:[AuthGuard],data:{role:'4'}},
+  { path: 'lab-labtests', component: LabtechlabtestListComponent ,canActivate:[AuthGuard],data:{role:'5'}},
+  { path: 'lab-labtestDetails/:testId', component: LabtechtestListComponent,canActivate:[AuthGuard],data:{role:'5'}},
+  { path: 'ViewTestbill/:billId', component: ViewTestBillComponent,canActivate:[AuthGuard],data:{role:'5'}}
 
 ];
 

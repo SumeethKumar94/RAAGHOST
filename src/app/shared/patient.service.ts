@@ -15,8 +15,6 @@ export class PatientService {
 
   patients: Patient[];
   patient : Patient[];
-  departments: Department[];
-  employees: Employee[];
   appointments : Appointment[];
   formData: Patient = new Patient();
   formData1: Department = new Department();
@@ -35,6 +33,7 @@ export class PatientService {
         }
       );
   }
+  // /api/patients/getpatientbycontact?contact=
 
   bindListPatient(PatientId :number) {
     this.httpClient.get(environment.apiUrl + '/api/patients/getpatient?patientid=' +PatientId)
@@ -47,28 +46,16 @@ export class PatientService {
       );
   }
 
-  bindListDepartments() {
-    this.httpClient.get(environment.apiUrl + '/api/deparments')
+  bindListPatientbyphone(contact :string) {
+    this.httpClient.get(environment.apiUrl + '/api/patients/getpatientbycontact?contact=' +contact)
       .toPromise().then(
         response => {
           console.log("from service");
           console.log(response);
-          this.departments = response as Department[];
+          this.patient = response as Patient[];
         }
       );
   }
-
-  bindListDoctors() {
-    this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails')
-      .toPromise().then(
-        response => {
-          console.log("from service");
-          console.log(response);
-          this.employees = response as Employee[];
-        }
-      );
-  }
-
 
   /*-----------------------------------------------------------------------------*/
 //create new Appointment
@@ -83,26 +70,8 @@ export class PatientService {
   
 
   /*----------------------------------------------------------------------------*/
-  //create new bill
-  insertConsultationBillDetails(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/consultationbills');
-  }
-
-  //get bill by id
-  getConsultationBillById(CbillId: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + "/api/consultationbills" + CbillId);
-  }
 
   /*----------------------------------------------------------------------------*/
-
-  //get all departments
-  GetAllDepartments(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/deparments');
-  }
-
-  GetAllDoctors(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + '/api/employees/getdoctordetails');
-  }
 
 
   //get patients
@@ -114,6 +83,11 @@ export class PatientService {
   getPatientById(PatientId: number): Observable<any> {
     return this.httpClient.get(environment.apiUrl + "/api/patients/" + PatientId);
   }
+
+    //get patients by id
+    getPatientByContact(PhoneNumber: number): Observable<any> {
+      return this.httpClient.get(environment.apiUrl + "/api/patients/getpatientbycontact/" + PhoneNumber);
+    }
 
   //add patient
   insertPatient(patients: Patient): Observable<any> {
