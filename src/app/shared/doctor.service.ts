@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Doctorappointment } from './doctorappointment';
 import { Medicine } from './medicine';
 import {Medicineprescribe} from './medicineprescribe';
+import {Testprescribe} from './testprescribe';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +18,9 @@ export class DoctorService {
   unit: Doctorappointment[];
 
   dosage:Doctorappointment[];
-  medpre:Medicineprescribe[];
+
   data:Medicineprescribe = new Medicineprescribe();
+  testdata:Testprescribe = new Testprescribe();
   formData:Doctorappointment= new Doctorappointment();
 
   constructor(private httpClient:HttpClient) { }
@@ -62,6 +64,7 @@ export class DoctorService {
       }
 
     );
+
     
   }
   
@@ -109,8 +112,25 @@ export class DoctorService {
   insertPrescribeMedicine(medpre:Medicineprescribe):Observable<any>{
     return this.httpClient.post(environment.apiUrl + "/api/doctors/addmed",medpre);
   }
-  
+  insertPrescription(medpre:Medicineprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addprescription",medpre);
+  }
+  insertPrescriptiondetails(medpre:Medicineprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addprescriptiondetails",medpre);
+  }
 
+  //----------------------------------------------
+  insertPrescribeTest(testpre:Testprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addprescribedtest",testpre);
+  }
+  insertTestDetail(testpre:Testprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addtestdet",testpre);
+  }
+  insertTestPrescribe(testpre:Testprescribe):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + "/api/doctors/addtestpres",testpre);
+  }
+  
+ 
   
   bindListDosage(){
 

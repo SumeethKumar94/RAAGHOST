@@ -7,4 +7,6 @@ export class Medicineprescribe {
     MedicineId :number = 0;
     AppoinmentId: number =0;
     DoctorId: number =0;
+    PDetailsId: number =0;
+    PrescriptionId: number =0;
 }
