@@ -16,8 +16,8 @@
     </div>
 
 </div>
-<body onload="window.print(); window.close();">
-<div class="container">   
+<body>
+<div class="container" id="print_content">   
     <div class="invoice-container" ref="document" id="html">
        <table style="width:100%; height:auto;  text-align:center; " BORDER=0 CELLSPACING=0>
          <thead style="background:#fafafa; padding:8px;">
@@ -64,5 +64,6 @@
          </tfoot>
        </table>
   </div>
+  <button class="btn btn-primary" style="float: inline-end;" (click)="printComponent()">Print</button>
   </div>
   </body>

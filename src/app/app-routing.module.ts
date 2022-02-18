@@ -59,7 +59,8 @@ const routes: Routes = [
   { path: 'employeeregister', component: EmployeesComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   { path: 'medicine-list', component: MedicineListComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   { path: 'medicineadd', component: MedicineComponent },
-  { path: 'medicineadd/:MedicineId', component: MedicineComponent },
+  { path: 'medicineadd/:MedicineId', component: MedicineComponent},
+  { path: 'employeeregister/:EmployeeId', component: EmployeesComponent},
   
   { path: 'pharm-prescriptions', component: PharmpresListComponent ,canActivate:[AuthGuard],data:{role:'4'}},
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent,canActivate:[AuthGuard],data:{role:'4'}},
