@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from '../app.component';
 import { DoctorService } from '../shared/doctor.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctorlabtest',
@@ -25,7 +27,7 @@ export class DoctorlabtestComponent implements OnInit {
     PTId: ""
 
   }
-  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent) { }
+  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent,private authService :AuthService,private router:Router) { }
 
   ngOnInit(): void {
     this.appointmentService.bindListTest();
@@ -116,6 +118,14 @@ export class DoctorlabtestComponent implements OnInit {
 
     )
 
+  }
+  logout(){
+    this.authService.logOut();
+    this.router.navigateByUrl('login');
+  }
+  move(){
+    this.app.AppoinmentId=0;
+    this.router.navigateByUrl('doctorhome');
   }
   resetForm(form?: NgForm) {
     if (form != null) {
