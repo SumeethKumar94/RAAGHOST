@@ -17,5 +17,15 @@ export class ViewTestBillComponent implements OnInit {
     console.log(this.billId);
     this.labtesttestservice.bindListLabTestBillById(this.billId);
   }
+  printComponent() {
+    let printContents = document.getElementById("html").innerHTML;
+    let originalContents = document.body.innerHTML;
+  
+    document.body.innerHTML = printContents;
+  
+    window.print();
+  
+    document.body.innerHTML = originalContents;
+  }
 
 }
