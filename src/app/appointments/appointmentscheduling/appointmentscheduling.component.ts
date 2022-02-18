@@ -106,7 +106,13 @@ export class AppointmentschedulingComponent implements OnInit {
           }
 
           this.insertBillRecord(this.BillObj);
-          this.toastrService.success('New Appointment Scheduled successfully', 'CMSApp v2o22');
+
+
+          if (confirm('Do you want to SCHEDULE Appointment and GENERATE the Bill ?')) {
+            setTimeout(() => {
+              this.generateBill(this.recappointmentService.formData.CBillId);
+            }, 2000);
+          }
         },
         (error) => {
           console.log(error);
@@ -122,7 +128,6 @@ export class AppointmentschedulingComponent implements OnInit {
       (
         (result1) => {
           console.log(result1);
-          this.toastrService.success('New Token generated successfully', 'CMSApp v2o22');
         },
         (error) => {
           console.log(error);
@@ -137,12 +142,18 @@ export class AppointmentschedulingComponent implements OnInit {
       (
         (result1) => {
           console.log(result1);
-          this.toastrService.success('Bill generated successfully', 'CMSApp v2o22');
+          this.toastrService.success('Generating Bill...', 'CMSApp v2o22');
+          this.toastrService.success('Appointment Scheduled Successfully', 'CMSApp v2o22');
+
         },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  generateBill(CBillId: any) {
+    this.router.navigate(['consultation-bill', CBillId]);
   }
 }
 

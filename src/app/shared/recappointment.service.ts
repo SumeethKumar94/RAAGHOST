@@ -59,6 +59,16 @@ export class RecappointmentService {
       );
   }
 
+  bindListConsultationBillByBillID(CBillId:number){
+    this.httpClient.get(environment.apiUrl + "/api/consultationbills/"+CBillId)
+    .toPromise().then(
+      response => {
+        console.log("searching the bill");
+        console.log(response);
+        this.recappointments = response as Recappointment[];
+      }
+    )
+  }
 
     //create new bill
     insertConsultationBillDetails(recappointments: Recappointment): Observable<any> {
