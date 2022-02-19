@@ -11,4 +11,6 @@ export class AppComponent {
   DoctorId: number =1;
 
   
+  PrescriptionId: number =0;
+  TPrescriptionId:number =0;
 }
