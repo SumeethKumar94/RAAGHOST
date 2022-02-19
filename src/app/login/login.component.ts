@@ -72,6 +72,8 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('/adminhome');
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("EMPLOYEEID", this.loginUser.EmployeeId);
+
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
             }
@@ -79,6 +81,7 @@ export class LoginComponent implements OnInit {
               console.log("Receptionist");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("EMPLOYEEID", this.loginUser.EmployeeId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/ReceptionistHome');
@@ -87,7 +90,7 @@ export class LoginComponent implements OnInit {
               console.log("Doctor");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
-              localStorage.setItem("DoctorId",this.loginUser.EmployeeId)
+              localStorage.setItem("EMPLOYEEID", this.loginUser.EmployeeId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/doctorhome');
@@ -96,6 +99,7 @@ export class LoginComponent implements OnInit {
               console.log("Pharmacist");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("EMPLOYEEID", this.loginUser.EmployeeId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/pharm-prescriptions');
@@ -104,6 +108,7 @@ export class LoginComponent implements OnInit {
               console.log("Lab Technician");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
               localStorage.setItem("ACCESSROLE", this.loginUser.RoleId);
+              localStorage.setItem("EMPLOYEEID", this.loginUser.EmployeeId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
 
               this.router.navigateByUrl('/lab-labtests');

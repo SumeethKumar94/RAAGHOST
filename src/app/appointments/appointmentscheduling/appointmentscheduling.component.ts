@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Patient } from 'src/app/shared/patient';
 import { PatientService } from 'src/app/shared/patient.service';
+import { Recappointment } from 'src/app/shared/recappointment';
 import { RecappointmentService } from 'src/app/shared/recappointment.service';
 
 @Component({
@@ -12,11 +13,18 @@ import { RecappointmentService } from 'src/app/shared/recappointment.service';
   styleUrls: ['./appointmentscheduling.component.scss']
 })
 export class AppointmentschedulingComponent implements OnInit {
+
+
+
   PatientId: number;
   loggedUser: string;
   AppId: number;
   filter: string;
+  filters: string;
   PhoneNumber: string;
+  loggedUserdata: string;
+  DepId : number;
+
 
   TokenObj: {} = { TokenNo: "", TokenDate: "", AppointmentId: "", DoctorId: "" };
 
@@ -29,9 +37,11 @@ export class AppointmentschedulingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.recappointmentService.bindListDepartments();
-    this.recappointmentService.bindListDoctors();
+    this.loggedUserdata = localStorage.getItem("EMPLOYEEID");
 
+    this.recappointmentService.bindListDepartments();
+    this. DepId = this.route.snapshot.params[' DepId'];
+    this.recappointmentService.bindListDoctor(this.recappointmentService.formData.DepId);
   }
 
 
@@ -155,5 +165,14 @@ export class AppointmentschedulingComponent implements OnInit {
   generateBill() {
     this.router.navigate(['consultation-bill',this.AppId]);
   }
+
+  onCodeChange($event)
+  {
+    this.recappointmentService.formData.DepId = $event.target.value;
+    this.recappointmentService.bindListDoctor(this.recappointmentService.formData.DepId);
+  }
+
+
+
 }
 

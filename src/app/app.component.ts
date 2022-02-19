@@ -9,6 +9,8 @@ export class AppComponent {
   title = 'CMSUI';
   AppoinmentId: number =0;
   DoctorId: number =1;
+
+  
   PrescriptionId: number =0;
   TPrescriptionId:number =0;
 }
