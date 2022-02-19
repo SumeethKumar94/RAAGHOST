@@ -55,7 +55,7 @@ export class DoctorlabtestComponent implements OnInit {
       console.log(this.presct);
 
       console.log(this.app.AppoinmentId);
-      this.appointmentService.testdata.TestId =0;
+      this.appointmentService.testdata.PTId =0;
      
 
     } else {
