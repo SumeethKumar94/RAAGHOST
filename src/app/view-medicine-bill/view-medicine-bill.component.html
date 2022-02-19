@@ -39,13 +39,30 @@
            <tr style="color:#6c757d; font-size: 20px;">
              <td style="border-right:1.5px dashed  #DCDCDC; width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Bill Date</td>
              <td style="border-right: 1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Bill Id</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Amount</td>
+             <!-- <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Amount</td> -->
            </tr>
            <tr style="background-color:#fff; font-size:12px; color:#262626;">
              <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["UpdatedDate"] | date: 'dd/MM/yyyy'}}</td>
              <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["MbillId"]}}</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["MedicinePrice"]}}</td>
+             <!-- <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{prescriptionmedicinesservice.medicinebillCheck["MedicinePrice"]}}</td> -->
            </tr>
+           <tr style="color:#6c757d; font-size: 20px;">
+            <td style="border-right:1.5px dashed  #DCDCDC; width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Medicine Name</td>
+            <td style="border-right: 1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Quantity</td>
+            <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Unt Price</td>
+          </tr>
+          <tr *ngFor="let medicine of prescriptionmedicinesservice.medicines">
+            <td>{{medicine.Medicinename}}</td>
+            <!-- <td>{{medicine.Dosage}}</td> -->
+            <td>{{medicine.Quantity}}</td>
+            <td>{{medicine.PriceperUnit}}</td>
+          </tr>
+          <tr style="color:#6c757d; font-size: 20px;">
+            <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;text-align: end;" colspan="3">Total Amount</td>
+          </tr>
+          <tr>
+            <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa; text-align: end;" colspan="3">{{prescriptionmedicinesservice.medicinebillCheck["MedicinePrice"]}}</td>
+          </tr>
          </tbody>
        </table>
        <table style="width:100%; height:auto; background-color:#fff;padding:20px; font-size:12px; border: 1px solid #ebebeb; border-top:0">
