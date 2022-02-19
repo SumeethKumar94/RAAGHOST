@@ -35,7 +35,7 @@
             <label>Stock  :</label>
             <input type="number" name="StockQuantity" #StockQuantity="ngModel"
                 [(ngModel)]="mediService.formData.StockQuantity" class="form-control" placeholder="Enter stock"
-                required minlength="1" maxlength="4" autocomplete="off"
+                required minlength="1" min=0 maxlength="4" autocomplete="off"
                 [ngClass]="{'is-invalid':StockQuantity.touched && StockQuantity.invalid}" />
 
             <!--  validation-->
@@ -51,7 +51,7 @@
             <label>Unit Price  :</label>
             <input type="number" name="UnitPrice" #UnitPrice="ngModel"
                 [(ngModel)]="mediService.formData.UnitPrice" class="form-control" placeholder="Enter price"
-                required minlength="1" maxlength="4" autocomplete="off"
+                required minlength="0" min=0 maxlength="4" autocomplete="off"
                 [ngClass]="{'is-invalid':UnitPrice.touched && UnitPrice.invalid}" />
 
             <!--  validation-->
@@ -78,15 +78,15 @@
             </div>
         </div>
 
-        <!-- Name-->
+        <!-- id-->
         <div class="form-group mb-2 p-1">
             <label>Admin Id :</label>
             <input type="number" name="AdminId" #AdminId="ngModel"
                 [(ngModel)]="mediService.formData.AdminId" class="form-control" placeholder="Enter id"
-                required minlength="1" maxlength="3" autocomplete="off"
+                required minlength="1" min=0 maxlength="3" autocomplete="off"
                 [ngClass]="{'is-invalid':AdminId.touched && AdminId.invalid}" />
 
-            <!-- name validation-->
+            <!--  validation-->
             <div class="validation-error" *ngIf="AdminId.touched && AdminId.invalid">
                 <div *ngIf="AdminId.errors">
                   id is required!

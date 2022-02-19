@@ -18,7 +18,7 @@
             <div class="form-group mb-2 p-1 col-md-6">
                 <label>First Name :</label>
                 <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="empService.formData.FirstName"
-                    class="form-control" placeholder="Enter first Name" required minlength="3" maxlength="25"
+                    class="form-control" placeholder="Enter first Name" pattern="[a-zA-Z\s]+" required minlength="3" maxlength="25"
                     autocomplete="off" [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
 
                 <!-- name validation-->
@@ -33,7 +33,7 @@
             <div class="form-group mb-2 p-1 col-md-6">
                 <label>last Name :</label>
                 <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="empService.formData.LastName"
-                    class="form-control" placeholder="Enterlast Name" required minlength="1" maxlength="25"
+                    class="form-control" placeholder="Enterlast Name" pattern="[a-zA-Z\s]+" required minlength="1" maxlength="25"
                     autocomplete="off" [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}" />
 
                 <!--  validation-->
@@ -96,7 +96,7 @@
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Gender (M/F/O) :</label>
             <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
-                class="form-control" placeholder="Enter Gender" required minlength="1" autocomplete="off"
+                class="form-control" placeholder="Enter Gender" pattern="[a-zA-Z\s]+" required minlength="1" autocomplete="off"
                 [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" />
 
             <!--  validation-->
@@ -111,7 +111,7 @@
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Address :</label>
             <input type="text" name="Address" #Address="ngModel" [(ngModel)]="empService.formData.Address"
-                class="form-control" placeholder="Enter Address" required minlength="1" autocomplete="off"
+                class="form-control" placeholder="Enter Address" required minlength="3" autocomplete="off"
                 [ngClass]="{'is-invalid':Address.touched && Address.invalid}" />
 
             <!-- name validation-->
@@ -126,7 +126,7 @@
         <div class="form-group mb-2 p-1 col-md-6">
             <label>User Name :</label>
             <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="empService.formData.UserName"
-                class="form-control" placeholder="Enter UserName" required minlength="3" autocomplete="off"
+                class="form-control" placeholder="Enter UserName" required minlength="5" autocomplete="off"
                 [ngClass]="{'is-invalid':UserName.touched && UserName.invalid}" />
 
             <!-- name validation-->
@@ -170,7 +170,7 @@
         <!-- status -->
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Status(Active/Inactive) :</label>
-            <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel"
+            <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
                 [(ngModel)]="empService.formData.EmployeeStatus" class="form-control" placeholder="Active/Inactive"
                 required minlength="6" autocomplete="off"
                 [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" />
