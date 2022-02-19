@@ -1,6 +1,6 @@
 <div class="toolbar" role="banner">
     <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>HOME</span>
+    <span [routerLink]="['/ReceptionistHome']">RECEPTIONIST HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
 </div>
@@ -25,27 +25,34 @@
          </thead>
          <tbody style="background:#ffff;padding:20px;">
            <tr>
-             <td colspan="4" style="padding:20px 0px 0px 20px;text-align:left;font-size: 16px; font-weight: bold;color:#000;">Hello, </td>
+             <td colspan="4" style="padding:20px 0px 0px 20px;text-align:left;font-size: 16px; font-weight: bold;color:#000;">Hello,{{recappointmentService.recappointments[0]["FirstName"]}} </td>
            </tr>
            <tr>
-             <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;">Your Consultation Bill Details</td>
+             <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;">Your Consultation Bill Details for:</td>
            </tr>
+           <tr>
+            <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;"><b>Appointment Id</b>: {{recappointmentService.recappointments[0]["AppointmentId"]}}  &nbsp;&nbsp;&nbsp;&nbsp;<b>Token No</b>: {{recappointmentService.recappointments[0]["TokenNo"]}}
+              &nbsp;&nbsp;&nbsp;&nbsp;<b>Doctor</b>: Dr.{{recappointmentService.recappointments[0]["DoctorName"]}}
+            </td>
+          </tr>
          </tbody>
        </table>
+       <br>
        <table style="width:100%; height:auto; background-color:#fff;text-align:center; padding:10px; background:#fafafa">
          <tbody>
            <tr style="color:#6c757d; font-size: 20px;">
              <td style="border-right:1.5px dashed  #DCDCDC; width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Bill Date</td>
              <td style="border-right: 1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Bill Id</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Amount</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Payable Amount</td>
            </tr>
            <tr style="background-color:#fff; font-size:12px; color:#262626;">
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.formData["UpdatedDate"] | date: 'dd/MM/yyyy'}}</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">14</td>
-             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.formData["ConsultationFee"]}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.recappointments[0]["UpdatedDate"] | date: 'dd/MM/yyyy'}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">{{recappointmentService.recappointments[0]["CbillId"]}}</td>
+             <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">{{recappointmentService.recappointments[0]["ConsultationFee"]}}</td>
            </tr>
          </tbody>
        </table>
+       <br>
        <table style="width:100%; height:auto; background-color:#fff;padding:20px; font-size:12px; border: 1px solid #ebebeb; border-top:0">
          <tbody>
            <tr>

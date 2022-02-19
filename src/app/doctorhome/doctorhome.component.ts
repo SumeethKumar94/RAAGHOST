@@ -18,6 +18,7 @@ export class DoctorhomeComponent implements OnInit {
   filter: string;
   ngForm: FormGroup;
   pm: number;
+  
   pre:number;
   presc:{}={
    // PrescriptionId:""
@@ -69,7 +70,7 @@ export class DoctorhomeComponent implements OnInit {
     
     
 
-    let addId =this.appointmentService.data.Pmid;
+     let addId =this.appointmentService.data.Pmid;
     if(addId==0||addId==null){
       //INSERT
      this.insertprescribemedRecord(form);
@@ -82,7 +83,7 @@ export class DoctorhomeComponent implements OnInit {
      console.log(this.presc);
 
      console.log(this.app.AppoinmentId);
-     
+     this.appointmentService.data.Pmid =0;
      
     }else{
       console.log("not inserted");
@@ -99,7 +100,17 @@ export class DoctorhomeComponent implements OnInit {
       
       this.resetForm(form);
       this.toastrService.success('Prescription record has been inserted','CmsApp v2022');
-      this.insertPrescription(this.presc);
+      if(this.app.PrescriptionId==0||this.app.PrescriptionId==null){
+       
+        this.insertPrescription(this.presc);
+       
+      }else{
+
+        this.presdetail={PrescriptionId:this.app.PrescriptionId,
+          PmId:Number(this.pm)}
+          this.insertPrescriptionDetail(this.presdetail);
+      }
+      
 
       },
       (error)=>{
@@ -115,10 +126,13 @@ export class DoctorhomeComponent implements OnInit {
     this.appointmentService.insertPrescription(obj).subscribe((result)=>{
       console.log(result);
       this.pre= result;
-     
+
+      
+     this.app.PrescriptionId = this.pre;
      console.log(this.presdetail);
+
      
-     this.presdetail={PrescriptionId:this.pre,
+     this.presdetail={PrescriptionId:this.app.PrescriptionId,
       PmId:Number(this.pm)}
 
 
@@ -133,7 +147,7 @@ export class DoctorhomeComponent implements OnInit {
 
   }
   insertPrescriptionDetail(obj:any){
-    console.log("inserting  prescription record...");
+    console.log("inserting  prescription detail record...");
     this.appointmentService.insertPrescriptiondetails(obj).subscribe((result)=>{
       console.log(result);
       this.toastrService.success('added detail record has been inserted','CmsApp v2022');
@@ -147,6 +161,8 @@ export class DoctorhomeComponent implements OnInit {
   resetForm(form?:NgForm){
     if(form!=null){
       form.resetForm();
+      
+
     }
   }
 
