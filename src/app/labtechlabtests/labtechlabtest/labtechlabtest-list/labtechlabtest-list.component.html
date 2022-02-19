@@ -35,7 +35,7 @@
     </thead>
     <tbody>
         <tr
-            *ngFor="let testpres of labtechtestservice.labtechtests | filter: filter | paginate:{ itemsPerPage:1, currentPage: page}">
+            *ngFor="let testpres of labtechtestservice.labtechtests | filter: filter | paginate:{ itemsPerPage:5, currentPage: page}">
             <td>{{testpres.AppointmentId}}</td>
             <td>{{testpres.PatientFname}}&nbsp;{{testpres.PatientLname}}</td>
             <td>{{testpres.DocttorFname}}&nbsp;{{testpres.DocttorLname}}</td>

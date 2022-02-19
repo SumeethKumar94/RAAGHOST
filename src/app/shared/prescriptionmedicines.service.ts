@@ -23,6 +23,7 @@ export class PrescriptionmedicinesService {
       response => {
         console.log(response);
         this.medicines = response as Prescriptionmedicines[];
+        console.log(this.medicines);
       }
     )
   }
@@ -44,6 +45,9 @@ export class PrescriptionmedicinesService {
         this.medicinebillCheck = response as Medicinebillcheck[];
       }
     )
+  }
+  getMedicineBillById(Id:number){
+    return this.httpClient.get(environment.apiUrl + "/api/Medicinebill/"+Id);
   }
   insertMedicineBill(medicineBill:Medicinebill):Observable<any>{
     return this.httpClient.post(environment.apiUrl+"/api/Medicinebill",medicineBill);
