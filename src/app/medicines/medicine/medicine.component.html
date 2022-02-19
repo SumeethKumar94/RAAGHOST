@@ -1,13 +1,13 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
     <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>ADMIN HOME</span>
+    <span type="button" routerlink="/adminhome" (click)="navi()" >HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
 </div>
 
 <div class="container">
-    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Add Medicine</h2>
+    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;" routerlink="/medicineadd">Add Medicine</h2>
     <!--  -->
     <form name="mediform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
         <!-- ID---Hidden-->

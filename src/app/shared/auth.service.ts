@@ -23,7 +23,7 @@ export class AuthService {
   //LOGOUT
   public logOut() {
     localStorage.removeItem("USERNAME");
-    localStorage.removeItem("ACESSROLE");
+    localStorage.removeItem("ACCESSROLE");
     sessionStorage.removeItem("USERNAME");
     sessionStorage.removeItem("jwtToken");
   }

@@ -45,7 +45,8 @@ const routes: Routes = [
   { path: 'appointmentscheduling', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointmentscheduling/:AppoinmentId', component: AppointmentschedulingComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'consultation-bill', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
-  { path: 'consultation-bill/:CBillId', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
+  { path: 'consultation-bill/:AppointmentId', component: ConsultationBillComponent, canActivate:[AuthGuard],data:{role:'2'} },
+
   { path: 'patients', component: PatientsComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'patientregistrartion', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'patientregistrartion/:PatientId', component: PatientregistrationComponent , canActivate:[AuthGuard],data:{role:'2'} },
@@ -58,7 +59,8 @@ const routes: Routes = [
   { path: 'employeeregister', component: EmployeesComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   { path: 'medicine-list', component: MedicineListComponent, canActivate:[AuthGuard],data:{role:'1'}  },
   { path: 'medicineadd', component: MedicineComponent },
-  { path: 'medicineadd/:MedicineId', component: MedicineComponent },
+  { path: 'medicineadd/:MedicineId', component: MedicineComponent},
+  { path: 'employeeregister/:EmployeeId', component: EmployeesComponent},
   
   { path: 'pharm-prescriptions', component: PharmpresListComponent ,canActivate:[AuthGuard],data:{role:'4'}},
   { path: 'pres-medicines/:presId', component: PrescriptionmedicineListComponent,canActivate:[AuthGuard],data:{role:'4'}},

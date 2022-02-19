@@ -17,24 +17,22 @@ export class MedicineComponent implements OnInit {
     private toastrService: ToastrService, private router:Router) { }
 
   ngOnInit(): void {
-    //get userId from ActivateRoute
+    //get Id from ActivateRoute
     this.MedicineId = this.route.snapshot.params['MedicineId'];
     console.log(this.MedicineId);
     
-    //get user by Id
+    //get  by Id
     if (this.MedicineId!=0 || this.MedicineId!=null) {
-      //get user
+      //get 
       this.mediService.getMediById(this.MedicineId).subscribe(
         result => {
           console.log(result);
           //format the date : yyyy:mm:dd
           var datePipe=new DatePipe("en-UK");
 
-          let formatedDate=datePipe.transform(result.Doj,'yyyy-MM-dd')
-          result.Doj=formatedDate;
+          let formatedDate=datePipe.transform(result.ExpiryDate,'yyyy-MM-dd')
+          result.ExpiryDate=formatedDate;
 
-          let formdate=datePipe.transform(result.Dob,'yyyy-MM-dd')
-          result.Dob=formdate;
           
           this.mediService.formData=Object.assign({},result);
         },
@@ -106,5 +104,9 @@ export class MedicineComponent implements OnInit {
       
     }
   }
+
+  navi(){
+    this.router.navigateByUrl('/adminhome');
+   }
 
 }

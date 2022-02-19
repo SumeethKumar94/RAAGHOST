@@ -10,15 +10,15 @@ import { RecappointmentService } from 'src/app/shared/recappointment.service';
 })
 export class FinalbillComponent implements OnInit {
 
-  CBillId: number;
+  AppointmentId: number;
 
   constructor(public recappointmentService: RecappointmentService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.CBillId = this.route.snapshot.params['CBillId'];
-    this.recappointmentService.bindListConsultationBillByBillID(this.CBillId);
+    this.AppointmentId = this.route.snapshot.params['AppointmentId'];
+    this.recappointmentService.bindListConsultationBillByBillID(this.AppointmentId);
 
   }
 

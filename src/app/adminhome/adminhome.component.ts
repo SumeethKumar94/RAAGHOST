@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 
 @Component({
@@ -8,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminhomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,private router:Router) { }
 
   ngOnInit(): void {
+    //this.loggedUser=localStorage.getItem("USERNAME")
+  }
+  logOut(){
+    this.authService.logOut();
+    this.router.navigateByUrl('');
   }
 
 }
