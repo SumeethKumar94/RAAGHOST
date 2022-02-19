@@ -59,6 +59,19 @@ export class RecappointmentService {
       );
   }
 
+  bindListDoctor(DepId: number) {
+    this.httpClient.get(environment.apiUrl + '/api/doctors/' + DepId)
+      .toPromise().then(
+        response => {
+          console.log("from service");
+          console.log(response);
+          this.recappointments = response as Recappointment[];
+        }
+      );
+  }
+
+  
+
   bindListConsultationBillByBillID(AppointmentId:number){
     this.httpClient.get(environment.apiUrl + "/api/consultationbills/bill/"+ AppointmentId)
     .toPromise().then(

@@ -15,6 +15,7 @@ export class Employee {
 
     DepId:number=0;
     DepName:string="";
+    DoctorName:string ='';
 
     RoleId: number=0;
     DoctorId : number =0;

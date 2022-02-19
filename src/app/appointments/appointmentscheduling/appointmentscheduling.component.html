@@ -21,11 +21,10 @@
         [ngModelOptions]="{standalone: true}">
       <div class="input-group-append">
 
-        <button id="button-addon5" type="submit" class="btn btn-secondary" style="margin-top: 10px;"
+        <button id="button-addon" type="submit" class="btn btn-secondary" style="margin-top: 10px;"
           (click)="getDetails()"> <i class="fa fa-search"></i>Search</button>
       </div>
     </div>
-    <br>
 
     <p
       style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;font-weight: bold;font-size: large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -36,7 +35,7 @@
 
 
       <input type="search" class="form-control" id="PhoneNumber" placeholder="Search patient  by  Phone number "
-        aria-describedby="button-addon5" [(ngModel)]="filter" #PhoneNumber name="PhoneNumber"
+        aria-describedby="button-addon5" [(ngModel)]="filters" #PhoneNumber name="PhoneNumber"
         [ngModelOptions]="{standalone: true}">
       <div class="input-group-append">
 
@@ -89,13 +88,8 @@
 
 
         <!--Employee Id-->
-        <input type="hidden" name="EmployeeId" [(ngModel)]="recappointmentService.formData.EmployeeId"
-          id="EmployeeId" />
-        <script type="text/javascript">
-          document.getElementById('EmployeeId').value = '2';
-        </script>
-
-
+        <input type="hidden" name="EmployeeId" [(ngModel)]="recappointmentService.formData.EmployeeId" 
+          id="EmployeeId" value="{{loggedUserdata}}" />
 
         <!--PatientId-->
         <div class="form-group col-md-6"
@@ -143,6 +137,8 @@
           <label for="bloodgroup"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Department</b></label>
           <select id="DepId" class="form-control" name="DepId" id="DepId" #DepId="ngModel" required
+
+            (change)="onCodeChange($event)"
             [(ngModel)]="recappointmentService.formData1.DepId">
             <option value="0" disabled>-- Choose the Department --</option>
             <option *ngFor="let tr of recappointmentService.departments" value="{{tr.DepId}}">
@@ -163,11 +159,11 @@
         <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
           <label for="bloodgroup"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Doctor</b></label>
-          <select id="DoctorId" class="form-control" name="DoctorId" id="DoctorId" #DoctorId="ngModel" required
+          <select *ngIf="recappointmentService.formData1.DepId" id="DoctorId" class="form-control" name="DoctorId" id="DoctorId" #DoctorId="ngModel" required
             [(ngModel)]="recappointmentService.formData.DoctorId">
             <option value="0" disabled>-- Choose the Doctor --</option>
-            <option *ngFor="let tr of recappointmentService.employees" value="{{tr.DoctorId}}">
-              {{tr.FirstName}}
+            <option *ngFor="let tr of recappointmentService.recappointments" value="{{tr.DoctorId}}">
+              {{tr.DoctorName}}
             </option>
           </select>
 

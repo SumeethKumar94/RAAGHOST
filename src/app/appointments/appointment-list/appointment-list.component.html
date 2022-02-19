@@ -24,7 +24,7 @@
         <thead>
             <tr>
                 <th>AppointmentId</th>
-                <th>Token No</th>
+                <!-- <th>Token No</th> -->
                 <th>Patient Name</th>
                 <th>Doctor Name</th>
                 <th>Appointment Date</th>
@@ -34,7 +34,7 @@
             <tr
                 *ngFor="let recappointment of recappointmentService.recappointments | filter : filter | paginate: {itemsPerPage : 6, currentPage : page}">
                 <td>{{recappointment.AppoinmentId}}</td>
-                <td>{{recappointment.TokenNo}}</td>
+                <!-- <td>{{recappointment.TokenNo}}</td> -->
                 <td>{{recappointment.FirstName}}</td>
                 <td>{{recappointment.DoctorName}}</td>
                 <td>{{recappointment.TokenDate}}</td>
