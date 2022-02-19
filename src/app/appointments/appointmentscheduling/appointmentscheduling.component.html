@@ -190,7 +190,7 @@
               Fee</b></label>
           <input type="number" class="form-control" name="ConsultationFee" #ConsultationFee="ngModel"
             [(ngModel)]="recappointmentService.formData.ConsultationFee" class="form-control"
-            placeholder="Enter ConsultationFee" required minlength="2" maxlength="30"
+            placeholder="Enter ConsultationFee" required minlength="1" maxlength="30" min="0"
             [ngClass]="{'is-invalid':ConsultationFee.touched && ConsultationFee.invalid}" />
 
           <!--FirstName validation-->
@@ -212,9 +212,9 @@
   </div>
 </div>
 
-<footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
-  <div class="footer footer-fixed align-items:center">
-    <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
-    </span>
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+  <div class="container text-center">
+    <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
+</span>
   </div>
 </footer>

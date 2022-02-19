@@ -103,7 +103,7 @@
             style="float: left;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Phone Number</b>
             :</label>
           <input type="text" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="patientService.formData.PhoneNumber"
-            class="form-control" placeholder="Enter your number" required minlength="10" maxlength="10"
+            class="form-control" placeholder="Enter your number" required minlength="10" maxlength="10" min="0"
             [ngClass]="{'is-invalid':PhoneNumber.touched && PhoneNumber.invalid}" />
 
           <!--PhoneNumber validation-->
@@ -155,8 +155,8 @@
           <label for="Pincode" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>
               Pincode
               :</b></label>
-          <input type="text" class="form-control" name="Pincode" #Pincode="ngModel"
-            [(ngModel)]="patientService.formData.Pincode" class="form-control" placeholder="Enter Pincode" required
+          <input type="number" class="form-control" name="Pincode" #Pincode="ngModel"
+            [(ngModel)]="patientService.formData.Pincode" class="form-control" placeholder="Enter Pincode" required min="0"
             minlength="2" maxlength="25" [ngClass]="{'is-invalid':Pincode.touched && Pincode.invalid}" />
 
           <!--Pincode validation-->
@@ -179,9 +179,9 @@
 </div>
 
 <!--Footer-->
-<footer class="footer bg-dark" style="align-items: center; margin-top: 80px;">
-  <div class="footer footer-fixed align-items:center">
-    <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
-    </span>
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+  <div class="container text-center">
+    <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
+</span>
   </div>
 </footer>
