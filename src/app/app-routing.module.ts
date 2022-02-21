@@ -26,10 +26,12 @@ import { AuthGuard } from './shared/auth.guard';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
 import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'main', component: MainpageComponent },
 
   { path: 'doctorhome', component: DoctorappointmentlistComponent, canActivate:[AuthGuard],data:{role:'3'}  },
   { path: 'doctorprescribe', component: DoctorhomeComponent, canActivate:[AuthGuard],data:{role:'3'}},
