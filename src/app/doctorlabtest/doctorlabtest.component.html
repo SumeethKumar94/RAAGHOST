@@ -1,100 +1,120 @@
 <div class="toolbar" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>HOME</span>
-    <div class="spacer"></div>
-    <!--search box add here-->
+  <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
+  <span>HOME</span>
+  <div class="spacer"></div>
+  <!--search box add here-->
+</div>
+<!-- <app-patients></app-patients> -->
+<router-outlet></router-outlet>
+<div class="content" role="main">
+
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small">
+    <span><b>Test Prescription</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
-  <!-- <app-patients></app-patients> -->
-  <router-outlet></router-outlet>
-  <div class="content" role="main">
+
+</div>
+
+<div class="doctorclass">
+
+
+  <div class="container bordered">
+    <h3>Prescribe Test</h3>
+
+
+
+    <form name="preform" #form="ngForm" autocomplete="off" style="width: 30em;" (ngSubmit)="onSubmit(form)">
+      <table class="table table-bordered table-striped" style="width: 70em;">
+        <thead>
+          <tr>
+            <th>Test Name:</th>
+            <th>Unit:</th>
+
+          </tr>
+
+        </thead>
+
+        <input type="hidden" name="PTId" [(ngModel)]="appointmentService.testdata.PTId">
+        <input type="hidden" name="TPrescriptionId" [(ngModel)]="appointmentService.testdata.TPrescriptionId">
+        <input type="hidden" name="TDId" [(ngModel)]="appointmentService.testdata.TDId">
+
+        <tbody>
+          <tr>
+            <td>
+              <div class="form-group">
+
+
+                <select name="TestId" id="TestId" class="form-control" #TestId="ngModel" required
+                  [(ngModel)]="appointmentService.testdata.TestId">
+                  <option value=0 disabled>Select Test Name</option>
+                  <option *ngFor="let dept of appointmentService.test" value="{{dept.TestId}}">
+                    {{dept.TestName}}
+                  </option>
+                </select>
+
+
+
+
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+
+
+                <select name="UnitId" id="UnitId" class="form-control" #UnitId="ngModel" required
+                  [(ngModel)]="appointmentService.testdata.UnitId">
+                  <option value=0 disabled>SelectUnit</option>
+                  <option *ngFor="let dept of appointmentService.unit" value="{{dept.UnitId}}">
+                    {{dept.Unit}}
+                  </option>
+                </select>
+
+
+
+              </div>
+            </td>
+
+
+            <br>
+
+            <td>
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary form-control"
+                  [disabled]="!(form.valid &&form.dirty)">Submit</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <h2>Test View</h2>
+    <table class="table table-bordered table-striped" id="tbl_tests_List">
+      <thead>
+          <tr>
+              <th>Test Name</th>
+              <th>Unit</th>
   
-    <!-- Highlight Card -->
-    <div class="card highlight-card card-small">
-      <span><b>Test Prescription</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </div>
-  
+              
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let test of labtechtestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:2, currentPage: page}">
+              <td>{{test.Testname}}</td>
+              
+              <td>{{test.Unit}}</td>
+             
+          </tr>
+      </tbody>
+  </table>
+
+    <footer style="margin-left: 50em;">
+      <br>
+      <br>
+      <button type="button" class="btn btn-outline-warning" (click)="move()">Appointments</button>
+      &nbsp;
+      <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
+
+    </footer>
+
   </div>
-  
-  <div class="doctorclass">
-
-
-    <div class="container bordered">
-        <h3>Prescribe Test</h3>
-    
-    
-    
-        <form name="preform" #form="ngForm" autocomplete="off" style="width: 30em;"(ngSubmit)="onSubmit(form)">
-          <table class="table table-bordered table-striped" style="width: 70em;">
-            <thead>
-              <tr>
-                <th>Test Name:</th>
-                <th>Unit:</th>
-                
-              </tr>
-    
-            </thead>
-    
-            <input type="hidden" name="PTId" [(ngModel)]="appointmentService.testdata.PTId">
-            <input type="hidden" name="TPrescriptionId" [(ngModel)]="appointmentService.testdata.TPrescriptionId">
-            <input type="hidden" name="TDId" [(ngModel)]="appointmentService.testdata.TDId">
-
-            <tbody>
-              <tr>
-                <td>
-                  <div class="form-group">
-    
-    
-                    <select name="TestId" id="TestId" class="form-control" #TestId="ngModel" required
-                      [(ngModel)]="appointmentService.testdata.TestId">
-                      <option value=0 disabled>Select Test Name</option>
-                      <option *ngFor="let dept of appointmentService.test" value="{{dept.TestId}}">
-                        {{dept.TestName}}
-                      </option>
-                    </select>
-    
-    
-    
-    
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-    
-    
-                    <select name="UnitId" id="UnitId" class="form-control" #UnitId="ngModel" required
-                      [(ngModel)]="appointmentService.testdata.UnitId">
-                      <option value=0 disabled>SelectUnit</option>
-                      <option *ngFor="let dept of appointmentService.unit" value="{{dept.UnitId}}">
-                        {{dept.Unit}}
-                      </option>
-                    </select>
-                    
-    
-    
-                  </div>
-                </td>
-                
-    
-                <br>
-    
-                <td>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-primary form-control"
-                      [disabled]="!(form.valid &&form.dirty)">Submit</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-        <footer style="margin-left: 50em;">
-          <br>
-          <br>
-          <button type="button" class="btn btn-outline-warning" (click)="move()">Appointments</button>
-          &nbsp;
-          <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
-
-        </footer>
-    
-      </div>
-
+</div>

@@ -1,7 +1,7 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span type="button" routerlink="/adminhome" (click)="navi()" >HOME</span>
+<div class="toolbar bg-dark " role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+    <span type="button" routerlink="/adminhome" (click)="navi()" >ADMINISTRATOR HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
 </div>
@@ -15,7 +15,7 @@
 
 
         <!-- Name-->
-        <div class="form-group mb-2 p-1">
+        <div class="form-group mb-2 p-1 col-md-6">
             <label>Medicine Name :</label>
             <input type="text" name="MedicineName" #MedicineName="ngModel"
                 [(ngModel)]="mediService.formData.MedicineName" class="form-control" placeholder="Enter Medicine Name"
@@ -31,7 +31,7 @@
         </div>
 
          <!-- StockQuantity-->
-         <div class="form-group mb-2 p-1">
+         <div class="form-group mb-2 p-1 col-md-6">
             <label>Stock  :</label>
             <input type="number" name="StockQuantity" #StockQuantity="ngModel"
                 [(ngModel)]="mediService.formData.StockQuantity" class="form-control" placeholder="Enter stock"
@@ -47,7 +47,7 @@
         </div>
 
         <!-- price-->
-        <div class="form-group mb-2 p-1">
+        <div class="form-group mb-2 p-1 col-md-6">
             <label>Unit Price  :</label>
             <input type="number" name="UnitPrice" #UnitPrice="ngModel"
                 [(ngModel)]="mediService.formData.UnitPrice" class="form-control" placeholder="Enter price"
@@ -63,9 +63,9 @@
         </div>
 
         <!-- ExpiryDate-->
-        <div class="form-group mb-2 p-1">
+        <div class="form-group mb-2 p-1 col-md-6">
             <label>Expiry Date :</label>
-            <input type="date" name="ExpiryDate" #ExpiryDate="ngModel"
+            <input type="date" name="ExpiryDate" #ExpiryDate="ngModel" required onfocus="this.min=new Date().toISOString().split('T')[0]" 
                 [(ngModel)]="mediService.formData.ExpiryDate" class="form-control"
                  autocomplete="off"
                 [ngClass]="{'is-invalid':ExpiryDate.touched}" />
@@ -79,7 +79,7 @@
         </div>
 
         <!-- id-->
-        <div class="form-group mb-2 p-1">
+        <div class="form-group mb-2 p-1 col-md-6">
             <label>Admin Id :</label>
             <input type="number" name="AdminId" #AdminId="ngModel"
                 [(ngModel)]="mediService.formData.AdminId" class="form-control" placeholder="Enter id"
@@ -89,7 +89,7 @@
             <!--  validation-->
             <div class="validation-error" *ngIf="AdminId.touched && AdminId.invalid">
                 <div *ngIf="AdminId.errors">
-                  id is required!
+                  Id is required!
                 </div>
             </div>
         </div>
