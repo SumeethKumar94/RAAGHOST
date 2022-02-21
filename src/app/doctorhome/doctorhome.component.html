@@ -107,7 +107,7 @@
 
                 <input type="number" name="Quantity" #Quantity="ngModel"
                   [(ngModel)]="appointmentService.data.Quantity" class="form-control" placeholder="Enter Quantity"
-                  required [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" />
+                  required [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" min="0"/>
 
                 <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">
                   <div *ngIf="Quantity.errors.required">
@@ -181,3 +181,10 @@
 
 
 </div>
+
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+  <div class="container text-center">
+    <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
+</span>
+  </div>
+</footer>

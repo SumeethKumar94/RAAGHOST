@@ -12,7 +12,12 @@
     <br>
     <span style="margin-left: 50px;" [routerLink]="['/login']">LOGOUT</span>
     <br>
-    <span class="bi bi-search" style="color: aliceblue;float: left;margin-left: 1300px;">WELCOME: {{loggedUser}}</span>
+
+    <span class="bi bi-search" style="color: aliceblue;float: left;margin-left: 1400px;">WELCOME:&nbsp; {{loggedUser}}&nbsp;&nbsp;  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" style="margin: left 20px;margin: right 20px;" class="bi bi-person-circle" viewBox="0 0 16 16">
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg>
+    </span>
       <div class="spacer"></div>
     </div>
   <div class="content" role="main">
@@ -31,12 +36,11 @@
     </div>
   
       <input type="hidden" #selection>
-  
   </div>
 
-  <footer class="footer bg-dark" style="align-items: center; margin-top: 300px;">
-    <div class="footer footer-fixed align-items:center">
-      <span class="text-white " style="text-align: center;"><b>All rights reserved 2022 @Team-RAAG</b>
+  <footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+    <div class="container text-center">
+      <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
   </span>
     </div>
   </footer>

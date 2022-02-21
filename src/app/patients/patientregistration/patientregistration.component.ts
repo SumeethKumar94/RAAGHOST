@@ -18,6 +18,7 @@ export class PatientregistrationComponent implements OnInit {
   PatientId: number;
   loggedUser: string;
 
+
   constructor(public patientService: PatientService,
     private toastrService: ToastrService,
     private route: ActivatedRoute,
@@ -114,6 +115,12 @@ export class PatientregistrationComponent implements OnInit {
   logOut() {
     // this.authService.logOut();
     this.router.navigateByUrl('login');
+  }
+
+  getToday(): string{
+
+    return new Date().toISOString().split('T')[0]
+
   }
 }
 

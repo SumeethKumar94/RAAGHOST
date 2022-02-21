@@ -48,7 +48,7 @@
         <!-- Dob-->
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Date of Birth:</label>
-            <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control" 
+            <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control" [max]="getToday()" 
                 required autocomplete="off" [ngClass]="{'is-invalid':Dob.touched && Dob.invalid}" />
 
             <!--  validation-->
@@ -268,3 +268,10 @@
 
     </form>
 </div>
+
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+    <div class="container text-center">
+      <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
+  </span>
+    </div>
+  </footer>
