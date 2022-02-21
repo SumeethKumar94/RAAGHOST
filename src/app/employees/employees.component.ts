@@ -49,7 +49,7 @@ export class EmployeesComponent implements OnInit {
 
           let formdate = datePipe.transform(result.Dob, 'yyyy-MM-dd')
           result.Dob = formdate;
-          //assignthis reslut to empService formData
+          //assign this result to empService formData
           this.empService.formData = Object.assign({}, result);
 
         },
@@ -91,6 +91,7 @@ export class EmployeesComponent implements OnInit {
         else{
           this.insertEmployeeRecord(form); 
         }
+     
       })
     // -------------------------------------------------------------------------------------
    //this.insertEmployeeRecord(form);  //call
@@ -110,9 +111,6 @@ insertEmployeeRecord(form ?: NgForm) {   //declare
     (result) => {
       console.log(result);
       this.empId = result;
-      this.DrObj = { EmployeeId: Number(this.empId), DepId: this.empService.formData.DepId };
-      this.insertdoctorRecord(this.DrObj);
-
       //call resetform for cln the contents
       this.resetForm(form);
       this.toastrService.success('Successfully added', 'EmpApp v2022');
@@ -136,12 +134,17 @@ insertdoctorRecord(obj: any) {
   });
 }
 
+
+
 //update
 updateEmployeeRecord(form ?: NgForm) {
   console.log("updatinging a record...");
   this.empService.updateEmployee(form.value).subscribe(
     (result) => {
       console.log(result);
+      //this.empId = result;
+      // this.DrObj = { EmployeeId: Number(this.empId), DepId: this.empService.formData.DepId };
+      // this.updatedoctorRecord(this.DrObj);
       //call resetform for cln the contents
       this.resetForm(form)
       this.toastrService.success('Succesfully updated', 'EmpApp v2022');
@@ -152,6 +155,16 @@ updateEmployeeRecord(form ?: NgForm) {
     }
   )
 
+}
+
+updatedoctorRecord(obj: any) {
+  this.empService.updateDoctor(obj).subscribe((result1) => {
+    console.log(result1);
+    this.toastrService.success('Doctor details updated succesfully', 'EmpApp v2022');
+  }, (error) => {
+    console.log(error);
+
+  });
 }
 
 //clear all contents after submit  --initialization

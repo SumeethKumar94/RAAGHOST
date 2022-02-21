@@ -48,18 +48,18 @@ export class EmployeeListComponent implements OnInit {
 
 
  //delete employee
- deleteEmployee(empId:number){
-   if(confirm('Are you sure you want to Delete this record?')){
-     this.employeeService.deleteEmployee(empId).subscribe(
-       response=>{
-         this.employeeService.bindListEmployees();
-       },
-       error=>{
-           console.log(error)
-       }
-     );
-   }
- }
+//  deleteEmployee(empId:number){
+//    if(confirm('Are you sure you want to Delete this record?')){
+//      this.employeeService.deleteEmployee(empId).subscribe(
+//        response=>{
+//          this.employeeService.bindListEmployees();
+//        },
+//        error=>{
+//            console.log(error)
+//        }
+//      );
+//    }
+//  }
 
  navi(){
   this.router.navigateByUrl('/adminhome');
