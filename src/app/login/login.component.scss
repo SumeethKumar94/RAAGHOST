@@ -32,7 +32,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: cadetblue;
+    background-color: black;
     color: white;
     font-weight: 600;
   }
@@ -135,12 +135,12 @@
   a,
   a:visited,
   a:hover {
-    color: cadetblue;
+    color: black;
     text-decoration: none;
   }
 
   a:hover {
-    color: cadetblue;
+    color: black;
   }
 
 
@@ -233,7 +233,7 @@
 .box input[type="text"]:focus,
 .box input[type="password"]:focus {
     width: 300px;
-    border-color: #2ecc71
+    border-color: #0989a0
 }
 
 .box input[type="submit"] {
@@ -242,7 +242,7 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #2ecc71;
+    border: 2px solid #0989a0;
     padding: 14px 40px;
     outline: none;
     color: white;
@@ -252,7 +252,7 @@
 }
 
 .box input[type="submit"]:hover {
-    background: #2ecc71
+    background: #0989a0
 }
 
 .forgot {

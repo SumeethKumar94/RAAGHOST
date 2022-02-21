@@ -29,7 +29,7 @@ import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component
 import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: MainpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'main', component: MainpageComponent },
 

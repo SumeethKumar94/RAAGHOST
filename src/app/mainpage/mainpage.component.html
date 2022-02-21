@@ -25,10 +25,10 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!" routerLink="/main">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 </ul>
             </div>
         </div>
@@ -36,7 +36,7 @@
 
     <!-- Header-->
 
-    <header class="bg-dark py-5">
+    <header class="header bg-dark py-5">
         <!-- <img src="assets\healthzen.jpeg" class="img-fluid" alt="..."> -->
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
@@ -46,8 +46,8 @@
                         <p class="lead text-white-50 mb-4">Our team of over 20+ doctors join in giving you the best of
                             modern healthcare to ensure you stay healthy, always!</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Login</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" (click)="login()">Login</a>
+                            <a class="btn btn-dark btn-lg px-4" href="#!">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             <div class="row gx-5">
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
-                            class="bi bi-collection"></i></div>
+                            class="bi bi-eye-fill"></i></div>
                     <h2 class="h4 fw-bolder">Our Vision</h2>
                     <p>Providing the safest and highest quality health care by promoting healthy living 
                         and lifestyle and by providing hi-tech 
@@ -72,7 +72,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i>
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bullseye"></i>
                     </div>
                     <h2 class="h4 fw-bolder">Our Mission</h2>
                     <p>Provide good quality, affordable and hassle-free healthcare with science, love and wisdom. 
@@ -83,7 +83,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i>
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-clock"></i>
                     </div>
                     <h2 class="h4 fw-bolder">
                         24 Hours Service</h2>
