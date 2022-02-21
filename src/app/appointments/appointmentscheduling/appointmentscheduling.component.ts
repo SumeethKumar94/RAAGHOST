@@ -23,7 +23,7 @@ export class AppointmentschedulingComponent implements OnInit {
   filters: string;
   PhoneNumber: string;
   loggedUserdata: string;
-  DepId : number;
+  DepId: number;
 
 
   TokenObj: {} = { TokenNo: "", TokenDate: "", AppointmentId: "", DoctorId: "" };
@@ -40,7 +40,7 @@ export class AppointmentschedulingComponent implements OnInit {
     this.loggedUserdata = localStorage.getItem("EMPLOYEEID");
 
     this.recappointmentService.bindListDepartments();
-    this. DepId = this.route.snapshot.params[' DepId'];
+    this.DepId = this.route.snapshot.params[' DepId'];
     this.recappointmentService.bindListDoctor(this.recappointmentService.formData.DepId);
   }
 
@@ -163,20 +163,19 @@ export class AppointmentschedulingComponent implements OnInit {
   }
 
   generateBill() {
-    this.router.navigate(['consultation-bill',this.AppId]);
+    this.router.navigate(['consultation-bill', this.AppId]);
   }
 
-  onCodeChange($event)
-  {
+  onCodeChange($event) {
     this.recappointmentService.formData.DepId = $event.target.value;
     this.recappointmentService.bindListDoctor(this.recappointmentService.formData.DepId);
   }
 
 
-  getToday(): string{
+  getToday(): string {
 
     return new Date().toISOString().split('T')[0]
-  
+
   }
 }
 
