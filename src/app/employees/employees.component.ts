@@ -166,5 +166,11 @@ navi(){
   this.router.navigateByUrl('/adminhome');
 }
 
+getToday(): string{
+
+  return new Date().toISOString().split('T')[0]
+
+}
+
 
 }

@@ -81,15 +81,15 @@
         <p
           style="align-items: center;margin-bottom: 15px;margin-top: 20px;margin-left: 290px;font-weight: bold;font-size: large;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
           Schedule Appointment</p>
-
+          <hr>
         <!--Appointment Id-->
         <input type="hidden" name="AppointmentId" [(ngModel)]="patientService.formData2.AppoinmentId" />
 
 
 
         <!--Employee Id-->
-        <input type="hidden" name="EmployeeId" [(ngModel)]="recappointmentService.formData.EmployeeId" 
-          id="EmployeeId" value="{{loggedUserdata}}" />
+        <input type="hidden" name="EmployeeId" [(ngModel)]="recappointmentService.formData.EmployeeId" id="EmployeeId"
+          value="{{loggedUserdata}}" />
 
         <!--PatientId-->
         <div class="form-group col-md-6"
@@ -99,7 +99,8 @@
               PatientId</b></label>
           <input type="number" class="form-control" name="PatientId" #PatientId="ngModel"
             [(ngModel)]="recappointmentService.formData.PatientId" class="form-control" placeholder="Enter PatientId"
-            required minlength="1" maxlength="30" [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}" />
+            required minlength="1" maxlength="30" [ngClass]="{'is-invalid':PatientId.touched && PatientId.invalid}"
+            min="0" />
 
           <!--PatientId validation-->
           <div class="validation-error" *ngIf="PatientId.touched && PatientId.invalid">
@@ -108,7 +109,7 @@
             </div>
           </div>
         </div>
-        <hr>
+
 
         <!--Token No-->
         <input type="hidden" name="TokenNo" [(ngModel)]="recappointmentService.formData.TokenNo" />
@@ -119,7 +120,7 @@
           <label for="TokenDate"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> Today's
               Date</b></label>
-          <input type="datetime-local" class="form-control" name="TokenDate" #TokenDate="ngModel"
+          <input type="datetime-local" class="form-control" name="TokenDate" #TokenDate="ngModel" [max]="getToday()" 
             [(ngModel)]="recappointmentService.formData.TokenDate" class="form-control" required
             [ngClass]="{'is-invalid':TokenDate.touched && TokenDate.invalid}" />
 
@@ -137,9 +138,7 @@
           <label for="bloodgroup"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Department</b></label>
           <select id="DepId" class="form-control" name="DepId" id="DepId" #DepId="ngModel" required
-
-            (change)="onCodeChange($event)"
-            [(ngModel)]="recappointmentService.formData1.DepId">
+            (change)="onCodeChange($event)" [(ngModel)]="recappointmentService.formData1.DepId">
             <option value="0" disabled>-- Choose the Department --</option>
             <option *ngFor="let tr of recappointmentService.departments" value="{{tr.DepId}}">
               {{tr.DepName}}
@@ -159,8 +158,8 @@
         <div class="form-group col-md-3" style="align-items: center;margin-bottom: 15px;margin-left: 290px;">
           <label for="bloodgroup"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b>Doctor</b></label>
-          <select *ngIf="recappointmentService.formData1.DepId" id="DoctorId" class="form-control" name="DoctorId" id="DoctorId" #DoctorId="ngModel" required
-            [(ngModel)]="recappointmentService.formData.DoctorId">
+          <select  id="DoctorId" class="form-control" name="DoctorId"
+            id="DoctorId" #DoctorId="ngModel" required [(ngModel)]="recappointmentService.formData.DoctorId">
             <option value="0" disabled>-- Choose the Doctor --</option>
             <option *ngFor="let tr of recappointmentService.recappointments" value="{{tr.DoctorId}}">
               {{tr.DoctorName}}
@@ -188,7 +187,7 @@
           <label for="ConsultationFee"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><b> Consultation
               Fee</b></label>
-          <input type="number" class="form-control" name="ConsultationFee" #ConsultationFee="ngModel"
+          <input type="number" class="form-control" name="ConsultationFee" #ConsultationFee="ngModel" autocomplete="off"
             [(ngModel)]="recappointmentService.formData.ConsultationFee" class="form-control"
             placeholder="Enter ConsultationFee" required minlength="1" maxlength="30" min="0"
             [ngClass]="{'is-invalid':ConsultationFee.touched && ConsultationFee.invalid}" />
@@ -207,7 +206,7 @@
 
 
       <button type="submit" class="btn btn-dark"
-        style="margin-bottom: 20px;margin-top: 15px;margin-left: 290px;">Schedule</button>
+        style="margin-bottom: 20px;margin-top: 15px;margin-left: 290px;" [disabled]="!(form.valid && form.dirty)">Schedule</button>
     </form>
   </div>
 </div>
@@ -215,6 +214,6 @@
 <footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
   <div class="container text-center">
     <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
-</span>
+    </span>
   </div>
 </footer>
