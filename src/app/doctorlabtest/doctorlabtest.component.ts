@@ -6,6 +6,8 @@ import { DoctorService } from '../shared/doctor.service';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { LabtechtestService } from '../shared/labtechtest.service';
+import { LabtechtesttetsService } from '../shared/labtechtesttets.service';
 
 @Component({
   selector: 'app-doctorlabtest',
@@ -14,6 +16,8 @@ import { Router } from '@angular/router';
 })
 export class DoctorlabtestComponent implements OnInit {
   ngForm: FormGroup;
+  page : number = 1;
+  filter : string;
   pt: number;
   pret: number;
   presct: {} = {
@@ -27,7 +31,7 @@ export class DoctorlabtestComponent implements OnInit {
     PTId: ""
 
   }
-  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent,private authService :AuthService,private router:Router) { }
+  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent,private authService :AuthService,private router:Router,public labtechtestservice : LabtechtesttetsService) { }
 
   ngOnInit(): void {
     this.appointmentService.bindListTest();
@@ -108,10 +112,12 @@ export class DoctorlabtestComponent implements OnInit {
        
       this.app.TPrescriptionId =result;
      
+      
       this.prestedetail = {
         TPrescriptionId: this.app.TPrescriptionId,
         PTId: Number(this.pt)
       }
+      
      console.log(this.prestedetail);
      this.insertPrescriptionTestDetail(this.prestedetail);
 
@@ -125,6 +131,7 @@ export class DoctorlabtestComponent implements OnInit {
     console.log("inserting  prescription test detail record...");
     this.appointmentService.insertTestDetail(obj).subscribe((result) => {
       console.log(result);
+      this.labtechtestservice.bindListLabtechtesttets(this.app.TPrescriptionId);
       this.toastrService.success('added detail test record has been inserted', 'CmsApp v2022');
     }, (error) => {
       console.log(error);

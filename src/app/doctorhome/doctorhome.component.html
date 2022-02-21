@@ -40,7 +40,7 @@
 
 
 
-    <form name="preform"    #form="ngForm" autocomplete="off" style="width: 30em;"(ngSubmit)="onSubmit(form)">
+    <form name="preform" #form="ngForm" autocomplete="off" style="width: 30em;" (ngSubmit)="onSubmit(form)">
       <table class="table table-bordered table-striped" style="width: 70em;">
         <thead>
           <tr>
@@ -55,7 +55,7 @@
         <input type="hidden" name="Pmid" [(ngModel)]="appointmentService.data.Pmid">
         <input type="hidden" name="PrescriptionId" [(ngModel)]="appointmentService.data.PrescriptionId">
         <input type="hidden" name="PDetailsId" [(ngModel)]="appointmentService.data.PDetailsId">
-        
+
         <tbody>
           <tr>
             <td>
@@ -105,9 +105,9 @@
             <td>
               <div class="form-group">
 
-                <input type="number" name="Quantity" #Quantity="ngModel"
-                  [(ngModel)]="appointmentService.data.Quantity" class="form-control" placeholder="Enter Quantity"
-                  required [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" min="0"/>
+                <input type="number" name="Quantity" #Quantity="ngModel" [(ngModel)]="appointmentService.data.Quantity"
+                  class="form-control" placeholder="Enter Quantity" required
+                  [ngClass]="{'is-invalid': Quantity.touched && Quantity.invalid}" min="0" />
 
                 <div class="validation-error" *ngIf="Quantity.touched && Quantity.invalid">
                   <div *ngIf="Quantity.errors.required">
@@ -134,13 +134,40 @@
         </tbody>
       </table>
     </form>
+    <h2>Medicine Prescription View</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+
+          <th>Medicine Id</th>
+          <th>Medicine Name</th>
+          <th>Quantity</th>
+          <th>Dosage</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let app of prescriptionmedicinesservice.medicines |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+
+          <td>{{app.MedicineId}}</td>
+          <td>{{app.Medicinename}}</td>
+          <td>{{app.Quantity}}</td>
+          <td>{{app.Dosage}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+
+
 
     <app-doctorlabtest></app-doctorlabtest>
   </div>
 
   <br>
   <br>
-<!--
+  <!--
   <div class="view" sans-serif style="margin-left: 10em; margin-top: 10em;">
     <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Medicine Prescription View</h2>
 
@@ -185,6 +212,6 @@
 <footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
   <div class="container text-center">
     <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
-</span>
+    </span>
   </div>
 </footer>

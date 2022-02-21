@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from '../app.component';
 import { Appointment } from '../shared/appointment';
+import { LabtechtesttetsService } from '../shared/labtechtesttets.service';
+import { PrescriptionmedicinesService } from '../shared/prescriptionmedicines.service';
 
 @Component({
   selector: 'app-doctorhome',
@@ -33,7 +35,7 @@ export class DoctorhomeComponent implements OnInit {
   }
 
 
-  constructor(public appointmentService: DoctorService,private toastrService:ToastrService,public app:AppComponent) {
+  constructor(public appointmentService: DoctorService,private toastrService:ToastrService,public app:AppComponent,public prescriptionmedicinesservice : PrescriptionmedicinesService) {
     
   }
    
@@ -81,6 +83,7 @@ export class DoctorhomeComponent implements OnInit {
       
     
      console.log(this.presc);
+    
 
      console.log(this.app.AppoinmentId);
      this.appointmentService.data.Pmid =0;
@@ -105,10 +108,12 @@ export class DoctorhomeComponent implements OnInit {
         this.insertPrescription(this.presc);
        
       }else{
-
+     
         this.presdetail={PrescriptionId:this.app.PrescriptionId,
           PmId:Number(this.pm)}
+          
           this.insertPrescriptionDetail(this.presdetail);
+         
       }
       
 
@@ -150,7 +155,9 @@ export class DoctorhomeComponent implements OnInit {
     console.log("inserting  prescription detail record...");
     this.appointmentService.insertPrescriptiondetails(obj).subscribe((result)=>{
       console.log(result);
+      this.prescriptionmedicinesservice.bindListPrescriptionmedicines(this.app.PrescriptionId);
       this.toastrService.success('added detail record has been inserted','CmsApp v2022');
+      
     },(error)=>{
       console.log(error);
     }
