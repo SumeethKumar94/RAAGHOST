@@ -117,7 +117,7 @@ export class PatientregistrationComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
-  getToday(): string{
+  getToday(): string {
 
     return new Date().toISOString().split('T')[0]
 
