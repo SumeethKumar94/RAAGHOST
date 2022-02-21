@@ -59,4 +59,9 @@ insertTestBill(labbillCheck:Labbillcheck) : Observable<any>
 {
   return this.httpClient.post(environment.apiUrl + "/api/LabTest",labbillCheck);
 }
+
+// get bill by      id
+getTestBillById(Id:number){
+  return this.httpClient.get(environment.apiUrl + "/api/LabTest/"+Id);
+}
 }
