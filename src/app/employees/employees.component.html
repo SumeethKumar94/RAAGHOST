@@ -94,13 +94,13 @@
 
         <!-- Gender -->
         <div class="form-group mb-2 p-1 col-md-6">
-            <label>Gender (M/F/O) :</label>
+            <label>Gender:</label>
             <!-- <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
                 class="form-control" placeholder="Enter Gender" pattern="[a-zA-Z\s]+" required minlength="1" autocomplete="off"
                 [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" /> -->
 
                 <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required  
-                [(ngModel)]="empService.formData.Gender">
+                [(ngModel)]="empService.formData.Gender"[ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
                  <option value="0" disabled>-- Select Gender --</option>
                 <option value="M">M</option>
                 <option value="F">F</option>
@@ -197,10 +197,10 @@
                 required minlength="6" autocomplete="off"
                 [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" /> -->
                 <select name="EmployeeStatus" id="EmployeeStatus" class="form-control" #EmployeeStatus="ngModel" required  
-                [(ngModel)]="empService.formData.EmployeeStatus">
+                [(ngModel)]="empService.formData.EmployeeStatus" [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" >
                 <option value="0" disabled>-- Select Status --</option>
-                <option value="M">Active</option>
-                <option value="F">Inactive</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
                 
             </select>
 
