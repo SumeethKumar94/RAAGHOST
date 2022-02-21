@@ -1,7 +1,7 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span type="button" routerlink="/adminhome" (click)="navi()" >HOME</span>
+<div class="toolbar bg-dark" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+    <span type="button" routerlink="/adminhome" (click)="navi()" > ADMINISTRATOR HOME</span>
     <div class="spacer"></div>
 
     <!--search box add here-->
@@ -22,7 +22,7 @@
         <!-- </div> -->
         <a routerLink="/employeeregister" class="btn btn-outline-secondary"
             style="float:right; margin-top: 10px; margin-bottom: 10px;">Add
-            Employee</a>
+            Staff</a>
     </div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -58,7 +58,7 @@
 
                 <td>
                     <!-- button -->
-                    <button class="btn btn-sm btn-info" (click)="updateEmployee(emp.EmployeeId)">Edit</button>
+                    <button class="btn btn-sm btn-outline-secondary" (click)="updateEmployee(emp.EmployeeId)">Edit</button>
                     &nbsp;
                     <!-- <button class="btn btn-sm btn-outline-danger"
                         (click)="deleteEmployee(emp.EmployeeId)">Delete</button> -->
