@@ -64,6 +64,10 @@ export class EmployeeService {
     return this.httpClient.put(environment.apiUrl + "/api/employees", employee);
   }
 
+  updateDoctor(doctors: Employee): Observable<any> {
+    return this.httpClient.put(environment.apiUrl + "/api/employees/getdoctor", doctors);
+  }
+
   //.........role.........
   bindListRoles() {
     this.httpClient.get(environment.apiUrl + '/api/Roles')

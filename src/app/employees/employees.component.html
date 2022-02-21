@@ -48,7 +48,7 @@
         <!-- Dob-->
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Date of Birth:</label>
-            <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control"
+            <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control" [max]="getToday()" 
                 required autocomplete="off" [ngClass]="{'is-invalid':Dob.touched && Dob.invalid}" />
 
             <!--  validation-->
@@ -94,10 +94,31 @@
 
         <!-- Gender -->
         <div class="form-group mb-2 p-1 col-md-6">
-            <label>Gender (M/F/O) :</label>
-            <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
+            <label>Gender:</label>
+            <!-- <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
                 class="form-control" placeholder="Enter Gender" pattern="[a-zA-Z\s]+" required minlength="1" autocomplete="off"
-                [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" />
+                [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" /> -->
+
+                <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required  
+                [(ngModel)]="empService.formData.Gender"[ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
+                 <option value="0" disabled>-- Select Gender --</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+                <option value="O">O</option> 
+
+            </select>
+            <!-- <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">M</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">F</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">O</label>
+              </div> -->
 
             <!--  validation-->
             <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
@@ -114,7 +135,7 @@
                 class="form-control" placeholder="Enter Address" required minlength="3" autocomplete="off"
                 [ngClass]="{'is-invalid':Address.touched && Address.invalid}" />
 
-            <!-- name validation-->
+            <!-- validation-->
             <div class="validation-error" *ngIf="Address.touched && Address.invalid">
                 <div *ngIf="Address.errors">
                     Address is required!
@@ -155,9 +176,10 @@
         <!-- Doj -->
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Date of Joining :</label>
+            
             <input type="Date" name="Doj" #Doj="ngModel" [(ngModel)]="empService.formData.Doj" class="form-control"
-                required minlength="1" autocomplete="off" [ngClass]="{'is-invalid':Doj.touched && Doj.invalid}" />
-
+            max="3000-01-01" min="1999-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]"  required minlength="1" autocomplete="off" [ngClass]="{'is-invalid':Doj.touched && Doj.invalid}" />
+            
             <!-- name validation-->
             <div class="validation-error" *ngIf="Doj.touched && Doj.invalid">
                 <div *ngIf="Doj.errors">
@@ -170,10 +192,17 @@
         <!-- status -->
         <div class="form-group mb-2 p-1 col-md-6">
             <label>Status(Active/Inactive) :</label>
-            <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
+            <!-- <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
                 [(ngModel)]="empService.formData.EmployeeStatus" class="form-control" placeholder="Active/Inactive"
                 required minlength="6" autocomplete="off"
-                [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" />
+                [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" /> -->
+                <select name="EmployeeStatus" id="EmployeeStatus" class="form-control" #EmployeeStatus="ngModel" required  
+                [(ngModel)]="empService.formData.EmployeeStatus" [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" >
+                <option value="0" disabled>-- Select Status --</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                
+            </select>
 
             <!-- name validation-->
             <div class="validation-error" *ngIf="EmployeeStatus.touched && EmployeeStatus.invalid">
@@ -184,62 +213,48 @@
         </div>
 
         <!-- dropdown Role-->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label>Role :</label>
             <select name="RoleId" id="RoleId" class="form-control" #RoleId="ngModel" required  
                 [(ngModel)]="empService.formData.RoleId">
-                <option disabled>-- Select the Role Name --</option>
+                <option value="0" disabled>-- Select the Role--</option>
                 <option *ngFor="let rol of empService.roles" value="{{rol.RoleId}}">{{rol.RoleName}}
                 </option>
             </select>
 
             <!-- validation-->
             <div class="validation-error" *ngIf="RoleId.touched && RoleId.invalid">
-                <div *ngIf="RoleId.errors.required">
+                <div *ngIf="RoleId.errors">
                     Role is required!
                 </div>
             </div>
         </div>
 
+
+
         <!-- ID---Hidden-->
         <input type="hidden" name="DoctorId" [(ngModel)]="empService.formData.DoctorId">
+
+
 
         <!-- dropdown Role-->
         <div class="form-group col-md-6">
             <label>Department :</label>
-            <select name="DepId" id="DepId" class="form-control" #DepId="ngModel" required
+            <select name="DepId" id="DepId" class="form-control" #DepId="ngModel" 
                 [(ngModel)]="empService.formData.DepId">
-                <option disabled>-- Select Department --</option>
+                <option value="0"disabled>-- Select Department --</option>
                 <option *ngFor="let dep of empService.deparments" value="{{dep.DepId}}">{{dep.DepName}}
                 </option>
             </select>
 
             <!-- validation-->
-            <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
+            <!-- <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
                 <div *ngIf="DepId.errors.required">
-                    dep is required!
+                    deprtment is required!
                 </div>
-            </div>
+            </div> -->
         </div>
-
-        <!-- ------------------------------- -->
-        <!-- <div class="form-group">
-            <label class="col-md-4">Contact</label>
-            <input type="text" class="form-control" formControlName="PhoneNumber" #PhoneNumber (change)="phoneCheckUnique()" />
-        </div>
-        <div *ngIf="PhoneNumber.invalid && (PhoneNumber.dirty || PhoneNumber.touched)"
-            class="alert alert-danger">
-            <div *ngIf="PhoneNumber.errors.required">
-                Phone number is required.
-            </div>
-            <div *ngIf="PhoneNumber.errors.email">
-                Enter Valid PhoneNumber
-            </div>
-        </div>
-        <div *ngIf="phoneAlredyExist != ''" class="alert alert-danger">
-            {{phoneAlredyExist}}
-        </div> -->
-        <!-- ............................................. -->
+        
 
         <!--Submit-->
         <br>

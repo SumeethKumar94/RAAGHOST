@@ -1,11 +1,12 @@
-<div class="toolbar" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
-    <span>HOME</span>
+<div class="toolbar bg-dark" role="banner">
+    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
     <br>
-    <span style="margin-left: 50px;" [routerLink]="['/login']">LOGOUT</span>
+    <span routerLink="/main" >HOME</span>
     <div class="spacer"></div>
-    <!--search box add here-->
-  </div>
+<span style="margin-left: 50px;" [routerLink]="['/login']">LOGOUT</span>
+<div class="spacer"></div>
+<!--search box add here-->
+</div>
   <!-- <app-patients></app-patients> -->
   <router-outlet></router-outlet>
   <div class="content" role="main">
@@ -48,7 +49,7 @@
 </div>
 </div>
 
-<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 500px;">
     <div class="container text-center">
       <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
   </span>
