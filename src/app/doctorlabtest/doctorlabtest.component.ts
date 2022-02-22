@@ -16,8 +16,8 @@ import { LabtechtesttetsService } from '../shared/labtechtesttets.service';
 })
 export class DoctorlabtestComponent implements OnInit {
   ngForm: FormGroup;
-  page : number = 1;
-  filter : string;
+  page: number = 1;
+  filter: string;
   pt: number;
   pret: number;
   presct: {} = {
@@ -31,12 +31,14 @@ export class DoctorlabtestComponent implements OnInit {
     PTId: ""
 
   }
-  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent,private authService :AuthService,private router:Router,public labtechtestservice : LabtechtesttetsService) { }
-
+  constructor(public appointmentService: DoctorService, private toastrService: ToastrService, public app: AppComponent, private authService: AuthService, private router: Router, public labtechtestservice: LabtechtesttetsService) { }
+  
   ngOnInit(): void {
+   
     this.appointmentService.bindListTest();
     this.appointmentService.bindListUnit();
   }
+  
   onSubmit(form: NgForm) {
     console.log(form.value);
 
@@ -59,9 +61,9 @@ export class DoctorlabtestComponent implements OnInit {
       console.log(this.presct);
 
       console.log(this.app.AppoinmentId);
-      this.appointmentService.testdata.PTId =0;
-     
+      this.appointmentService.testdata.PTId = 0;
 
+      this.resetForm(form);
     } else {
       console.log("not inserted");
     }
@@ -74,26 +76,28 @@ export class DoctorlabtestComponent implements OnInit {
       (result) => {
         console.log(result);
         this.presct = {
-            AppointmentId: this.app.AppoinmentId,
-            DoctorId: 1
-          };
+          AppointmentId: this.app.AppoinmentId,
+          DoctorId: 1
+        };
         this.pt = result;
 
         this.resetForm(form);
         this.toastrService.success('Prescription record has been inserted', 'CmsApp v2022');
 
-        if(this.app.TPrescriptionId==0||this.app.TPrescriptionId==null){
-       
+        if (this.app.TPrescriptionId == 0 || this.app.TPrescriptionId == null) {
+
           this.insertTestPrescription(this.presct);
 
-         
-        }else{
-  
-          this.prestedetail={TPrescriptionId:this.app.TPrescriptionId,
-            PTId:Number(this.pt)}
+
+        } else {
+
+          this.prestedetail = {
+            TPrescriptionId: this.app.TPrescriptionId,
+            PTId: Number(this.pt)
+          }
           this.insertPrescriptionTestDetail(this.prestedetail);
         }
-       // this.insertTestPrescription(this.presct);
+        // this.insertTestPrescription(this.presct);
 
       },
       (error) => {
@@ -109,29 +113,32 @@ export class DoctorlabtestComponent implements OnInit {
     this.appointmentService.insertTestPrescribe(obj).subscribe((result) => {
       console.log(result);
       this.pret = result;
-       
-      this.app.TPrescriptionId =result;
-     
-      
+
+      this.app.TPrescriptionId = result;
+
+
       this.prestedetail = {
         TPrescriptionId: this.app.TPrescriptionId,
         PTId: Number(this.pt)
       }
-      
-     console.log(this.prestedetail);
-     this.insertPrescriptionTestDetail(this.prestedetail);
+
+      console.log(this.prestedetail);
+      this.insertPrescriptionTestDetail(this.prestedetail);
 
 
       this.toastrService.success('added test record has been inserted', 'CmsApp v2022');
-      
+
     }, (error) => {
       console.log(error);
-    })}
-    insertPrescriptionTestDetail(obj: any) {
+    })
+  }
+  insertPrescriptionTestDetail(obj: any) {
     console.log("inserting  prescription test detail record...");
     this.appointmentService.insertTestDetail(obj).subscribe((result) => {
       console.log(result);
+
       this.labtechtestservice.bindListLabtechtesttets(this.app.TPrescriptionId);
+
       this.toastrService.success('added detail test record has been inserted', 'CmsApp v2022');
     }, (error) => {
       console.log(error);
@@ -140,18 +147,34 @@ export class DoctorlabtestComponent implements OnInit {
     )
 
   }
-  logout(){
+  logout() {
     this.authService.logOut();
-    this.app.PrescriptionId=0;
-    this.app.TPrescriptionId=0;
+    this.app.PrescriptionId = 0;
+    this.app.TPrescriptionId = 0;
     this.router.navigateByUrl('login');
+
   }
-  move(){
-    this.app.AppoinmentId=0;
-    this.app.PrescriptionId=0;
-    this.app.TPrescriptionId=0;
-    this.router.navigateByUrl('doctorhome');
+  move() {
+    this.app.AppoinmentId = 0;
+    this.app.PrescriptionId = 0;
+    this.app.TPrescriptionId = 0;
+   
+
+
+   
+    this.router.navigateByUrl('doctorhome').then(e=>
+      { window.location.reload();
+        console.log("moved");
+        
+     }
+       );
+       console.log("new way");
+       
+
+
+
   }
+
   resetForm(form?: NgForm) {
     if (form != null) {
       form.resetForm();
