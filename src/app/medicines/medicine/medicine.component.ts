@@ -68,6 +68,7 @@ export class MedicineComponent implements OnInit {
         //call resetform for cln the contents
         this.resetForm(form);
         this.toastrService.success('medi record has been inserted');
+        window.location.reload();
         //this.router.navigateByUrl('/adminpage');
       },
       (error) => {
