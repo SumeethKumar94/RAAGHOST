@@ -41,7 +41,7 @@ export class DoctorhomeComponent implements OnInit {
    
    
   ngOnInit(): void {
-
+    
     this.appointmentService.PrescriptionAppointments();
     this.appointmentService.bindListMedicine();
     this.appointmentService.bindListDosage();
@@ -87,6 +87,8 @@ export class DoctorhomeComponent implements OnInit {
 
      console.log(this.app.AppoinmentId);
      this.appointmentService.data.Pmid =0;
+     
+     this.resetForm();
      
     }else{
       console.log("not inserted");
