@@ -157,6 +157,7 @@ export class DoctorhomeComponent implements OnInit {
     console.log("inserting  prescription detail record...");
     this.appointmentService.insertPrescriptiondetails(obj).subscribe((result)=>{
       console.log(result);
+      
       this.prescriptionmedicinesservice.bindListPrescriptionmedicines(this.app.PrescriptionId);
       this.toastrService.success('added detail record has been inserted','CmsApp v2022');
       
