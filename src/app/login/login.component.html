@@ -18,7 +18,7 @@
                     required minlength="3"
                     [ngClass]="{'is-invalid':formControls.UserName.touched && formControls.UserName.invalid}"
                     id="UserName">
-                <label for="UserName" style=""><b>User Name:</b></label>
+                <label for="UserName" ><b>User Name:</b></label>
                 <div *ngIf="isSubmitted && formControls.UserName.errors">
                     <div *ngIf="formControls.UserName.errors" style="color: red; text-align:left">
                         User Name is required!
@@ -33,7 +33,7 @@
                     [ngClass]="{'is-invalid':formControls.Password.touched && formControls.Password.invalid}"
                     id="Password">
                 <label for="UserPassword"
-                    style=""><b>Password:</b></label>
+                    ><b>Password:</b></label>
                 
                 <div *ngIf="isSubmitted && formControls.Password.errors">
                     <div *ngIf="formControls.Password.errors" style="color: red; text-align:left"
