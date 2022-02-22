@@ -146,6 +146,7 @@ export class EmployeesComponent implements OnInit {
         this.resetForm(form);
         this.toastrService.success('Successfully added', 'EmpApp v2022');
         //this.router.navigateByUrl('/adminhome');
+        window.location.reload()
       },
       (error) => {
         console.log(error);
