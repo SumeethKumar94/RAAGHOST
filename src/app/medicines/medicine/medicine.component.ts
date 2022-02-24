@@ -68,7 +68,7 @@ export class MedicineComponent implements OnInit {
         //call resetform for cln the contents
         this.resetForm(form);
         this.toastrService.success('medi record has been inserted');
-        window.location.reload();
+        //window.location.reload();
         //this.router.navigateByUrl('/adminpage');
       },
       (error) => {
@@ -107,7 +107,10 @@ export class MedicineComponent implements OnInit {
   }
 
   navi(){
-    this.router.navigateByUrl('/adminhome');
+    this.router.navigateByUrl('/adminhome').then(e=> {window.location.reload();
+    console.log("reloaded");
+    
+    });
    }
 
 }

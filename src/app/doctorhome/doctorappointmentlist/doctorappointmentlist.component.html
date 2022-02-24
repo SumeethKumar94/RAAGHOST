@@ -29,15 +29,14 @@
 
         <div class="form-control">
             <!--Search-->
-            <input class="form-control" type="text" placeholder="Search text here..." [(ngModel)]="filter">
-            {{filter}}
+            <input class="form-control" type="text" placeholder="Search Appointment here..." [(ngModel)]="filter">
+            <!-- {{filter}}
             <br>
-            <button class="btn btn-info" style="float: right;">Appointment Search</button>
-
+            <button class="btn btn-info" style="float: right;">Appointment Search</button> -->
+<br>
         </div>
-        <a [routerLink]="" class="btn btn-outline-secondary" style="float: right;margin-top: 10px;"></a>
     </div>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" style="margin-top:30px">
         <thead>
             <tr>
                 <th>ID</th>
@@ -50,7 +49,7 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let app of appointmentService.appointment |filter:filter | paginate:{itemsPerPage:2,currentPage:page}">
+                *ngFor="let app of appointmentService.appointment |filter:filter | paginate:{itemsPerPage:4,currentPage:page}">
                 <td>{{app.AppoinmentId}}</td>
                 <td>{{app.FirstName}}</td>
                 <td>{{app.LastName}}</td>

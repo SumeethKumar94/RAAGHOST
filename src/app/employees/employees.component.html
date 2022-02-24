@@ -1,25 +1,28 @@
 <!-- Toolbar -->
 <div class="toolbar bg-dark" role="banner">
-    <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+    <img width="40" alt="HOME"
+        src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
     <span type="button" routerlink="/adminhome" (click)="navi()">ADMINISTRATOR HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
 </div>
 
-<div class="container">
+<div class="container " >
     <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Staff Registration</h2>
     <form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
 
         <!-- ID---Hidden-->
         <input type="hidden" name="EmployeeId" [(ngModel)]="empService.formData.EmployeeId">
 
-        <div class="form-row">
+
+        <div class="row">
             <!-- Name-->
-            <div class="form-group mb-2 p-1 col-md-6">
+            <div class="form-group mb-2 p-1 col-md-4">
                 <label>First Name :</label>
                 <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="empService.formData.FirstName"
-                    class="form-control" placeholder="Enter first Name" pattern="[a-zA-Z\s]+" required minlength="3" maxlength="25"
-                    autocomplete="off" [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
+                    class="form-control" placeholder="Enter first Name" pattern="[a-zA-Z\s]+" required minlength="3"
+                    maxlength="15" autocomplete="off"
+                    [ngClass]="{'is-invalid':FirstName.touched && FirstName.invalid}" />
 
                 <!-- name validation-->
                 <div class="validation-error" *ngIf="FirstName.touched && FirstName.invalid">
@@ -28,13 +31,13 @@
                     </div>
                 </div>
             </div>
-
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <!-- last Name-->
-            <div class="form-group mb-2 p-1 col-md-6">
+            <div class="form-group mb-2 p-1 col-md-4">
                 <label>last Name :</label>
                 <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="empService.formData.LastName"
-                    class="form-control" placeholder="Enterlast Name" pattern="[a-zA-Z\s]+" required minlength="1" maxlength="25"
-                    autocomplete="off" [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}" />
+                    class="form-control" placeholder="Enterlast Name" pattern="[a-zA-Z\s]+" required minlength="1"
+                    maxlength="20" autocomplete="off" [ngClass]="{'is-invalid':LastName.touched && LastName.invalid}" />
 
                 <!--  validation-->
                 <div class="validation-error" *ngIf="LastName.touched && LastName.invalid">
@@ -44,70 +47,40 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <!-- Dob-->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Date of Birth:</label>
+                <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control"
+                    [max]="getToday()" required [ngClass]="{'is-invalid':Dob.touched && Dob.invalid}" />
 
-        <!-- Dob-->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Date of Birth:</label>
-            <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control" [max]="getToday()" 
-                required [ngClass]="{'is-invalid':Dob.touched && Dob.invalid}" />
-
-            <!--  validation-->
-            <div class="validation-error" *ngIf="Dob.touched && Dob.invalid">
-                <div *ngIf="Dob.errors">
-                    Dob is required!
+                <!--  validation-->
+                <div class="validation-error" *ngIf="Dob.touched && Dob.invalid">
+                    <div *ngIf="Dob.errors">
+                        Dob is required!
+                    </div>
                 </div>
             </div>
-        </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
-        <!-- PhoneNumber-->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Phone :</label>
-            <input type="text" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="empService.formData.PhoneNumber"
-                class="form-control" placeholder="Enter Phone Number" pattern="\d{10}" required minlength="10"
-                maxlength="10" autocomplete="off"
-                [ngClass]="{'is-invalid':PhoneNumber.touched && PhoneNumber.invalid}" />
-
-            <!-- name validation-->
-            <div class="validation-error" *ngIf="PhoneNumber.touched && PhoneNumber.invalid">
-                <div *ngIf="PhoneNumber.errors">
-                    Enter valid Phone number
-                </div>
-            </div>
-        </div>
-
-        <!-- EmailAddress-->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Email :</label>
-            <input type="text" name="EmailAddress" #EmailAddress="ngModel"
-                [(ngModel)]="empService.formData.EmailAddress" class="form-control" placeholder="Enter Email Address"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required minlength="6" maxlength="20"
-                autocomplete="off" [ngClass]="{'is-invalid':EmailAddress.touched && EmailAddress.invalid}" />
-
-            <!-- validation-->
-            <div class="validation-error" *ngIf="EmailAddress.touched && EmailAddress.invalid">
-                <div *ngIf="EmailAddress.errors">
-                    Enter valid email address
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Gender -->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Gender:</label>
-            <!-- <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
+            <!-- Gender -->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Gender:</label>
+                <!-- <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
                 class="form-control" placeholder="Enter Gender" pattern="[a-zA-Z\s]+" required minlength="1" autocomplete="off"
                 [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" /> -->
 
-                <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required  
-                [(ngModel)]="empService.formData.Gender"[ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
-                 <option value="0" disabled>-- Select Gender --</option>
-                <option value="M">M</option>
-                <option value="F">F</option>
-                <option value="O">O</option> 
+                <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required
+                    [(ngModel)]="empService.formData.Gender"
+                    [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
+                    <option value="0" disabled>-- Select Gender --</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                    <option value="O">O</option>
 
-            </select>
-            <!-- <div class="form-check form-check-inline">
+                </select>
+                <!-- <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="option1">
                 <label class="form-check-label" for="inlineRadio1">M</label>
               </div>
@@ -120,20 +93,62 @@
                 <label class="form-check-label" for="inlineRadio2">O</label>
               </div> -->
 
-            <!--  validation-->
-            <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
-                <div *ngIf="Gender.errors">
-                    Gender is required!
+                <!--  validation-->
+                <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
+                    <div *ngIf="Gender.errors">
+                        Gender is required!
+                    </div>
                 </div>
             </div>
         </div>
 
+
+        <div class="row">
+            <!-- PhoneNumber-->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Phone :</label>
+                <input type="text" name="PhoneNumber" #PhoneNumber="ngModel"
+                    [(ngModel)]="empService.formData.PhoneNumber" class="form-control" placeholder="Enter Phone Number"
+                    pattern="\d{10}" required minlength="10" maxlength="10" autocomplete="off"
+                    [ngClass]="{'is-invalid':PhoneNumber.touched && PhoneNumber.invalid}" />
+
+                <!--  validation-->
+                <div class="validation-error" *ngIf="PhoneNumber.touched && PhoneNumber.invalid">
+                    <div *ngIf="PhoneNumber.errors">
+                        Enter valid Phone number
+                    </div>
+                </div>
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- EmailAddress-->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Email :</label>
+                <input type="email" name="EmailAddress" #EmailAddress="ngModel"
+                    [(ngModel)]="empService.formData.EmailAddress" class="form-control"
+                    placeholder="Enter Email Address" required
+                    minlength="6" maxlength="16" autocomplete="off"
+                    [ngClass]="{'is-invalid':EmailAddress.touched && EmailAddress.invalid}" />
+                    <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" -->
+
+                <!-- validation-->
+                <div class="validation-error" *ngIf="EmailAddress.touched && EmailAddress.invalid">
+                    <div *ngIf="EmailAddress.errors">
+                        Enter valid email address
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <!-- Address -->
-        <div class="form-group mb-2 p-1 col-md-6">
+        <div class="form-group mb-2  col-md-6">
             <label>Address :</label>
             <input type="text" name="Address" #Address="ngModel" [(ngModel)]="empService.formData.Address"
-                class="form-control" placeholder="Enter Address" required minlength="3" autocomplete="off"
-                [ngClass]="{'is-invalid':Address.touched && Address.invalid}" />
+                class="form-control" placeholder="Enter Address" required minlength="3" maxlength="30"
+                autocomplete="off" [ngClass]="{'is-invalid':Address.touched && Address.invalid}" />
 
             <!-- validation-->
             <div class="validation-error" *ngIf="Address.touched && Address.invalid">
@@ -143,118 +158,135 @@
             </div>
         </div>
 
-        <!--User Name -->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>User Name :</label>
-            <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="empService.formData.UserName"
-                class="form-control" placeholder="Enter UserName" required minlength="5" autocomplete="off"
-                [ngClass]="{'is-invalid':UserName.touched && UserName.invalid}" />
+        <div class="row">
+            <!--User Name -->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>User Name :</label>
+                <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="empService.formData.UserName"
+                    class="form-control" placeholder="Enter UserName" required minlength="5" maxlength="12"
+                    autocomplete="off" [ngClass]="{'is-invalid':UserName.touched && UserName.invalid}" />
 
-            <!-- name validation-->
-            <div class="validation-error" *ngIf="UserName.touched && UserName.invalid">
-                <div *ngIf="UserName.errors">
-                    UserName is required!
+                <!-- validation-->
+                <div class="validation-error" *ngIf="UserName.touched && UserName.invalid">
+                    <div *ngIf="UserName.errors">
+                        UserName is required!
+                    </div>
                 </div>
             </div>
-        </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <!-- Password -->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Password :</label>
-            <input type="password" name="Password" #Password="ngModel" [(ngModel)]="empService.formData.Password"
-                class="form-control" placeholder="Enter Password" required minlength="8" autocomplete="off"
-                [ngClass]="{'is-invalid':Password.touched && Password.invalid}" />
+            <!-- Password -->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Password :</label>
+                <input type="password" name="Password" #Password="ngModel" [(ngModel)]="empService.formData.Password"
+                    class="form-control" placeholder="Enter Password" required minlength="8" maxlength="16"
+                    autocomplete="off" [ngClass]="{'is-invalid':Password.touched && Password.invalid}" />
 
-            <!-- name validation-->
-            <div class="validation-error" *ngIf="Password.touched && Password.invalid">
-                <div *ngIf="Password.errors">
-                    Password is required!
-                </div>
-            </div>
-        </div>
-
-        <!-- Doj -->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Date of Joining :</label>
-            
-            <input type="Date" name="Doj" #Doj="ngModel" [(ngModel)]="empService.formData.Doj" class="form-control"
-            max="3000-01-01" min="1999-01-01"  required minlength="1" autocomplete="off" [ngClass]="{'is-invalid':Doj.touched && Doj.invalid}" />
-            
-            <!-- name validation-->
-            <div class="validation-error" *ngIf="Doj.touched && Doj.invalid">
-                <div *ngIf="Doj.errors">
-                    Joining date is required!
+                <!--  validation-->
+                <div class="validation-error" *ngIf="Password.touched && Password.invalid">
+                    <div *ngIf="Password.errors">
+                        Password is required!
+                    </div>
                 </div>
             </div>
         </div>
 
 
-        <!-- status -->
-        <div class="form-group mb-2 p-1 col-md-6">
-            <label>Status(Active/Inactive) :</label>
-            <!-- <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
+
+        <div class="row">
+            <!-- Doj -->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Date of Joining :</label>
+
+                <input type="Date" name="Doj" #Doj="ngModel" [(ngModel)]="empService.formData.Doj" class="form-control"
+                    max="3000-01-01" min="1999-01-01" required minlength="1" autocomplete="off"
+                    [ngClass]="{'is-invalid':Doj.touched && Doj.invalid}" />
+
+                <!-- validation-->
+                <div class="validation-error" *ngIf="Doj.touched && Doj.invalid">
+                    <div *ngIf="Doj.errors">
+                        Joining date is required!
+                    </div>
+                </div>
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- status -->
+            <div class="form-group mb-2 p-1 col-md-4">
+                <label>Status:</label>
+                <!-- <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
                 [(ngModel)]="empService.formData.EmployeeStatus" class="form-control" placeholder="Active/Inactive"
-                required minlength="6" autocomplete="off"
-                [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" /> -->
-                <select name="EmployeeStatus" id="EmployeeStatus" class="form-control" #EmployeeStatus="ngModel" required  
-                [(ngModel)]="empService.formData.EmployeeStatus" [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" >
-                <option value="0" disabled>-- Select Status --</option>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-                
-            </select>
+               required minlength="6" autocomplete="off"
+               [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}" /> -->
+                <select name="EmployeeStatus" id="EmployeeStatus" class="form-control" #EmployeeStatus="ngModel"
+                    required [(ngModel)]="empService.formData.EmployeeStatus"
+                    [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
+                    <option value="0" disabled>-- Select Status --</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
 
-            <!-- name validation-->
-            <div class="validation-error" *ngIf="EmployeeStatus.touched && EmployeeStatus.invalid">
-                <div *ngIf="EmployeeStatus.errors">
-                    Status is required!
+                </select>
+
+                <!--  validation-->
+                <div class="validation-error" *ngIf="EmployeeStatus.touched && EmployeeStatus.invalid">
+                    <div *ngIf="EmployeeStatus.errors">
+                        Status is required!
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- dropdown Role-->
-        <div class="form-group col-md-6">
-            <label>Role :</label>
-            <select name="RoleId" id="RoleId" class="form-control" #RoleId="ngModel" required  
-                [(ngModel)]="empService.formData.RoleId"  [ngClass]="{'is-invalid':RoleId.touched && RoleId.invalid}">
-                <option value="0" disabled>-- Select the Role--</option>
-                <option *ngFor="let rol of empService.roles" value="{{rol.RoleId}}">{{rol.RoleName}}
-                </option>
-            </select>
+        <div class="row">
+            <!-- dropdown Role-->
+            <div class="form-group col-md-4">
+                <label>Role :</label>
+                <select name="RoleId" id="RoleId" class="form-control" #RoleId="ngModel" required
+                    [(ngModel)]="empService.formData.RoleId"
+                    [ngClass]="{'is-invalid':RoleId.touched && RoleId.invalid}">
+                    <option value="0" disabled>-- Select the Role--</option>
+                    <option *ngFor="let rol of empService.roles" value="{{rol.RoleId}}">{{rol.RoleName}}
+                    </option>
+                </select>
 
-            <!-- validation-->
-            <div class="validation-error" *ngIf="RoleId.touched && RoleId.invalid">
-                <div *ngIf="RoleId.errors">
-                    Role is required!
+                <!-- validation-->
+                <div class="validation-error" *ngIf="RoleId.touched && RoleId.invalid">
+                    <div *ngIf="RoleId.errors">
+                        Role is required!
+                    </div>
                 </div>
+            </div>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <!-- ID---Hidden-->
+            <input type="hidden" name="DoctorId" [(ngModel)]="empService.formData.DoctorId">
+
+
+
+            <!-- dropdown Role-->
+            <div class="form-group col-md-4">
+                <label>Department :</label>
+                <select name="DepId" id="DepId" class="form-control" #DepId="ngModel"
+                    [(ngModel)]="empService.formData.DepId">
+                    <option value="0" disabled>-- Select Department --</option>
+                    <option *ngFor="let dep of empService.deparments" value="{{dep.DepId}}">{{dep.DepName}}
+                    </option>
+                </select>
+
+                <!-- validation-->
+                <!-- <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
+        <div *ngIf="DepId.errors.required">
+            deprtment is required!
+        </div>
+    </div> -->
             </div>
         </div>
 
 
 
-        <!-- ID---Hidden-->
-        <input type="hidden" name="DoctorId" [(ngModel)]="empService.formData.DoctorId">
 
 
-
-        <!-- dropdown Role-->
-        <div class="form-group col-md-6">
-            <label>Department :</label>
-            <select name="DepId" id="DepId" class="form-control" #DepId="ngModel" 
-                [(ngModel)]="empService.formData.DepId">
-                <option value="0"disabled>-- Select Department --</option>
-                <option *ngFor="let dep of empService.deparments" value="{{dep.DepId}}">{{dep.DepName}}
-                </option>
-            </select>
-
-            <!-- validation-->
-            <!-- <div class="validation-error" *ngIf="DepId.touched && DepId.invalid">
-                <div *ngIf="DepId.errors.required">
-                    deprtment is required!
-                </div>
-            </div> -->
-        </div>
-        
 
         <!--Submit-->
         <br>
@@ -271,7 +303,7 @@
 
 <footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 300px;">
     <div class="container text-center">
-      <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
-  </span>
+        <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
+        </span>
     </div>
-  </footer>
+</footer>
