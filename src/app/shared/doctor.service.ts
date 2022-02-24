@@ -6,6 +6,7 @@ import { Doctorappointment } from './doctorappointment';
 import { Medicine } from './medicine';
 import {Medicineprescribe} from './medicineprescribe';
 import {Testprescribe} from './testprescribe';
+import {Doctornotes} from './doctornotes'
 @Injectable({
   providedIn: 'root'
 })
@@ -22,11 +23,12 @@ export class DoctorService {
   data:Medicineprescribe = new Medicineprescribe();
   testdata:Testprescribe = new Testprescribe();
   formData:Doctorappointment= new Doctorappointment();
+  noteData:Doctornotes= new Doctornotes();
 
   constructor(private httpClient:HttpClient) { }
-  bindListAppointments(){
+  bindListAppointments(id:number){
 
-    this.httpClient.get(environment.apiUrl + '/api/doctors/getallappoinment')
+    this.httpClient.get(environment.apiUrl + '/api/doctors/getallappoinment/'+id)
   
     .toPromise().then(
 
@@ -130,7 +132,11 @@ export class DoctorService {
     return this.httpClient.post(environment.apiUrl + "/api/doctors/addtestpres",testpre);
   }
   
- 
+ insertNotes(note:Doctornotes):Observable<any>{
+   console.log(note);
+   
+  return this.httpClient.post(environment.apiUrl + "/api/doctors/addnote",note);
+}
   
   bindListDosage(){
 

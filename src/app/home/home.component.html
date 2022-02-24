@@ -1,0 +1,21 @@
+
+<div class="toolbar bg-dark " role="banner">
+
+    <img width="40" alt="HOME"
+        src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+
+    <span type="button" routerlink="/doctorhome">DOCTOR HOME</span>
+
+    <div class="spacer"></div>
+
+    <!--search box add here-->
+
+</div>
+<div class="container">
+    <div style="margin-top: 5%;font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <a class ="btn btn-dark "routerLink ="med" style="margin-right: 10px !important;width: 20em;">Medicine Prescribe</a>
+        <a class ="btn btn-dark "routerLink ="test"style="margin-right: 10px !important;width: 20em;">Test</a>
+        <a class ="btn btn-dark"routerLink ="Note"style="width: 20em;">Doctor Note</a>
+    </div>
+    <router-outlet></router-outlet>
+</div>

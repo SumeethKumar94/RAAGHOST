@@ -63,7 +63,7 @@ export class DoctorlabtestComponent implements OnInit {
       console.log(this.app.AppoinmentId);
       this.appointmentService.testdata.PTId = 0;
 
-      this.resetForm(form);
+      //this.resetForm(form);
     } else {
       console.log("not inserted");
     }
@@ -81,8 +81,10 @@ export class DoctorlabtestComponent implements OnInit {
         };
         this.pt = result;
 
-        this.resetForm(form);
+        
         this.toastrService.success('Prescription record has been inserted', 'CmsApp v2022');
+        console.log(this.app.TPrescriptionId);
+        
 
         if (this.app.TPrescriptionId == 0 || this.app.TPrescriptionId == null) {
 

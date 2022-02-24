@@ -20,6 +20,7 @@ export class Doctorappointment {
     MedicineId :number = 0;
     UnitId:number = 0;
     Unit: string ='';
+    EmployeeId:number = 0;
     
 }
 

@@ -1,0 +1,59 @@
+<div class="toolbar bg-dark " role="banner">
+
+    <img width="40" alt="HOME"
+        src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+
+    <span type="button" routerlink="/doctorhome">DOCTOR HOME</span>
+
+    <div class="spacer"></div>
+
+    <!--search box add here-->
+
+</div>
+
+<div class="content" role="main">
+
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span><b>Doctor Notes</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+</div>
+<form name="noteform" #form="ngForm" autocomplete="off" style="width: 30em;" (ngSubmit)="onSubmit(form)">
+
+    <input type="hidden" name="DnId" [(ngModel)]="doctornoteservice.noteData.DnId">
+
+    <input type="hidden" name="AppointmentId" [(ngModel)]="doctornoteservice.noteData.AppointmentId">
+
+
+    <div class="form-group">
+        <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Doctor Notes</h2>
+        <input type="text" name="Note" #Note="ngModel" [(ngModel)]="doctornoteservice.noteData.Note"
+            class="form-control" placeholder="Enter Note" style="width: 60em;height: 20em;" required
+            [ngClass]="{'is-invalid': Note.touched && Note.invalid}" minlength="3" maxlength="400" />
+
+
+        <div class="validation-error" *ngIf="Note.touched && Note.invalid">
+            <div *ngIf="Note.errors.required">
+                Note is required
+            </div>
+        </div>
+
+       <br>
+      
+    </div>
+    <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-dark form-control "
+            [disabled]="!(form.valid &&form.dirty)">Submit</button>
+    </div>
+    
+  
+</form>
+<footer style="margin-left: 50em;">
+    <br>
+    <br>
+    <button type="button" class="btn btn-outline-warning" (click)="move()">Appointments</button>
+  &nbsp;
+    <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
+   
+  </footer>
