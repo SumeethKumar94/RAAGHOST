@@ -97,4 +97,15 @@ export class EmployeeService {
       );
   }
 
+  bindListdoctors() {
+    this.httpClient.get(environment.apiUrl + '/api/employees/GetDoctorDetails')
+      .toPromise().then(
+        response => {
+          console.log("from Service ");
+          console.log(response);
+          this.doctors = response as Employee[]
+        }
+      );
+  }
+
 }

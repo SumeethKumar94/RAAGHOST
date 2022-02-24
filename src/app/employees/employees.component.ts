@@ -142,11 +142,13 @@ export class EmployeesComponent implements OnInit {
       (result) => {
         console.log(result);
         this.empId = result;
+        this.DrObj = { EmployeeId: Number(this.empId), DepId: this.empService.formData.DepId };
+        this.insertdoctorRecord(this.DrObj);
         //call resetform for cln the contents
         this.resetForm(form);
         this.toastrService.success('Successfully added', 'EmpApp v2022');
         //this.router.navigateByUrl('/adminhome');
-        window.location.reload()
+        //window.location.reload()
       },
       (error) => {
         console.log(error);
@@ -189,15 +191,15 @@ export class EmployeesComponent implements OnInit {
 
   }
 
-  updatedoctorRecord(obj: any) {
-    this.empService.updateDoctor(obj).subscribe((result1) => {
-      console.log(result1);
-      this.toastrService.success('Doctor details updated succesfully', 'EmpApp v2022');
-    }, (error) => {
-      console.log(error);
+  // updatedoctorRecord(obj: any) {
+  //   this.empService.updateDoctor(obj).subscribe((result1) => {
+  //     console.log(result1);
+  //     this.toastrService.success('Doctor details updated succesfully', 'EmpApp v2022');
+  //   }, (error) => {
+  //     console.log(error);
 
-    });
-  }
+  //   });
+  // }
 
   //clear all contents after submit  --initialization
   resetForm(form?: NgForm) {
@@ -208,7 +210,10 @@ export class EmployeesComponent implements OnInit {
   }
 
   navi() {
-    this.router.navigateByUrl('/adminhome');
+    this.router.navigateByUrl('/adminhome').then(e=> {window.location.reload();
+      console.log("reloaded");
+      
+      });
   }
 
   getToday(): string {

@@ -21,22 +21,23 @@ export class EmployeeListComponent implements OnInit {
 
    this.employeeService.bindListEmployees(); 
     //caling 2nd method
+    // this.employeeService.bindListdoctors();
  }
 
  //1
- getEmployees(){
-   //call service method
-   this.employeeService.getAllEmployees().subscribe(
-     response =>{
-       console.log('retriving data from list');
-       console.log(response);
-     },
-     error=>{
-       console.log('Something Wrong');
-       console.log(error);
-     }
-   );
- }
+//  getEmployees(){
+//    //call service method
+//    this.employeeService.getAllEmployees().subscribe(
+//      response =>{
+//        console.log('retriving data from list');
+//        console.log(response);
+//      },
+//      error=>{
+//        console.log('Something Wrong');
+//        console.log(error);
+//      }
+//    );
+//  }
 
  //edit employee
  updateEmployee(EmployeeId:number){
