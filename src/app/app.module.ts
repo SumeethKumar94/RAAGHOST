@@ -55,6 +55,8 @@ import { LabtechtesttetsService } from './shared/labtechtesttets.service';
 import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
 import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { DoctornoteComponent } from './doctornote/doctornote.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -95,7 +97,9 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     DoctorlabtestComponent,
     ViewMedicineBillComponent,
     ViewTestBillComponent,
-    MainpageComponent
+    MainpageComponent,
+    DoctornoteComponent,
+    HomeComponent
   
   ],
   imports: [

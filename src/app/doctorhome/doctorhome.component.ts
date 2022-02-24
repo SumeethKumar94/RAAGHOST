@@ -9,6 +9,7 @@ import { AppComponent } from '../app.component';
 import { Appointment } from '../shared/appointment';
 import { LabtechtesttetsService } from '../shared/labtechtesttets.service';
 import { PrescriptionmedicinesService } from '../shared/prescriptionmedicines.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-doctorhome',
@@ -35,7 +36,7 @@ export class DoctorhomeComponent implements OnInit {
   }
 
 
-  constructor(public appointmentService: DoctorService,private toastrService:ToastrService,public app:AppComponent,public prescriptionmedicinesservice : PrescriptionmedicinesService) {
+  constructor(public appointmentService: DoctorService,private toastrService:ToastrService,public app:AppComponent,public prescriptionmedicinesservice : PrescriptionmedicinesService, private authService: AuthService, private router: Router) {
     
   }
    
@@ -166,6 +167,33 @@ export class DoctorhomeComponent implements OnInit {
     }
 
     )
+
+  }
+  logout() {
+    this.authService.logOut();
+    this.app.PrescriptionId = 0;
+    this.app.TPrescriptionId = 0;
+    this.router.navigateByUrl('login');
+
+  }
+  move() {
+    this.app.AppoinmentId = 0;
+    this.app.PrescriptionId = 0;
+    this.app.TPrescriptionId = 0;
+   
+
+
+   
+    this.router.navigateByUrl('doctorhome').then(e=>
+      { window.location.reload();
+        console.log("moved");
+        
+     }
+       );
+       console.log("new way");
+       
+
+
 
   }
   resetForm(form?:NgForm){

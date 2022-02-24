@@ -11,6 +11,7 @@ import { PatientListComponent } from './patients/patient-list/patient-list.compo
 import { DoctorappointmentlistComponent } from './doctorhome/doctorappointmentlist/doctorappointmentlist.component';
 import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorlabtestComponent } from './doctorlabtest/doctorlabtest.component';
+import {DoctornoteComponent} from './doctornote/doctornote.component'
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
@@ -27,6 +28,7 @@ import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { ViewMedicineBillComponent } from './view-medicine-bill/view-medicine-bill.component';
 import { ViewTestBillComponent } from './view-test-bill/view-test-bill.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -34,9 +36,17 @@ const routes: Routes = [
   { path: 'main', component: MainpageComponent },
 
   { path: 'doctorhome', component: DoctorappointmentlistComponent, canActivate:[AuthGuard],data:{role:'3'}  },
-  { path: 'doctorprescribe', component: DoctorhomeComponent, canActivate:[AuthGuard],data:{role:'3'}},
-  { path: 'doctortest', component: DoctorlabtestComponent, canActivate:[AuthGuard],data:{role:'3'}},
+  { path: 'home', component: HomeComponent,canActivate:[AuthGuard],data:{role:'3'},
+  children:[{ path: 'med', component: DoctorhomeComponent},{ path: 'test', component: DoctorlabtestComponent}, {path: 'Note', component: DoctornoteComponent}]}, 
+  //canActivate:[AuthGuard],data:{role:'3'}},
 
+ //{ path: 'med', component: DoctorhomeComponent},
+ //, canActivate:[AuthGuard],data:{role:'3'}},
+ // { path: 'test', component: DoctorlabtestComponent},
+  //, canActivate:[AuthGuard],data:{role:'3'}},
+  //{path: 'Note', component: DoctornoteComponent},
+  //, canActivate:[AuthGuard],data:{role:'3'} },
+  
   { path: 'ReceptionistHome', component: ReceptionisthomeComponent, canActivate:[AuthGuard],data:{role:'2'} },
   { path: 'appointmentlist', component: AppointmentListComponent , canActivate:[AuthGuard],data:{role:'2'}},
   { path: 'appointments', component: AppointmentsComponent , canActivate:[AuthGuard],data:{role:'2'}},

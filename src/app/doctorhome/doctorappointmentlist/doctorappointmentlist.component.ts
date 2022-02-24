@@ -12,15 +12,15 @@ export class DoctorappointmentlistComponent implements OnInit {
 
   page:number =1;
   filter:string;
- 
+ id:number;
   constructor(public appointmentService:DoctorService,public app:AppComponent) { }
 
    
 
   ngOnInit(): void {
     console.log("Welcome to LifeCycle Hook");
-   
-    this.appointmentService.bindListAppointments();
+    this.id=parseInt(localStorage.getItem('EMPLOYEEID'));
+    this.appointmentService.bindListAppointments(this.id);
     
   }
  getid(id:number){
