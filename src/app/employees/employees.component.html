@@ -128,7 +128,7 @@
                 <input type="email" name="EmailAddress" #EmailAddress="ngModel"
                     [(ngModel)]="empService.formData.EmailAddress" class="form-control"
                     placeholder="Enter Email Address" required
-                    minlength="6" maxlength="16" autocomplete="off"
+                    minlength="6" maxlength="24" autocomplete="off"
                     [ngClass]="{'is-invalid':EmailAddress.touched && EmailAddress.invalid}" />
                     <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" -->
 

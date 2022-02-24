@@ -88,7 +88,7 @@ export class EmployeesComponent implements OnInit {
             alert("Contact already exist")
 
           }
-          else {
+          
             // /////////////////////////////
             var today = new Date();
             var nowyear = today.getFullYear();
@@ -108,11 +108,11 @@ export class EmployeesComponent implements OnInit {
 
             if (age > 100) {
               alert("Age cannot be more than 100 Years.Please enter correct age")
-              return false;
+             
             }
             if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
               alert("Age should be more than 18 years.Please enter a valid Date of Birth");
-              return false;
+              
             }
 
 
@@ -121,7 +121,7 @@ export class EmployeesComponent implements OnInit {
             else {
               this.insertEmployeeRecord(form);
             }
-          }
+          
 
         })
       // -------------------------------------------------------------------------------------
