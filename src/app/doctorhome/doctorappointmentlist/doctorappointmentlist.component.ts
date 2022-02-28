@@ -13,6 +13,7 @@ export class DoctorappointmentlistComponent implements OnInit {
   page:number =1;
   filter:string;
  id:number;
+ loggedUser : string;
   constructor(public appointmentService:DoctorService,public app:AppComponent) { }
 
    
@@ -20,6 +21,10 @@ export class DoctorappointmentlistComponent implements OnInit {
   ngOnInit(): void {
     console.log("Welcome to LifeCycle Hook");
     this.id=parseInt(localStorage.getItem('EMPLOYEEID'));
+   
+   this.loggedUser=localStorage.getItem("USERNAME")
+
+
     this.appointmentService.bindListAppointments(this.id);
     
   }
