@@ -73,7 +73,6 @@ export class EmployeesComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let addId = this.empService.formData.EmployeeId;
-    //let PhoneNumber = this.empService.formData.PhoneNumber
     this.PhoneNumber = this.empService.formData.PhoneNumber
 
 
@@ -107,10 +106,13 @@ export class EmployeesComponent implements OnInit {
             var age_day = nowday - birthday;
 
             if (age > 100) {
-              alert("Age cannot be more than 100 Years.Please enter correct age")
+              this.toastrService.error("Age cannot be more than 100 Years.Please enter correct age", "Error");
+              //alert("Age cannot be more than 100 Years.Please enter correct age")
+               
              
             }
             if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+              this.toastrService.error("Age should be more than 18 years.Please enter a valid Date of Birth", "Error");
               alert("Age should be more than 18 years.Please enter a valid Date of Birth");
               
             }
@@ -221,6 +223,12 @@ export class EmployeesComponent implements OnInit {
     return new Date().toISOString().split('T')[0]
 
   }
+
+  back(){
+    this.router.navigateByUrl('/employee-list').then(e=> {window.location.reload();
+      console.log("reloaded");
+    });
+   }
 
 
 }

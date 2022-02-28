@@ -11,13 +11,13 @@ import { AuthService } from '../shared/auth.service';
 export class AdminhomeComponent implements OnInit {
 
   constructor(private authService: AuthService,private router:Router) { }
-
+  loggedUser : string;
   ngOnInit(): void {
-    //this.loggedUser=localStorage.getItem("USERNAME")
+    this.loggedUser=localStorage.getItem("USERNAME")
   }
   logOut(){
     this.authService.logOut();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('login');
   }
 
 }
