@@ -2,11 +2,21 @@
 <div class="toolbar bg-dark" role="banner">
   <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
   <br>
-  <span>ADMINISTRATOR HOME</span>
+  <span>ADMINISTRATOR HOME </span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span type="button" (click)="logOut()">LOGOUT</span>
+
+  <span class="bi bi-search" style="color: aliceblue;float: left; margin-left: 800px;">WELCOME:&nbsp; {{loggedUser}}&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" style="margin: left 20px;margin: right 20px;" class="bi bi-person-circle" viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+  </svg></span>
+
  
-  
+<!-- <span class="bi bi-search" style="color: aliceblue;float: left;margin-left: 1400px;">WELCOME:&nbsp; {{loggedUser}}&nbsp;&nbsp;  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" style="margin: left 20px;margin: right 20px;" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+</span> -->
   
   <!-- <a href="" style="text-align: right; color: aliceblue;">LogOut</a> -->
   <div class="spacer"></div>
@@ -34,15 +44,12 @@
         <h5><img width="30" alt="HOME" src="https://www.clipartmax.com/png/full/28-281256_pharmaceutical-drug-medicine-clip-art-medicine-coloring-pages.png" />Add Medicine</h5>
       </b></a>
   </div>
-  <!-- 
   
-  
-  -->
   <input type="hidden" #selection>
 
 </div>
 
-<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 350px;">
+<footer class="footer bg-dark flex-shrink-0 py-2 bg-dark text-white-50" id="sticky-footer" style=" margin-top: 150px;">
   <div class="container text-center">
     <span class="text-white "><small>Copyright &copy; Team-RAAG</small>
 </span>

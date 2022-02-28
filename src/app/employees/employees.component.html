@@ -8,7 +8,8 @@
 </div>
 
 <div class="container " >
-    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;">Staff Registration</h2>
+    <img width="40"  type="button" (click)="back()" style="margin-top: 100px;" alt="HOME" src="https://www.clipartmax.com/png/full/481-4818575_iago-mart%C3%ADnez-back-arrow-button.png" />
+    <h2  style="text-align: center; font-size: 200%; font-family: fantasy;">Staff Registration</h2>
     <form name="empform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
 
         <!-- ID---Hidden-->
@@ -17,7 +18,7 @@
 
         <div class="row">
             <!-- Name-->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 mt-3  col-md-5">
                 <label>First Name :</label>
                 <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="empService.formData.FirstName"
                     class="form-control" placeholder="Enter first Name" pattern="[a-zA-Z\s]+" required minlength="3"
@@ -33,7 +34,7 @@
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <!-- last Name-->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 mt-3 col-md-5">
                 <label>last Name :</label>
                 <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="empService.formData.LastName"
                     class="form-control" placeholder="Enterlast Name" pattern="[a-zA-Z\s]+" required minlength="1"
@@ -48,8 +49,9 @@
             </div>
         </div>
         <div class="row">
+
             <!-- Dob-->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Date of Birth:</label>
                 <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="empService.formData.Dob" class="form-control"
                     [max]="getToday()" required [ngClass]="{'is-invalid':Dob.touched && Dob.invalid}" />
@@ -62,36 +64,21 @@
                 </div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
             <!-- Gender -->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Gender:</label>
-                <!-- <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="empService.formData.Gender"
-                class="form-control" placeholder="Enter Gender" pattern="[a-zA-Z\s]+" required minlength="1" autocomplete="off"
-                [ngClass]="{'is-invalid':Gender.touched && Gender.invalid}" /> -->
 
                 <select name="Gender" id="Gender" class="form-control" #Gender="ngModel" required
                     [(ngModel)]="empService.formData.Gender"
                     [ngClass]="{'is-invalid':EmployeeStatus.touched && EmployeeStatus.invalid}">
                     <option value="0" disabled>-- Select Gender --</option>
-                    <option value="M">M</option>
-                    <option value="F">F</option>
-                    <option value="O">O</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
 
                 </select>
-                <!-- <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">M</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">F</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">O</label>
-              </div> -->
+                
 
                 <!--  validation-->
                 <div class="validation-error" *ngIf="Gender.touched && Gender.invalid">
@@ -105,7 +92,7 @@
 
         <div class="row">
             <!-- PhoneNumber-->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Phone :</label>
                 <input type="text" name="PhoneNumber" #PhoneNumber="ngModel"
                     [(ngModel)]="empService.formData.PhoneNumber" class="form-control" placeholder="Enter Phone Number"
@@ -123,12 +110,12 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <!-- EmailAddress-->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Email :</label>
                 <input type="email" name="EmailAddress" #EmailAddress="ngModel"
                     [(ngModel)]="empService.formData.EmailAddress" class="form-control"
                     placeholder="Enter Email Address" required
-                    minlength="6" maxlength="16" autocomplete="off"
+                    minlength="6" maxlength="24" autocomplete="off"
                     [ngClass]="{'is-invalid':EmailAddress.touched && EmailAddress.invalid}" />
                     <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" -->
 
@@ -144,7 +131,7 @@
 
 
         <!-- Address -->
-        <div class="form-group mb-2  col-md-6">
+        <div class="form-group mb-3 col-md-8">
             <label>Address :</label>
             <input type="text" name="Address" #Address="ngModel" [(ngModel)]="empService.formData.Address"
                 class="form-control" placeholder="Enter Address" required minlength="3" maxlength="30"
@@ -160,7 +147,7 @@
 
         <div class="row">
             <!--User Name -->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>User Name :</label>
                 <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="empService.formData.UserName"
                     class="form-control" placeholder="Enter UserName" required minlength="5" maxlength="12"
@@ -169,14 +156,14 @@
                 <!-- validation-->
                 <div class="validation-error" *ngIf="UserName.touched && UserName.invalid">
                     <div *ngIf="UserName.errors">
-                        UserName is required!
+                        Enter valid Username!
                     </div>
                 </div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <!-- Password -->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Password :</label>
                 <input type="password" name="Password" #Password="ngModel" [(ngModel)]="empService.formData.Password"
                     class="form-control" placeholder="Enter Password" required minlength="8" maxlength="16"
@@ -185,7 +172,7 @@
                 <!--  validation-->
                 <div class="validation-error" *ngIf="Password.touched && Password.invalid">
                     <div *ngIf="Password.errors">
-                        Password is required!
+                        Enter valid password!
                     </div>
                 </div>
             </div>
@@ -195,7 +182,7 @@
 
         <div class="row">
             <!-- Doj -->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Date of Joining :</label>
 
                 <input type="Date" name="Doj" #Doj="ngModel" [(ngModel)]="empService.formData.Doj" class="form-control"
@@ -213,7 +200,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <!-- status -->
-            <div class="form-group mb-2 p-1 col-md-4">
+            <div class="form-group mb-3 col-md-5">
                 <label>Status:</label>
                 <!-- <input type="text" name="EmployeeStatus" #EmployeeStatus="ngModel" pattern="[a-zA-Z\s]+"
                 [(ngModel)]="empService.formData.EmployeeStatus" class="form-control" placeholder="Active/Inactive"
@@ -239,7 +226,7 @@
 
         <div class="row">
             <!-- dropdown Role-->
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
                 <label>Role :</label>
                 <select name="RoleId" id="RoleId" class="form-control" #RoleId="ngModel" required
                     [(ngModel)]="empService.formData.RoleId"
@@ -265,7 +252,7 @@
 
 
             <!-- dropdown Role-->
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
                 <label>Department :</label>
                 <select name="DepId" id="DepId" class="form-control" #DepId="ngModel"
                     [(ngModel)]="empService.formData.DepId">

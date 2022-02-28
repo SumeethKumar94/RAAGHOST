@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EmployeeService } from 'src/app/shared/employee.service';
 //import { EmployeeService } from 'src/app/shared/employee.service';
 import { MedicineService } from 'src/app/shared/medicine.service';
 
@@ -13,10 +14,15 @@ import { MedicineService } from 'src/app/shared/medicine.service';
 })
 export class MedicineComponent implements OnInit {
   MedicineId: number;
+  AdminId: number;
+
   constructor(public mediService: MedicineService, private route: ActivatedRoute,
     private toastrService: ToastrService, private router:Router) { }
 
   ngOnInit(): void {
+
+   this.AdminId =Number(localStorage.getItem("EMPLOYEEID"));
+     this.mediService.formData.AdminId=Number(this.AdminId)
     //get Id from ActivateRoute
     this.MedicineId = this.route.snapshot.params['MedicineId'];
     console.log(this.MedicineId);
@@ -46,7 +52,7 @@ export class MedicineComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let addId = this.mediService.formData.MedicineId;
-
+    //this.mediService.formData.AdminId=this.AdminId
     //insert or update
     if (addId == 0 || addId == null) {
       this.insertMedicineRecord(form);
@@ -87,6 +93,7 @@ export class MedicineComponent implements OnInit {
         console.log(result);
 //call resetform for cln the contents
         this.resetForm(form)
+       
         this.toastrService.success('medicine record has been updated');
         //this.router.navigateByUrl('/adminhome');
       },
@@ -110,6 +117,12 @@ export class MedicineComponent implements OnInit {
     this.router.navigateByUrl('/adminhome').then(e=> {window.location.reload();
     console.log("reloaded");
     
+    });
+   }
+
+   back(){
+    this.router.navigateByUrl('/medicine-list').then(e=> {window.location.reload();
+      console.log("reloaded");
     });
    }
 

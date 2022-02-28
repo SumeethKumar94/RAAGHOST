@@ -1,13 +1,16 @@
 <!-- Toolbar -->
 <div class="toolbar bg-dark " role="banner">
     <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/331-3319886_simplify-the-workflow-even-in-your-most-complex-scanning-white-house-icon.png" />
+    
     <span type="button" routerlink="/adminhome" (click)="navi()" >ADMINISTRATOR HOME</span>
     <div class="spacer"></div>
     <!--search box add here-->
 </div>
 
 <div class="container">
-    <h2 style="text-align: center; font-size: 200%; font-family: fantasy; margin-top: 100px;" routerlink="/medicineadd">Add Medicine</h2>
+    <img width="40"  type="button" (click)="back()" style="margin-top: 100px;" alt="HOME" src="https://www.clipartmax.com/png/full/481-4818575_iago-mart%C3%ADnez-back-arrow-button.png" />
+    
+    <h2 style="text-align: center; font-size: 200%; font-family: fantasy;" routerlink="/medicineadd">Add Medicine</h2>
     <!--  -->
     <form name="mediform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
         <!-- ID---Hidden-->
@@ -68,15 +71,19 @@
             <input type="date" name="ExpiryDate" #ExpiryDate="ngModel" required onfocus="this.min=new Date().toISOString().split('T')[0]" 
                 [(ngModel)]="mediService.formData.ExpiryDate" class="form-control"
                  autocomplete="off"
-                [ngClass]="{'is-invalid':ExpiryDate.touched}" />
+                [ngClass]="{'is-invalid':ExpiryDate.touched && ExpiryDate.invalid}"/>
 
             <!--  validation-->
-            <div class="validation-error" *ngIf="ExpiryDate.touched">
+            <div class="validation-error" *ngIf="ExpiryDate.touched && ExpiryDate.invalid">
                 <div *ngIf="ExpiryDate.error">
                  date is required!
                 </div>
             </div>
         </div>
+
+
+        <!-- ID---Hidden-->
+        <input type="hidden" name="AdminId" [(ngModel)]="mediService.formData.AdminId">
 
         <!-- id-->
         <!-- <div class="form-group mb-2 p-1 col-md-6">
