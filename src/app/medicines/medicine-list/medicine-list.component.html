@@ -34,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr Service *ngFor="let med of medicineService.medicines| filter: filter | paginate:{itemsPerPage: 3,currentPage: page}">
+            <tr Service *ngFor="let med of medicineService.medicines| filter:filter | paginate:{itemsPerPage: 3,currentPage: page}">
                 <td>{{med.MedicineId}}</td>
                 <td>{{med.MedicineName}}</td>
                 <td>{{med.StockQuantity}}</td>
@@ -44,7 +44,7 @@
                      <!-- button  -->
                     <button class="btn btn-sm btn-secondary"(click)="updateMedicine(med.MedicineId)">Edit</button>
                     &nbsp;
-                    <button class="btn btn-sm btn-outline-danger" (click)="deleteMedicine(med.MedicineId)">Delete</button>
+                    <!-- <button class="btn btn-sm btn-outline-danger" (click)="deleteMedicine(med.MedicineId)">Delete</button> -->
                 </td>
             </tr>
         </tbody>

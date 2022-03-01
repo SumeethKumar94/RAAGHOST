@@ -42,18 +42,18 @@ export class MedicineListComponent implements OnInit {
   }
 
   //delete medicine
-  deleteMedicine(medId: number) {
-    if (confirm('Are you sure you want to Delete this record?')) {
-      this.medicineService.deleteMedicine(medId).subscribe(
-        response => {
-          this.medicineService.bindListMedicines();
-        },
-        error => {
-          console.log(error)
-        }
-      );
-    }
-  }
+  // deleteMedicine(medId: number) {
+  //   if (confirm('Are you sure you want to Delete this record?')) {
+  //     this.medicineService.deleteMedicine(medId).subscribe(
+  //       response => {
+  //         this.medicineService.bindListMedicines();
+  //       },
+  //       error => {
+  //         console.log(error)
+  //       }
+  //     );
+  //   }
+  // }
 
   navi(){
     this.router.navigateByUrl('/adminhome');
