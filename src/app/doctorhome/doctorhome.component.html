@@ -38,7 +38,7 @@
 
 
 
-  <div class="container bordered">
+  <div class="container bordered" id="presc">
     <h3>Prescribe Medicine</h3>
 
 
@@ -47,7 +47,7 @@
       <table class="table table-bordered table-striped" style="width: 70em;">
         <thead>
           <tr>
-            <th>MedicineName:</th>
+            <th>Medicine Name:</th>
             <th>Dosage:</th>
             <th>Quantity:</th>
 
@@ -137,7 +137,8 @@
         </tbody>
       </table>
     </form>
-    <h2>Medicine Prescription View</h2>
+    <br>
+    <h3>Medicine Prescription View</h3>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -169,8 +170,8 @@
     <app-doctornote></app-doctornote> -->
   </div>
 
-  <br>
-  <br>
+  <!-- <br>
+  <br> -->
   <!--
   <div class="view" sans-serif style="margin-left: 10em; margin-top: 10em;">
     <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Medicine Prescription View</h2>
@@ -213,9 +214,9 @@
 
 </div>
 <div style="margin-left: 50em;">
-  <br>
-  <br>
-  <button type="button" class="btn btn-outline-warning" (click)="move()">Appointments</button>
+  <!-- <br> -->
+  <!-- <br> -->
+  <button type="button" class="btn btn-outline-primary" (click)="move()">Appointments</button>
   &nbsp;
   <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
 </div>

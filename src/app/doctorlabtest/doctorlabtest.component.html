@@ -2,7 +2,7 @@
   <img width="40" alt="HOME" src="https://www.clipartmax.com/png/full/4-41237_free-icons-png-new-home-icon.png" />
   <span>HOME</span>
   <div class="spacer"></div> -->
-  <!--search box add here-->
+<!--search box add here-->
 <!-- </div> -->
 <!-- <app-patients></app-patients> -->
 <!-- <router-outlet></router-outlet> -->
@@ -18,7 +18,7 @@
 <div class="doctorclass">
 
 
-  <div class="container bordered">
+  <div class="container bordered" id="presc">
     <h3>Prescribe Test</h3>
 
 
@@ -87,34 +87,37 @@
         </tbody>
       </table>
     </form>
-    <h2>Test View</h2>
+    <br>
+    <h3>Test View</h3>
     <table class="table table-bordered table-striped" id="tbl_tests_List">
       <thead>
-          <tr>
-              <th>Test Name</th>
-              <th>Unit</th>
-  
-              
-          </tr>
+        <tr>
+          <th>Test Name</th>
+          <th>Unit</th>
+
+
+        </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let test of labtechtestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:2, currentPage: page}">
-              <td>{{test.Testname}}</td>
-              
-              <td>{{test.Unit}}</td>
-             
-          </tr>
+        <tr
+          *ngFor="let test of labtechtestservice.labtesttests | filter: filter | paginate:{ itemsPerPage:2, currentPage: page}">
+          <td>{{test.Testname}}</td>
+
+          <td>{{test.Unit}}</td>
+
+        </tr>
       </tbody>
-  </table>
+    </table>
 
-    <footer style="margin-left: 50em;">
-      <br>
-      <br>
-      <button type="button" class="btn btn-outline-primary" (click)="move()">Appointments</button>
-      &nbsp;
-      <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
-
-    </footer>
+    
 
   </div>
+  <footer style="margin-left: 50em;">
+    <br>
+    <br>
+    <button type="button" class="btn btn-outline-primary" (click)="move()">Appointments</button>
+    &nbsp;
+    <button type="button" class="btn btn-outline-dark" (click)="logout()">Logout</button>
+
+  </footer>
 </div>
