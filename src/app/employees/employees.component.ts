@@ -84,7 +84,8 @@ export class EmployeesComponent implements OnInit {
       this.empService.getEmployeeBycontact(this.PhoneNumber).subscribe(
         (result) => {
           if (result.length > 0) {
-            alert("Contact already exist")
+            // alert("Contact already exist")
+            this.toastrService.error("Contact already exist", "Error");
 
           }
           
@@ -113,7 +114,7 @@ export class EmployeesComponent implements OnInit {
             }
             if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
               this.toastrService.error("Age should be more than 18 years.Please enter a valid Date of Birth", "Error");
-              alert("Age should be more than 18 years.Please enter a valid Date of Birth");
+              //alert("Age should be more than 18 years.Please enter a valid Date of Birth");
               
             }
 
@@ -163,7 +164,7 @@ export class EmployeesComponent implements OnInit {
   insertdoctorRecord(obj: any) {
     this.empService.insertDoctor(obj).subscribe((result1) => {
       console.log(result1);
-      this.toastrService.success('Doctor details inserted succesfully', 'EmpApp v2022');
+      //this.toastrService.success('Doctor details inserted succesfully', 'EmpApp v2022');
     }, (error) => {
       console.log(error);
 
