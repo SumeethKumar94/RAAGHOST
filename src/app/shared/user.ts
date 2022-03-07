@@ -5,4 +5,5 @@ export class User {
     token: string = '';
     EmployeeId: number = 0;
     DoctorId: number = 0;
+    EmployeeStatus:string='';
 }

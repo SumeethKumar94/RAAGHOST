@@ -16,6 +16,7 @@ export class EmployeesComponent implements OnInit {
   drId: number;
   EmployeeId: number;
   PhoneNumber: string;
+  UserName: string;
   //depId:number;
   //object
   DrObj: {} = { EmployeeId: "", DepId: "" }
@@ -74,12 +75,85 @@ export class EmployeesComponent implements OnInit {
     console.log(form.value);
     let addId = this.empService.formData.EmployeeId;
     this.PhoneNumber = this.empService.formData.PhoneNumber
+    this.UserName = this.empService.formData.UserName
 
 
 
     //insert or update
     if (addId == 0 || addId == null) {
       //---------------------------------------------------------------------
+
+      // this.empService.getEmployeeBycontact(this.PhoneNumber).subscribe(
+      //   (result) => {
+      //     if (result.length > 0) {
+      //       // alert("Contact already exist")
+      //       this.toastrService.error("Contact already exist", "Error");
+
+      //     }
+
+      //     this.empService.getEmployeeByUserName(this.UserName).subscribe(
+      //       (result1) => {
+      //         if (result1.length > 0) {
+      //           this.toastrService.error("UserName already exist", "Error");
+      //         }
+      //       }
+      //     )
+
+      //     // /////////////////////////////
+      //     var today = new Date();
+      //     var nowyear = today.getFullYear();
+      //     var nowmonth = today.getMonth();
+      //     var nowday = today.getDate();
+      //     var b = this.empService.formData.Dob
+
+      //     var birth = new Date(b);
+
+      //     var birthyear = birth.getFullYear();
+      //     var birthmonth = birth.getMonth();
+      //     var birthday = birth.getDate();
+
+      //     var age = nowyear - birthyear;
+      //     var age_month = nowmonth - birthmonth;
+      //     var age_day = nowday - birthday;
+
+      //     if (age > 100) {
+      //       this.toastrService.error("Age cannot be more than 100 Years.Please enter correct age", "Error");
+      //       //alert("Age cannot be more than 100 Years.Please enter correct age")
+
+
+      //     }
+      //     if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+      //       this.toastrService.error("Age should be more than 18 years.Please enter a valid Date of Birth", "Error");
+      //       //alert("Age should be more than 18 years.Please enter a valid Date of Birth");
+
+      //     }
+
+
+
+      //     ///////////////////////////////////////////////////////
+      //     else {
+      //       this.insertEmployeeRecord(form);
+      //     }
+
+
+      //   }
+      // )
+      // -------------------------------------------------------------------------------------
+      var today = new Date();
+      var nowyear = today.getFullYear();
+      var nowmonth = today.getMonth();
+      var nowday = today.getDate();
+      var b = this.empService.formData.Dob
+
+      var birth = new Date(b);
+
+      var birthyear = birth.getFullYear();
+      var birthmonth = birth.getMonth();
+      var birthday = birth.getDate();
+
+      var age = nowyear - birthyear;
+      var age_month = nowmonth - birthmonth;
+      var age_day = nowday - birthday;
 
       this.empService.getEmployeeBycontact(this.PhoneNumber).subscribe(
         (result) => {
@@ -88,48 +162,33 @@ export class EmployeesComponent implements OnInit {
             this.toastrService.error("Contact already exist", "Error");
 
           }
-          
-            // /////////////////////////////
-            var today = new Date();
-            var nowyear = today.getFullYear();
-            var nowmonth = today.getMonth();
-            var nowday = today.getDate();
-            var b = this.empService.formData.Dob
 
-            var birth = new Date(b);
+          else if (age > 100) {
+            this.toastrService.error("Age cannot be more than 100 Years.Please enter correct age", "Error");
+            //alert("Age cannot be more than 100 Years.Please enter correct age")
 
-            var birthyear = birth.getFullYear();
-            var birthmonth = birth.getMonth();
-            var birthday = birth.getDate();
+          }
+          else if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+            this.toastrService.error("Age should be more than 18 years.Please enter a valid Date of Birth", "Error");
+            //alert("Age should be more than 18 years.Please enter a valid Date of Birth");
 
-            var age = nowyear - birthyear;
-            var age_month = nowmonth - birthmonth;
-            var age_day = nowday - birthday;
+          }
+          else {
+            this.empService.getEmployeeByUserName(this.UserName).subscribe(
+              (result1) => {
+                if (result1.length > 0) {
+                  this.toastrService.error("UserName already exist", "Error");
+                }
+                else {
 
-            if (age > 100) {
-              this.toastrService.error("Age cannot be more than 100 Years.Please enter correct age", "Error");
-              //alert("Age cannot be more than 100 Years.Please enter correct age")
-               
-             
-            }
-            if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
-              this.toastrService.error("Age should be more than 18 years.Please enter a valid Date of Birth", "Error");
-              //alert("Age should be more than 18 years.Please enter a valid Date of Birth");
-              
-            }
+                  this.insertEmployeeRecord(form);
+                }
+              }
+            )
+          }
 
-
-
-            ///////////////////////////////////////////////////////
-            else {
-              this.insertEmployeeRecord(form);
-            }
-          
-
-        })
-      // -------------------------------------------------------------------------------------
-      //this.insertEmployeeRecord(form);  //call
-      //console.log("not set");
+        }
+      )
 
     }
     else {
@@ -149,7 +208,7 @@ export class EmployeesComponent implements OnInit {
         this.insertdoctorRecord(this.DrObj);
         //call resetform for cln the contents
         this.resetForm(form);
-        this.toastrService.success('Successfully added', 'EmpApp v2022');
+        this.toastrService.success('Successfully added');
         //this.router.navigateByUrl('/adminhome');
         //window.location.reload()
       },
@@ -184,7 +243,7 @@ export class EmployeesComponent implements OnInit {
         // this.updatedoctorRecord(this.DrObj);
         //call resetform for cln the contents
         this.resetForm(form)
-        this.toastrService.success('Succesfully updated', 'EmpApp v2022');
+        this.toastrService.success('Succesfully updated');
       },
       (error) => {
         console.log(error);
@@ -213,10 +272,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   navi() {
-    this.router.navigateByUrl('/adminhome').then(e=> {window.location.reload();
+    this.router.navigateByUrl('/adminhome').then(e => {
+      window.location.reload();
       console.log("reloaded");
-      
-      });
+
+    });
   }
 
   getToday(): string {
@@ -225,11 +285,12 @@ export class EmployeesComponent implements OnInit {
 
   }
 
-  back(){
-    this.router.navigateByUrl('/employee-list').then(e=> {window.location.reload();
+  back() {
+    this.router.navigateByUrl('/employee-list').then(e => {
+      window.location.reload();
       console.log("reloaded");
     });
-   }
+  }
 
 
 }

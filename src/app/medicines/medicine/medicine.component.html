@@ -38,13 +38,13 @@
             <label>Stock  :</label>
             <input type="number" name="StockQuantity" #StockQuantity="ngModel"
                 [(ngModel)]="mediService.formData.StockQuantity" class="form-control" placeholder="Enter stock"
-                required minlength="1" min=0 maxlength="4" autocomplete="off"
+                required minlength="1" min=0 maxlength="4" autocomplete="off" pattern="^[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*$"
                 [ngClass]="{'is-invalid':StockQuantity.touched && StockQuantity.invalid}" />
 
             <!--  validation-->
             <div class="validation-error" *ngIf="StockQuantity.touched && StockQuantity.invalid">
                 <div *ngIf="StockQuantity.errors">
-                  Stock is required!
+                  Enter valid value
                 </div>
             </div>
         </div>
@@ -54,13 +54,13 @@
             <label>Unit Price  :</label>
             <input type="number" name="UnitPrice" #UnitPrice="ngModel"
                 [(ngModel)]="mediService.formData.UnitPrice" class="form-control" placeholder="Enter price"
-                required minlength="0" min=0 maxlength="4" autocomplete="off"
-                [ngClass]="{'is-invalid':UnitPrice.touched && UnitPrice.invalid}" />
+                required minlength="0" min=0 maxlength="4" autocomplete="off" pattern="^[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*$"
+                [ngClass]="{'is-invalid':UnitPrice.touched && UnitPrice.invalid}"/>
 
             <!--  validation-->
             <div class="validation-error" *ngIf="UnitPrice.touched && UnitPrice.invalid">
                 <div *ngIf="UnitPrice.errors">
-                  price is required!
+                 Enter valid price
                 </div>
             </div>
         </div>

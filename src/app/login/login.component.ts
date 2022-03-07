@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
             //UserName,RoleId and Token
             sessionStorage.setItem('jwtToken',this.loginUser.token)
 
-
+            if(this.loginUser.EmployeeStatus =='Active'){
             //check the role based on roleid ,it redirects to respective page
             if (this.loginUser.RoleId === 1) {
               console.log("ADMIN");
@@ -116,6 +116,10 @@ export class LoginComponent implements OnInit {
             else {
               this.error = "Sorry ! NOT authenticate/authorize to access this module"
             }
+          }
+          else{
+            alert('Sorry ! NOT authenticate/authorize to access this module')
+          }
           },
           error => {
             this.error = "Invalid username or password try again!"

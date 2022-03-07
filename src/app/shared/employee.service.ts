@@ -49,6 +49,11 @@ export class EmployeeService {
     return this.httpClient.get(environment.apiUrl + "/api/employees/contact/" + contact);
   }
 
+  //get employee by username
+  getEmployeeByUserName(uname): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + "/api/employees/search/empuname/" + uname);
+  }
+
   //delete employee
   deleteEmployee(id: number) {
     return this.httpClient.delete(environment.apiUrl + "/api/employees/" + id);
