@@ -82,7 +82,7 @@ export class DoctorlabtestComponent implements OnInit {
         this.pt = result;
 
         
-        this.toastrService.success('Prescription record has been inserted', 'CmsApp v2022');
+        this.toastrService.success('Prescription test record has been inserted', 'CmsApp v2022');
         console.log(this.app.TPrescriptionId);
         
 
@@ -128,7 +128,7 @@ export class DoctorlabtestComponent implements OnInit {
       this.insertPrescriptionTestDetail(this.prestedetail);
 
 
-      this.toastrService.success('added test record has been inserted', 'CmsApp v2022');
+     // this.toastrService.success('added test record has been inserted', 'CmsApp v2022');
 
     }, (error) => {
       console.log(error);
@@ -141,7 +141,7 @@ export class DoctorlabtestComponent implements OnInit {
 
       this.labtechtestservice.bindListLabtechtesttets(this.app.TPrescriptionId);
 
-      this.toastrService.success('added detail test record has been inserted', 'CmsApp v2022');
+     // this.toastrService.success('added detail test record has been inserted', 'CmsApp v2022');
     }, (error) => {
       console.log(error);
     }

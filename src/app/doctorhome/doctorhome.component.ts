@@ -145,7 +145,7 @@ export class DoctorhomeComponent implements OnInit {
 
 
      
-      this.toastrService.success('added record has been inserted','CmsApp v2022');
+      //this.toastrService.success('added record has been inserted','CmsApp v2022');
       this.insertPrescriptionDetail(this.presdetail);
     },(error)=>{
       console.log(error);
@@ -160,7 +160,7 @@ export class DoctorhomeComponent implements OnInit {
       console.log(result);
       
       this.prescriptionmedicinesservice.bindListPrescriptionmedicines(this.app.PrescriptionId);
-      this.toastrService.success('added detail record has been inserted','CmsApp v2022');
+     // this.toastrService.success('added detail record has been inserted','CmsApp v2022');
       
     },(error)=>{
       console.log(error);
